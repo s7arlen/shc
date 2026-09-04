@@ -1,0 +1,146 @@
+/* ============================================
+   NOTICE TICKER — Right-to-Left scrolling bar
+   ============================================ */
+
+.notice-ticker {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-ivory);
+  border-bottom: 1px solid rgba(198, 161, 91, 0.35);
+  height: 36px;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+}
+
+/* "Latest News" label badge */
+.notice-ticker__label {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 1rem 0 1.25rem;
+  height: 100%;
+  background: var(--burgundy-primary);
+  color: var(--bg-ivory);
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  /* Diagonal right edge */
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+  padding-right: 1.6rem;
+}
+
+.notice-ticker__label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-antique);
+  animation: ticker-pulse 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes ticker-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* Track wrapper — clips overflow */
+.notice-ticker__track-wrapper {
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  /* Subtle fade-out on left edge after the badge */
+  mask-image: linear-gradient(to right, transparent 0%, black 3%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 95%, transparent 100%);
+}
+
+/* Scrolling list — CSS animation drives the scroll */
+.notice-ticker__track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: ticker-scroll 45s linear infinite;
+  will-change: transform;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notice-ticker__track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Individual item */
+.notice-ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.25rem;
+}
+
+/* Category pill */
+.notice-ticker__category {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 20px;
+  background: rgba(198, 161, 91, 0.15);
+  border: 1px solid rgba(198, 161, 91, 0.4);
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-antique);
+  white-space: nowrap;
+}
+
+/* Headline link */
+.notice-ticker__text {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-main);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.notice-ticker__text:hover {
+  color: var(--burgundy-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Separator ✦ */
+.notice-ticker__sep {
+  color: var(--gold-antique);
+  font-size: 0.6rem;
+  opacity: 0.6;
+  margin: 0 0.75rem;
+}
+
+/* Responsive — keep visible but reduce height */
+@media (max-width: 640px) {
+  .notice-ticker {
+    height: 32px;
+  }
+  .notice-ticker__label {
+    font-size: 0.6rem;
+    padding: 0 1.4rem 0 0.9rem;
+  }
+  .notice-ticker__text {
+    font-size: 0.72rem;
+  }
+}

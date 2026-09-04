@@ -1,0 +1,111 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 9, 6, 0.92);
+  backdrop-filter: blur(8px);
+}
+
+.lightbox__container {
+  position: relative;
+  z-index: 10;
+  max-width: 90vw;
+  max-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 82vh;
+}
+
+.lightbox__image {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-gold);
+  box-shadow: var(--shadow-strong);
+}
+
+.lightbox__caption {
+  margin-top: 0.75rem;
+  text-align: center;
+  color: var(--cream);
+}
+
+.lightbox__caption h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--gold-light);
+}
+
+.lightbox__caption span {
+  font-size: 0.75rem;
+  color: var(--gold-antique);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.lightbox__close-btn {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  color: var(--gold-light);
+  background: rgba(36, 19, 13, 0.6);
+  border: 1px solid var(--border-gold);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.lightbox__close-btn:hover {
+  background: var(--gold-antique);
+  color: var(--brown-deep);
+}
+
+.lightbox__nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold-light);
+  background: rgba(36, 19, 13, 0.7);
+  border: 1px solid var(--border-gold);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  z-index: 20;
+}
+
+.lightbox__nav-btn:hover {
+  background: var(--gold-antique);
+  color: var(--brown-deep);
+}
+
+.lightbox__nav-btn--prev { left: -60px; }
+.lightbox__nav-btn--next { right: -60px; }
+
+@media (max-width: 768px) {
+  .lightbox__nav-btn--prev { left: 10px; }
+  .lightbox__nav-btn--next { right: 10px; }
+}

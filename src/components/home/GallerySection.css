@@ -1,0 +1,28 @@
+/* ============================================
+   PHOTO GALLERY SECTION — Accordion Gallery
+   ============================================ */
+
+.gallery-section {
+  background-color: var(--white);
+  padding: 5.5rem 0;
+  position: relative;
+}
+
+.gallery-section__accordion-wrap {
+  margin-bottom: 3.5rem;
+  box-shadow: 0 16px 45px rgba(53, 21, 27, 0.08);
+  border-radius: 18px;
+}
+
+.gallery-section__cta {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 3.5rem 0;
+  }
+  .gallery-section__accordion-wrap {
+    margin-bottom: 2.5rem;
+  }
+}

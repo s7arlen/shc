@@ -1,0 +1,813 @@
+/* ========================================================
+   ORGANIZATIONS & ASSOCIATIONS STYLING
+   Sacred Heart of Jesus Church, Thodambila
+   ======================================================== */
+
+/* --- Controls & Filter Bar --- */
+.org-controls {
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.org-controls__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.org-search {
+  position: relative;
+  flex: 1;
+  min-width: 260px;
+  max-width: 420px;
+}
+
+.org-search__icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.org-search__input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-gold);
+  background-color: var(--white);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.org-search__input:focus {
+  border-color: var(--burgundy-primary);
+  box-shadow: 0 0 0 3px rgba(122, 31, 43, 0.12);
+}
+
+.org-search__clear {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.org-search__clear:hover {
+  color: var(--burgundy-primary);
+  background-color: var(--cream);
+}
+
+.org-count {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Category Filter Tabs */
+.org-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.org-category-btn {
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-gold);
+  background-color: var(--white);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.org-category-btn:hover {
+  border-color: var(--burgundy-primary);
+  color: var(--burgundy-primary);
+  background-color: var(--cream);
+}
+
+.org-category-btn--active {
+  background-color: var(--burgundy-primary) !important;
+  border-color: var(--burgundy-primary) !important;
+  color: var(--white) !important;
+  box-shadow: 0 4px 12px rgba(122, 31, 43, 0.25);
+}
+
+/* --- Organization Cards Grid (Minimal & Clean) --- */
+.org-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1.75rem;
+}
+
+.org-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(198, 161, 91, 0.3);
+  box-shadow: 0 2px 10px rgba(43, 41, 39, 0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+.org-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(53, 21, 27, 0.09);
+  border-color: var(--gold-antique);
+}
+
+/* Card Image & Placeholder */
+.org-card__image-wrap {
+  position: relative;
+  width: 100%;
+  height: 185px;
+  background-color: var(--cream-secondary);
+  overflow: hidden;
+}
+
+.org-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.org-card:hover .org-card__image {
+  transform: scale(1.04);
+}
+
+.org-card__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy-primary) 100%);
+  color: var(--gold-light);
+  gap: 0.4rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.org-card__placeholder-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(198, 161, 91, 0.2);
+  border: 1px solid var(--gold-antique);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--gold-light);
+}
+
+.org-card__badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  background: rgba(53, 21, 27, 0.82);
+  backdrop-filter: blur(8px);
+  color: var(--gold-light);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(198, 161, 91, 0.35);
+  z-index: 2;
+}
+
+/* Card Body (Minimal) */
+.org-card__body {
+  padding: 1.25rem 1.35rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.org-card__eyebrow {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold-antique);
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.org-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--burgundy-primary);
+  margin-bottom: 0.45rem;
+  line-height: 1.35;
+  transition: color var(--transition-fast);
+}
+
+.org-card:hover .org-card__title {
+  color: var(--burgundy-light);
+}
+
+.org-card__desc {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Footer (Minimal) */
+.org-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(43, 41, 39, 0.06);
+  font-size: 0.78rem;
+  gap: 0.5rem;
+}
+
+.org-card__meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.org-card__meta-pill svg {
+  color: var(--burgundy-primary);
+  flex-shrink: 0;
+}
+
+.org-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--burgundy-primary);
+  font-weight: 600;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+  transition: color var(--transition-fast);
+}
+
+.org-card__arrow {
+  transition: transform var(--transition-fast);
+}
+
+.org-card:hover .org-card__link {
+  color: var(--burgundy-light);
+}
+
+.org-card:hover .org-card__arrow {
+  transform: translateX(4px);
+}
+
+/* Empty State */
+.org-empty {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--border-gold);
+}
+
+.org-empty__icon {
+  color: var(--gold-antique);
+  margin-bottom: 1rem;
+}
+
+.org-empty__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--burgundy-primary);
+  margin-bottom: 0.5rem;
+}
+
+.org-empty__desc {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* ================================================================
+   Sacred Heart of Jesus Church, Thodambila
+   ORGANIZATIONS (MINISTRIES / ಸಂಘಟನಾಂ) STYLES
+================================================================ */
+
+.org-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 960px) {
+  .org-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Detail Main Content */
+.org-detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.org-detail-banner {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-med);
+  border: 1px solid var(--border-gold);
+  background-color: var(--cream-secondary);
+}
+
+.org-detail-banner__image {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+}
+
+.org-detail-section {
+  background: var(--white);
+  padding: 2.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-gold);
+  box-shadow: var(--shadow-subtle);
+}
+
+.org-detail-section__title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: var(--burgundy-primary);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--gold-pale);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.org-detail-section__title svg {
+  color: var(--gold-antique);
+}
+
+.org-detail-lead {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+/* Objectives & Activities List */
+.org-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.org-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+.org-feature-bullet {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gold-pale);
+  color: var(--burgundy-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+}
+
+/* Join Callout Card */
+.org-join-card {
+  background: linear-gradient(135deg, var(--cream-soft) 0%, var(--gold-pale) 100%);
+  border: 1px solid var(--gold-antique);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.org-join-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--burgundy-primary);
+  margin-bottom: 0.5rem;
+}
+
+.org-join-card__desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+}
+
+.org-join-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Detail Sidebar */
+.org-detail-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.org-facts-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-gold);
+  box-shadow: var(--shadow-subtle);
+  overflow: hidden;
+}
+
+.org-facts-card__header {
+  background: var(--burgundy-primary);
+  color: var(--gold-light);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.org-facts-card__header h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin: 0;
+  color: var(--white);
+}
+
+.org-facts-card__body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.org-fact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.org-fact-icon {
+  color: var(--burgundy-primary);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.org-fact-content h4 {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.org-fact-content p {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-main);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.org-fact-content a {
+  color: var(--burgundy-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.org-fact-content a:hover {
+  color: var(--burgundy-light);
+}
+
+/* Quick Navigation Links */
+.org-sidebar-nav {
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-gold);
+  padding: 1.5rem;
+}
+
+.org-sidebar-nav__title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--burgundy-primary);
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.org-sidebar-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.org-sidebar-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+  background: var(--white);
+  border: 1px solid rgba(198, 161, 91, 0.2);
+}
+
+.org-sidebar-nav__link:hover {
+  background: var(--burgundy-primary);
+  color: var(--white);
+  border-color: var(--burgundy-primary);
+  transform: translateX(4px);
+}
+
+.org-sidebar-nav__link--active {
+  background: var(--burgundy-primary);
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* Detail Bottom Navigation */
+.org-detail-bottom-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border-gold);
+}
+
+.org-prev-next {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.org-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  background: var(--white);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+}
+
+.org-nav-pill:hover {
+  background: var(--burgundy-primary);
+  color: var(--white);
+  border-color: var(--burgundy-primary);
+}
+
+/* ========================================================
+   OFFICE BEARERS SECTION (ಹುದ್ದೆದಾರ್) — Alike Thodambila
+   ======================================================== */
+
+.org-motto-banner {
+  background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy-primary) 100%);
+  color: var(--gold-light);
+  padding: 1.25rem 1.75rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.75rem;
+  border-left: 4px solid var(--gold-antique);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.org-motto-banner__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold-antique);
+  font-weight: 700;
+}
+
+.org-motto-banner__text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--white);
+  margin: 0;
+}
+
+/* Office Bearers Grid */
+.org-bearers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.org-bearer-card {
+  background: var(--bg-ivory);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.org-bearer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--gold-antique);
+  background: var(--white);
+}
+
+/* Office Bearer Avatar & Placeholder */
+.org-bearer-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid var(--gold-antique);
+  background: var(--cream);
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(53, 21, 27, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.org-bearer-avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.org-bearer-avatar__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--burgundy-primary) 0%, var(--burgundy-dark) 100%);
+  color: var(--gold-light);
+}
+
+.org-bearer-avatar__icon {
+  font-size: 1.5rem;
+  color: var(--gold-light);
+}
+
+/* Role Badges */
+.org-bearer-role {
+  display: inline-block;
+  background: var(--burgundy-primary);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+
+.org-bearer-role--director {
+  background: var(--gold-antique);
+  color: var(--burgundy-dark);
+}
+
+.org-bearer-konkani-role {
+  font-size: 0.8rem;
+  color: var(--burgundy-primary);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.org-bearer-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
+  line-height: 1.35;
+}
+
+.org-bearer-ward {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.org-bearer-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--burgundy-primary);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  margin-top: 0.25rem;
+  transition: all var(--transition-fast);
+}
+
+.org-bearer-phone:hover {
+  background: var(--burgundy-primary);
+  color: var(--white);
+}
+
+/* Bilingual Title Badges */
+.org-bilingual-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.org-bilingual-title__konkani {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.02em;
+}
+
+.org-card__konkani {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold-antique);
+  margin-bottom: 0.3rem;
+}
+
+

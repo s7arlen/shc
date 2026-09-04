@@ -1,0 +1,200 @@
+/* ============================================
+   OUR PATRONESS SECTION — Sacred Marian Theme
+   ============================================ */
+
+.patroness {
+  position: relative;
+  background: radial-gradient(circle at 85% 20%, rgba(23, 63, 107, 0.45) 0%, transparent 60%),
+              linear-gradient(145deg, #172536 0%, #173F6B 50%, #0F1B2B 100%);
+  color: var(--bg-ivory);
+  overflow: hidden;
+  border-top: 1px solid rgba(197, 161, 91, 0.35);
+  border-bottom: 1px solid rgba(197, 161, 91, 0.35);
+  padding: var(--section-padding) 0;
+}
+
+.patroness::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(197, 161, 91, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.patroness__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.patroness__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  color: var(--bg-ivory);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.patroness__gold-line {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold-antique), rgba(197, 161, 91, 0.2));
+  margin: 1rem 0 1.5rem;
+}
+
+.patroness__quote {
+  background: linear-gradient(90deg, rgba(197, 161, 91, 0.15) 0%, rgba(197, 161, 91, 0.03) 100%);
+  border-left: 3px solid var(--gold-antique);
+  padding: 0.9rem 1.4rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--gold-light);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.patroness__quote-icon {
+  color: var(--gold-antique);
+  flex-shrink: 0;
+}
+
+.patroness__text {
+  font-size: 0.98rem;
+  color: rgba(250, 248, 241, 0.9);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* ---- Feast Day Badge (Polished & High Contrast) ---- */
+.patroness__feast-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(23, 37, 54, 0.95) 0%, rgba(15, 27, 43, 0.98) 100%);
+  border: 1.5px solid var(--gold-antique);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  margin: 0.8rem 0 2rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35),
+              0 0 16px rgba(198, 161, 91, 0.2),
+              inset 0 1px 0 rgba(221, 187, 123, 0.25);
+  position: relative;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.patroness__feast-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45),
+              0 0 22px rgba(198, 161, 91, 0.35);
+}
+
+.patroness__feast-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(198, 161, 91, 0.15);
+  border: 1px solid rgba(198, 161, 91, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.patroness__feast-icon {
+  color: var(--gold-light);
+}
+
+.patroness__feast-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.patroness__feast-label {
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 2px;
+}
+
+.patroness__feast-date {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--bg-ivory);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* ---- Right Column: Image with Ornate Gold Frame ---- */
+.patroness__image-container {
+  position: relative;
+  padding: 16px;
+}
+
+.patroness__image {
+  width: 100%;
+  height: 490px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(198, 161, 91, 0.4);
+}
+
+.patroness__gold-frame {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid rgba(198, 161, 91, 0.6);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+  box-shadow: inset 0 0 20px rgba(198, 161, 91, 0.15);
+}
+
+.patroness__gold-frame-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--gold-antique);
+}
+
+.patroness__gold-frame-corner.top-left { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.patroness__gold-frame-corner.top-right { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.patroness__gold-frame-corner.bottom-left { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.patroness__gold-frame-corner.bottom-right { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+/* ---- Responsive ---- */
+@media (max-width: 960px) {
+  .patroness__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .patroness__image {
+    height: 380px;
+  }
+}
+
+@media (max-width: 540px) {
+  .patroness__feast-badge {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .patroness__image {
+    height: 300px;
+  }
+}

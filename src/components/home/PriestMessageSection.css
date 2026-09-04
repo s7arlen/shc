@@ -1,0 +1,115 @@
+.priest-message__card {
+  background: var(--cream);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.priest-message__photo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.priest-message__circle-frame {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 1.25rem;
+}
+
+.priest-message__photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.priest-message__ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-antique);
+  box-shadow: 0 0 16px rgba(201, 164, 92, 0.3);
+}
+
+.priest-message__name-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.priest-message__desig {
+  font-size: 0.75rem;
+  color: var(--gold-antique);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.priest-message__name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--brown-primary);
+  margin: 0.1rem 0;
+}
+
+.priest-message__title-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.priest-message__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--brown-primary);
+  line-height: 1.2;
+}
+
+.priest-message__divider {
+  width: 50px;
+  height: 2px;
+  background: var(--gold-antique);
+  margin: 0.75rem 0 1.25rem;
+}
+
+.priest-message__quote-wrapper {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.priest-message__quote-mark {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  color: var(--gold-antique);
+  opacity: 0.5;
+}
+
+.priest-message__text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--brown-primary);
+  line-height: 1.7;
+}
+
+.priest-message__cta {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 860px) {
+  .priest-message__card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+}

@@ -1,0 +1,148 @@
+/* ============================================
+   MASS TIMES STRIP
+   Compact bar between Hero and Welcome sections
+   ============================================ */
+
+.mass-strip {
+  background-color: var(--brown-deep);
+  border-top: 1px solid rgba(201, 164, 92, 0.15);
+  border-bottom: 1px solid rgba(201, 164, 92, 0.2);
+  padding: 1.1rem 0;
+}
+
+.mass-strip__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Label */
+.mass-strip__label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-antique);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Divider between label and pills */
+.mass-strip__label::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 18px;
+  background: rgba(201, 164, 92, 0.25);
+  margin-left: 0.75rem;
+}
+
+/* Scrollable pill list */
+.mass-strip__times {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+/* Individual pill */
+.mass-strip__time-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  background: rgba(201, 164, 92, 0.1);
+  border: 1px solid rgba(201, 164, 92, 0.22);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.mass-strip__time {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+}
+
+.mass-strip__time::after {
+  content: '·';
+  margin: 0 0.15rem;
+  color: rgba(201, 164, 92, 0.4);
+}
+
+.mass-strip__lang {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--text-light);
+  letter-spacing: 0.02em;
+}
+
+/* Link */
+.mass-strip__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-antique);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color var(--transition-fast), gap var(--transition-fast);
+  border-bottom: 1px solid rgba(201, 164, 92, 0.35);
+  padding-bottom: 1px;
+}
+
+.mass-strip__link:hover {
+  color: var(--gold-light);
+  gap: 0.55rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .mass-strip__inner {
+    gap: 0.75rem;
+  }
+
+  .mass-strip__label {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .mass-strip__label::after {
+    display: none;
+  }
+
+  .mass-strip__times {
+    gap: 0.4rem;
+  }
+
+  .mass-strip__time-pill {
+    padding: 0.25rem 0.6rem;
+  }
+
+  .mass-strip__link {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .mass-strip__time-pill {
+    font-size: 0.62rem;
+  }
+
+  .mass-strip__time {
+    font-size: 0.65rem;
+  }
+}

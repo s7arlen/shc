@@ -1,0 +1,211 @@
+/* ============================================
+   MASS & WORSHIP SECTION — Secondary Cream (#F2EDE3)
+   ============================================ */
+
+.mass-schedule {
+  background-color: var(--cream-secondary);
+  padding: 5rem 0;
+}
+
+/* 4 Highlight Cards Grid */
+.mass-schedule__highlights {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.mass-card {
+  background: var(--white);
+  border: 1px solid var(--border-gold);
+  border-top: 3px solid var(--burgundy-primary);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-subtle);
+  transition: transform var(--transition-med), box-shadow var(--transition-med);
+}
+
+.mass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.mass-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-cream);
+}
+
+.mass-card__icon {
+  color: var(--gold-antique);
+  flex-shrink: 0;
+}
+
+.mass-card__header h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--burgundy-primary);
+}
+
+.mass-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.mass-card__list li {
+  display: flex;
+  flex-direction: column;
+}
+
+.mass-card__list span {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--burgundy-dark);
+}
+
+.mass-card__list small {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* Tabbed Container Box */
+.mass-schedule__tabs-container {
+  background: var(--white);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.mass-schedule__tabs {
+  display: flex;
+  background: rgba(122, 31, 43, 0.04);
+  border-bottom: 1px solid var(--border-cream);
+}
+
+.mass-schedule__tab {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.mass-schedule__tab:hover {
+  color: var(--burgundy-primary);
+  background: rgba(122, 31, 43, 0.06);
+}
+
+.mass-schedule__tab.active {
+  color: var(--burgundy-primary);
+  background: var(--white);
+  border-bottom-color: var(--burgundy-primary);
+}
+
+/* Tab Content */
+.mass-schedule__tab-content {
+  padding: 1.5rem 2rem;
+}
+
+.mass-table-wrapper {
+  overflow-x: auto;
+}
+
+.mass-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.mass-table th {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-antique);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-cream);
+}
+
+.mass-table td {
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-cream);
+}
+
+.mass-table tr:last-child td {
+  border-bottom: none;
+}
+
+.mass-table__time {
+  font-weight: 700;
+  color: var(--burgundy-primary) !important;
+}
+
+.mass-table__lang {
+  font-weight: 600;
+}
+
+.mass-table__note {
+  color: var(--text-muted) !important;
+  font-style: italic;
+}
+
+.mass-special-grid h4 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--burgundy-primary);
+  margin-bottom: 0.75rem;
+}
+
+.mass-special-grid ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mass-special-grid li {
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+/* Footer CTA */
+.mass-schedule__footer-cta {
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mass-schedule__highlights {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .mass-schedule__highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .mass-schedule__tabs {
+    flex-direction: column;
+  }
+
+  .mass-schedule__tab-content {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,171 @@
+/* ============================================
+   MINIMAL FOOTER — Deep Blue (#172536)
+   ============================================ */
+
+.footer {
+  background-color: #172536;
+  color: #FAF8F1;
+  padding: 3.5rem 0 2rem;
+  border-top: 1px solid rgba(197, 161, 91, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Brand & Identity */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.footer__logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 6px rgba(198, 161, 91, 0.35));
+}
+
+.footer__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--bg-ivory);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+
+.footer__subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-antique);
+  opacity: 0.9;
+}
+
+/* Horizontal Nav Links */
+.footer__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.footer__nav a {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(250, 247, 240, 0.82);
+  transition: color var(--transition-fast);
+}
+
+.footer__nav a:hover {
+  color: var(--gold-light);
+}
+
+/* Social Links */
+.footer__social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(198, 161, 91, 0.1);
+  border: 1px solid rgba(198, 161, 91, 0.28);
+  color: var(--gold-light);
+  transition: all var(--transition-fast);
+}
+
+.footer__social-link:hover {
+  background: var(--burgundy-primary);
+  border-color: var(--gold-antique);
+  color: var(--bg-ivory);
+  transform: translateY(-2px);
+}
+
+/* Gold Divider Line */
+.footer__gold-line {
+  width: 100%;
+  max-width: 500px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(198, 161, 91, 0.35) 50%, transparent 100%);
+  margin-bottom: 1.75rem;
+}
+
+/* Bottom Copyright & Credit */
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer__copyright {
+  font-size: 0.76rem;
+  color: rgba(250, 247, 240, 0.65);
+}
+
+.footer__credit {
+  font-size: 0.76rem;
+  color: rgba(250, 247, 240, 0.75);
+}
+
+.footer__credit-brand {
+  font-weight: 700;
+  color: var(--gold-antique);
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(198, 161, 91, 0.4);
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+.footer__credit-brand:hover {
+  color: var(--gold-light);
+  text-decoration-color: var(--gold-light);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .footer {
+    padding: 2.75rem 0 1.5rem;
+  }
+
+  .footer__nav {
+    gap: 1rem 1.25rem;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.4rem;
+  }
+}

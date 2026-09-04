@@ -1,0 +1,894 @@
+/* ==========================================================================
+   Wards Page & Subpages Styling (Clean, Minimal Thodambila Layout)
+   Sacred Heart of Jesus Church, Thodambila
+   ========================================================================== */
+
+/* ── Bilingual Title in Hero ── */
+.ward-bilingual-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0.4rem 0 0.25rem;
+  padding: 0 1rem;
+}
+
+.ward-bilingual-title__konkani {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 4vw, 1.6rem);
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+}
+
+/* On small screens the hero gets crowded — the Konkani name is already
+   shown in the ward detail header right below, so drop it from the hero. */
+@media (max-width: 480px) {
+  .ward-bilingual-title__konkani {
+    display: none;
+  }
+
+  .ward-bilingual-title {
+    margin: 0.25rem 0;
+  }
+}
+
+/* ==========================================================================
+   Minimal Wards Hub (Directory of All Wards - Thodambila Layout)
+   ========================================================================== */
+
+.ward-hub-minimal-wrapper {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.ward-hub-minimal-header {
+  text-align: center;
+  padding: 1.5rem 1rem 0;
+}
+
+.ward-hub-minimal-konkani-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--brown-primary);
+  margin: 0 0 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.ward-hub-minimal-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.ward-hub-minimal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--warm-white);
+  border: 1px solid var(--border-gold);
+  padding: 0.45rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brown-primary);
+}
+
+.ward-hub-search-box {
+  position: relative;
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.ward-hub-search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.ward-hub-search-input {
+  width: 100%;
+  padding: 0.65rem 2.5rem 0.65rem 2.5rem;
+  background: var(--warm-white);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.ward-hub-search-input:focus {
+  border-color: var(--gold-antique);
+  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.15);
+  background: #fff;
+}
+
+.ward-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.25rem;
+}
+
+.ward-hub-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.35rem 1.15rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ward-hub-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold-antique);
+  box-shadow: var(--shadow-med);
+}
+
+.ward-hub-card__top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px dashed var(--border-beige);
+}
+
+.ward-hub-card__konkani {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--brown-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.ward-hub-card__english {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold-antique);
+}
+
+.ward-hub-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  flex: 1;
+}
+
+.ward-hub-card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ward-hub-card__label {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.ward-hub-card__val {
+  font-weight: 600;
+  color: var(--brown-primary);
+  text-align: right;
+}
+
+.ward-hub-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border-beige);
+  font-size: 0.78rem;
+}
+
+.ward-hub-card__badge {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.ward-hub-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--gold-antique);
+  font-weight: 700;
+  transition: gap var(--transition-fast);
+}
+
+.ward-hub-card:hover .ward-hub-card__link {
+  gap: 0.5rem;
+  color: var(--brown-primary);
+}
+
+.ward-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.ward-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-med);
+  border-color: var(--gold-antique);
+}
+
+.ward-card__header {
+  padding: 1.25rem 1.5rem 1rem;
+  border-bottom: 1px dashed var(--border-beige);
+  background: linear-gradient(180deg, rgba(250, 246, 238, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.ward-card__eyebrow {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold-antique);
+  margin-bottom: 0.2rem;
+}
+
+.ward-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--brown-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.ward-card__households-badge {
+  background: var(--cream);
+  border: 1px solid var(--border-gold);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--brown-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ward-card__body {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.85rem;
+}
+
+.ward-card__patron {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-body);
+}
+
+.ward-card__patron-icon {
+  color: var(--gold-antique);
+  font-size: 0.95rem;
+}
+
+.ward-card__patron-name {
+  font-weight: 600;
+  color: var(--brown-primary);
+}
+
+.ward-card__desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ward-card__leadership-brief {
+  background: var(--cream);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--gold-antique);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ward-card__leader-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.ward-card__leader-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.ward-card__leader-name {
+  font-weight: 600;
+  color: var(--brown-primary);
+}
+
+.ward-card__footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-beige);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  background: var(--warm-white);
+}
+
+.ward-card__meta-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+}
+
+.ward-card__link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--gold-antique);
+  font-weight: 600;
+  transition: gap var(--transition-fast);
+}
+
+.ward-card:hover .ward-card__link {
+  gap: 0.6rem;
+  color: var(--brown-primary);
+}
+
+/* ── Empty State ── */
+.ward-empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: var(--warm-white);
+  border: 1px dashed var(--border-gold);
+  border-radius: var(--radius-md);
+  margin-top: 1rem;
+}
+
+.ward-empty__icon {
+  color: var(--gold-antique);
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+}
+
+.ward-empty__title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--brown-primary);
+  margin-bottom: 0.5rem;
+}
+
+.ward-empty__desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  max-width: 440px;
+  margin: 0 auto 1.5rem;
+}
+
+/* ==========================================================================
+   Minimal Ward Detail Layout (Pure, Clean & Thodambila Inspired)
+   ========================================================================== */
+
+.ward-minimal-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ── Header ── */
+.ward-minimal-header {
+  text-align: center;
+  padding: 1.5rem 1rem 0.5rem;
+}
+
+.ward-minimal-title-konkani {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--brown-primary);
+  margin: 0 0 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+.ward-minimal-title-english {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--gold-antique);
+  margin: 0 0 1rem;
+}
+
+.ward-minimal-meta-strip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  background: var(--warm-white);
+  border: 1px solid var(--border-gold);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.ward-minimal-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: var(--brown-primary);
+}
+
+.ward-minimal-meta-icon {
+  color: var(--gold-antique);
+}
+
+.ward-minimal-meta-sep {
+  color: var(--gold-light);
+  font-size: 0.9rem;
+}
+
+.ward-minimal-motto {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 1rem auto 0;
+  max-width: 600px;
+}
+
+/* ── Leadership Section & Clean 3-Card Grid (ಹುದ್ದೆದಾರ್) ── */
+.ward-minimal-section {
+  background: var(--warm-white);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 2rem 2rem 1.75rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.ward-minimal-bearers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .ward-minimal-bearers-grid {
+    grid-template-columns: 1fr;
+  }
+  .ward-minimal-section {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+.ward-minimal-bearer-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
+}
+
+.ward-minimal-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid var(--gold-antique);
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.ward-minimal-avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ward-minimal-avatar__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fdfaf3 0%, #faeede 100%);
+  color: var(--brown-primary);
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.ward-minimal-bearer-konkani-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--brown-primary);
+  margin: 0 0 0.15rem;
+  line-height: 1.25;
+}
+
+.ward-minimal-bearer-eng-name {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+}
+
+.ward-minimal-role-badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold-antique);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.03em;
+}
+
+.ward-minimal-role-badge--gurkar {
+  color: #b82c2a;
+}
+
+.ward-minimal-phone-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--brown-primary);
+  background: var(--cream);
+  border: 1px solid var(--border-gold);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.ward-minimal-phone-btn:hover {
+  background: var(--gold-antique);
+  color: #fff;
+  border-color: var(--gold-antique);
+}
+
+/* ── Red Banner Button (Click here for Family Photos) ── */
+.ward-family-photos-banner-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  background: linear-gradient(180deg, #d3413f 0%, #c13432 100%);
+  color: #ffffff !important;
+  padding: 0.95rem 1.5rem;
+  border-radius: 4px;
+  border: none;
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(211, 65, 63, 0.3);
+  transition: all var(--transition-fast);
+  margin-top: 1.5rem;
+}
+
+.ward-family-photos-banner-btn:hover {
+  background: linear-gradient(180deg, #bc3331 0%, #9e201e 100%);
+  box-shadow: 0 5px 14px rgba(211, 65, 63, 0.4);
+  transform: translateY(-1px);
+}
+
+.ward-family-photos-banner-btn:active {
+  transform: translateY(0);
+}
+
+.ward-family-photos-banner-btn--open {
+  background: linear-gradient(180deg, #9e201e 0%, #851715 100%);
+}
+
+/* ── Minimal Family Directory (Collapsible / Clean) ── */
+.ward-minimal-families-container {
+  background: var(--warm-white);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow-soft);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ward-minimal-families-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--border-beige);
+  margin-bottom: 1.5rem;
+}
+
+.ward-minimal-families-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--brown-primary);
+  margin: 0 0 0.2rem;
+}
+
+.ward-minimal-families-count {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold-antique);
+}
+
+.ward-minimal-family-search {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+
+.ward-minimal-family-search__input {
+  width: 100%;
+  padding: 0.5rem 2.25rem 0.5rem 2.25rem;
+  background: var(--cream);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  outline: none;
+}
+
+.ward-minimal-families-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.ward-minimal-family-card {
+  background: var(--cream);
+  border: 1px solid var(--border-beige);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.ward-minimal-family-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-antique);
+  background: #fff;
+}
+
+.ward-minimal-family-photo-box {
+  width: 100%;
+  height: 95px;
+  background: linear-gradient(135deg, rgba(250, 246, 238, 0.9) 0%, rgba(244, 235, 218, 0.9) 100%);
+  border: 1px dashed var(--border-gold);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.ward-minimal-family-icon {
+  font-size: 1.5rem;
+}
+
+.ward-minimal-family-photo-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.ward-minimal-family-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  position: relative;
+}
+
+.ward-minimal-family-num {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--gold-antique);
+}
+
+.ward-minimal-family-konkani-name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--brown-primary);
+  margin: 0;
+  line-height: 1.25;
+  padding-right: 1.5rem;
+}
+
+.ward-minimal-family-eng-name {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.ward-minimal-family-house {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--brown-primary);
+  margin-top: 0.2rem;
+}
+
+.ward-minimal-family-addr {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ── Minimal Feast Section ── */
+.ward-minimal-feast-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.ward-minimal-feast-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.ward-minimal-feast-icon {
+  color: var(--gold-antique);
+}
+
+.ward-minimal-feast-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--brown-primary);
+  margin: 0;
+}
+
+.ward-minimal-feast-desc {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text-body);
+  margin: 0 0 1.25rem;
+}
+
+.ward-minimal-quick-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  background: var(--cream);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-beige);
+}
+
+.ward-minimal-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.ward-minimal-detail-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold-antique);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ward-minimal-detail-value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--brown-primary);
+}
+
+/* ── Minimal Bottom Navigation ── */
+.ward-minimal-bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.25rem 0.5rem 0.5rem;
+}
+
+.ward-minimal-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--brown-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.ward-minimal-back-link:hover {
+  color: var(--gold-antique);
+}
+
+.ward-minimal-prev-next {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.ward-minimal-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  background: var(--warm-white);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--brown-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.ward-minimal-nav-btn:hover {
+  background: var(--brown-primary);
+  color: #fff;
+  border-color: var(--brown-primary);
+}
