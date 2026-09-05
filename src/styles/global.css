@@ -105,9 +105,13 @@ body {
   line-height: 1.75;
   color: var(--text-main);
   background-color: var(--bg-ivory);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.app-layout {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 img {

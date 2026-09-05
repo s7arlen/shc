@@ -32,7 +32,7 @@
     height: auto !important;
     min-height: 62px !important;
 
-    z-index: 9999 !important;
+    z-index: 99999 !important;
 
     /* Option 41: Pure Ivory base with subtle backdrop filter */
     background: #FFFDF9 !important;
