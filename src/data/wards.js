@@ -1,4 +1,4 @@
-﻿// Wards (ವಾಡೆ) — Sacred Heart of Jesus Church, Thodambila
+// Wards (ವಾಡೆ) — Sacred Heart of Jesus Church, Thodambila
 // Source: thodambilachurch.in (ವಾಡೆ page) — official parish website
 // 5 Wards: ಜೆಜುಚ್ಯಾ ಪವಿತ್ರ್ ಕಾಳ್ಜಾ | ನಿತ್ಯಾದರ್ | ಜೆಜು ರಾಯ್ | ವೆಲಂಕಣಿ | ಬಾಳೊಕ್ ಜೆಜು
 // Gurkars, representatives and family lists taken verbatim from the official site.
@@ -22,6 +22,7 @@ export const wards = [
     description: 'The mother ward of the parish, closest to the church campus and dedicated to the Sacred Heart of Jesus — the patron of the parish itself.',
     fullDescription: 'ಜೆಜುಚ್ಯಾ ಪವಿತ್ರ್ ಕಾಳ್ಜಾ ವಾಡೊ is the central ward of Sacred Heart of Jesus Church, Thodambila. Comprising families in the immediate vicinity of the parish campus, this ward leads the Sacred Heart novena, First Friday devotions, and the grand annual parish feast. Members actively participate in liturgical animation, church maintenance, and welfare activities for needy families.',
     image: `${import.meta.env.BASE_URL}images/gallery-2.jpg`,
+    patronImage: `${import.meta.env.BASE_URL}images/patroness-mary.jpg`,
     spiritualDirector: 'Rev. Fr. Antony Diego Lobo',
     gurkar: {
       name: 'Ligori Norbert Monteiro',

@@ -116,14 +116,6 @@ const OrganizationsList = () => {
 
   return (
     <div>
-      <div className="section-heading">
-        <span className="section-heading__label">ಸಂಘಟನಾಂ • Associations & Ministries</span>
-        <h2 className="section-heading__title">Parish Organizations</h2>
-        <p className="section-heading__subtitle">
-          Discover associations serving our parish family, nurturing faith, and extending compassionate service
-        </p>
-      </div>
-
       {/* Controls: Search and Category Filter */}
       <div className="org-controls">
         <div className="org-controls__top">
@@ -508,7 +500,15 @@ const OrganizationDetail = ({ org }) => {
 // Main Organizations Page Controller
 const OrganizationsPage = () => {
   const { slug } = useParams();
-  const selectedOrg = slug ? ministries.find((m) => m.slug === slug) : null;
+  const selectedOrg = slug
+    ? ministries.find(
+        (m) =>
+          m.slug === slug ||
+          (m.slug === 'sthree-sanghatan' && slug === 'stree-sanghatan') ||
+          (m.slug === 'choir-group' && slug === 'parish-choir') ||
+          (m.slug === 'extraordinary-ministers' && slug === 'eucharistic-ministers')
+      )
+    : null;
 
   return (
     <main className="inner-page">

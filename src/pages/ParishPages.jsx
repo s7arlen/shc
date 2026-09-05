@@ -85,12 +85,6 @@ export const ParishCouncilPage = () => (
 
     <section className="section section--white">
       <div className="container">
-        <div className="section-heading">
-          <span className="section-heading__label">Council Executive & Members</span>
-          <h2 className="section-heading__title">Parish Pastoral Council</h2>
-          <p className="section-heading__subtitle">Collaborating in the administration and pastoral growth of the parish</p>
-        </div>
-
         <div className="grid-3">
           {leadership.parishCouncil.map((member) => (
             <div key={member.id} style={{ background: 'var(--cream)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-beige)', textAlign: 'center' }}>
@@ -122,7 +116,6 @@ export const ParishOfficePage = () => (
 
     <section className="section section--white">
       <div className="container" style={{ maxWidth: '850px' }}>
-        <h2 className="section-heading__title" style={{ marginBottom: '1.5rem' }}>Parish Office Information</h2>
         <p style={{ fontSize: '1rem', lineHeight: '1.7', marginBottom: '2rem' }}>
           The Parish Office handles administrative matters including sacrament certificate requests, Mass intention bookings, baptismal registrations, and general parish assistance.
         </p>

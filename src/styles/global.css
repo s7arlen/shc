@@ -215,15 +215,9 @@ p {
   margin-bottom: 3.25rem;
 }
 
-.section-heading__label {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold-antique);
-  margin-bottom: 0.75rem;
+.section-heading__label,
+.page-hero__label {
+  display: none !important;
 }
 
 .section-heading__title {

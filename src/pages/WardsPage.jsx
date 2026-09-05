@@ -325,44 +325,15 @@ const WardDetail = ({ ward }) => {
 
 // Subcomponent: Minimal Wards List (All Wards Hub - Clean Thodambila Layout)
 const WardsList = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  // Calculate total households
-  const totalHouseholds = useMemo(() => {
-    return wards.reduce((sum, w) => sum + (w.householdsCount || 0), 0);
-  }, []);
-
-  // Filtered wards
-  const filteredWards = useMemo(() => {
-    const q = searchQuery.toLowerCase().trim();
-    if (!q) return wards;
-    return wards.filter((w) => {
-      return (
-        w.name.toLowerCase().includes(q) ||
-        w.konkaniName?.toLowerCase().includes(q) ||
-        w.patronSaint?.toLowerCase().includes(q) ||
-        w.konkaniPatron?.toLowerCase().includes(q) ||
-        w.area?.toLowerCase().includes(q) ||
-        w.gurkar?.name.toLowerCase().includes(q) ||
-        w.gurkar?.konkaniName?.toLowerCase().includes(q) ||
-        w.representatives?.some(
-          (r) =>
-            r.name.toLowerCase().includes(q) ||
-            r.konkaniName?.toLowerCase().includes(q)
-        )
-      );
-    });
-  }, [searchQuery]);
+  const totalHouseholds = useMemo(
+    () => wards.reduce((sum, w) => sum + (w.householdsCount || 0), 0),
+    []
+  );
 
   return (
     <div className="ward-hub-minimal-wrapper">
-      {/* 1. Clean Centered Header */}
-      <div className="ward-hub-minimal-header">
-        <h1 className="ward-hub-minimal-konkani-title">ವಾಡೆ</h1>
-        <p className="ward-hub-minimal-subtitle">
-          Small Christian Communities (SCC) • Sacred Heart of Jesus Church, Thodambila
-        </p>
-
+      {/* 1. Clean Centered Stats Pill */}
+      <div className="ward-hub-minimal-header" style={{ marginBottom: '2rem' }}>
         <div className="ward-hub-minimal-pill">
           <span>{wards.length} Wards (ವಾಡೆ)</span>
           <span>•</span>
@@ -370,83 +341,55 @@ const WardsList = () => {
         </div>
       </div>
 
-      {/* 2. Simple Centered Search */}
-      <div className="ward-hub-search-box">
-        <Search size={16} className="ward-hub-search-icon" />
-        <input
-          type="text"
-          className="ward-hub-search-input"
-          placeholder="Search ward name, patron saint, or gurkar..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          aria-label="Search parish wards"
-        />
-        {searchQuery && (
-          <button
-            className="ward-search__clear"
-            onClick={() => setSearchQuery('')}
-            aria-label="Clear search"
+      {/* 2. Minimal Ward Cards Grid */}
+      <div className="ward-hub-grid">
+        {wards.map((ward) => (
+          <Link
+            key={ward.id}
+            to={`/parish/wards/${ward.slug}`}
+            className="ward-hub-card"
+            aria-label={`View details for ${ward.name}`}
           >
-            <X size={15} />
-          </button>
-        )}
-      </div>
+            {/* Subtle Faded Background Watermark Patron Image Placeholder */}
+            <div className="ward-hub-card__watermark-wrap" aria-hidden="true">
+              <img
+                src={ward.patronImage || ward.image}
+                alt=""
+                className="ward-hub-card__watermark-img"
+              />
+            </div>
 
-      {/* 3. Minimal Ward Cards Grid */}
-      {filteredWards.length > 0 ? (
-        <div className="ward-hub-grid">
-          {filteredWards.map((ward) => (
-            <Link
-              key={ward.id}
-              to={`/parish/wards/${ward.slug}`}
-              className="ward-hub-card"
-              aria-label={`View details for ${ward.name}`}
-            >
-              <div className="ward-hub-card__top">
-                <h3 className="ward-hub-card__konkani">{ward.konkaniName}</h3>
-                <span className="ward-hub-card__english">{ward.name}</span>
+            <div className="ward-hub-card__top">
+              <h3 className="ward-hub-card__konkani">{ward.konkaniName}</h3>
+              <span className="ward-hub-card__english">{ward.name}</span>
+            </div>
+
+            <div className="ward-hub-card__info">
+              <div className="ward-hub-card__row">
+                <span className="ward-hub-card__label">ಆಶೀರ್ವಾದಕ್ (Patron):</span>
+                <span className="ward-hub-card__val">{ward.patronSaint}</span>
               </div>
 
-              <div className="ward-hub-card__info">
+              {ward.gurkar && (
                 <div className="ward-hub-card__row">
-                  <span className="ward-hub-card__label">ಆಶೀರ್ವಾದಕ್ (Patron):</span>
-                  <span className="ward-hub-card__val">{ward.patronSaint}</span>
+                  <span className="ward-hub-card__label">ಗುರ್ಕಾರ್ (Gurkar):</span>
+                  <span className="ward-hub-card__val">{ward.gurkar.konkaniName || ward.gurkar.name}</span>
                 </div>
+              )}
+            </div>
 
-                {ward.gurkar && (
-                  <div className="ward-hub-card__row">
-                    <span className="ward-hub-card__label">ಗುರ್ಕಾರ್ (Gurkar):</span>
-                    <span className="ward-hub-card__val">{ward.gurkar.konkaniName || ward.gurkar.name}</span>
-                  </div>
-                )}
-              </div>
-
-              <div className="ward-hub-card__footer">
-                <span className="ward-hub-card__badge">
-                  {ward.householdsCount} ಕುಟ್ಮಾಂ (Families)
-                </span>
-                <span className="ward-hub-card__link">
-                  <span>View Details</span>
-                  <ArrowRight size={13} />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <div className="ward-empty" style={{ padding: '2.5rem 1rem' }}>
-          <ShieldAlert size={36} className="ward-empty__icon" />
-          <h4 style={{ fontFamily: 'var(--font-serif)', color: 'var(--brown-primary)' }}>
-            No Wards Found
-          </h4>
-          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-            No parish ward matching "{searchQuery}".
-          </p>
-          <button className="btn btn--outline" onClick={() => setSearchQuery('')}>
-            Reset Search
-          </button>
-        </div>
-      )}
+            <div className="ward-hub-card__footer">
+              <span className="ward-hub-card__badge">
+                {ward.householdsCount} ಕುಟ್ಮಾಂ (Families)
+              </span>
+              <span className="ward-hub-card__link">
+                <span>View Details</span>
+                <ArrowRight size={13} />
+              </span>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

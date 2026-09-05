@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, User, Mail, Phone, Tag, MessageSquare } from 'lucide-react';
 import './ContactSection.css';
 
 const ContactSection = () => {
@@ -39,7 +39,6 @@ const ContactSection = () => {
     <section className="contact-section section section--cream" aria-label="Contact Parish Office">
       <div className="container">
         <div className="section-heading">
-          <span className="section-heading__label">Get in Touch</span>
           <h2 className="section-heading__title">Contact Parish Office</h2>
           <p className="section-heading__subtitle">
             We welcome your inquiries, intentions, and feedback
@@ -66,72 +65,89 @@ const ContactSection = () => {
             <form onSubmit={handleSubmit} className="contact-form" noValidate>
               <div className="contact-form__row">
                 <div className="contact-form__group">
-                  <label htmlFor="name">Full Name *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Enter your name"
-                    required
-                  />
+                  <label htmlFor="name">Full Name <span className="contact-form__required">*</span></label>
+                  <div className="contact-input-wrapper">
+                    <User size={17} className="contact-input-icon" />
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Enter your name"
+                      required
+                    />
+                  </div>
                 </div>
                 <div className="contact-form__group">
-                  <label htmlFor="email">Email Address *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="name@example.com"
-                    required
-                  />
+                  <label htmlFor="email">Email Address <span className="contact-form__required">*</span></label>
+                  <div className="contact-input-wrapper">
+                    <Mail size={17} className="contact-input-icon" />
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="name@example.com"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
 
               <div className="contact-form__row">
                 <div className="contact-form__group">
                   <label htmlFor="phone">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+91 98765 43210"
-                  />
+                  <div className="contact-input-wrapper">
+                    <Phone size={17} className="contact-input-icon" />
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+91 98765 43210"
+                    />
+                  </div>
                 </div>
                 <div className="contact-form__group">
                   <label htmlFor="subject">Subject</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="e.g. Mass Intentions / Inquiry"
-                  />
+                  <div className="contact-input-wrapper">
+                    <Tag size={17} className="contact-input-icon" />
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      placeholder="e.g. Mass Intentions / Inquiry"
+                    />
+                  </div>
                 </div>
               </div>
 
               <div className="contact-form__group">
-                <label htmlFor="message">Your Message *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Type your message here..."
-                  required
-                />
+                <label htmlFor="message">Your Message <span className="contact-form__required">*</span></label>
+                <div className="contact-input-wrapper contact-input-wrapper--textarea">
+                  <MessageSquare size={17} className="contact-input-icon" />
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Type your message here..."
+                    required
+                  />
+                </div>
               </div>
 
-              <button type="submit" className="btn btn--primary contact-form__submit">
-                <Send size={15} /> Submit Message
-              </button>
+              <div className="contact-form__submit-wrapper">
+                <button type="submit" className="contact-form__submit-btn">
+                  <Send size={16} /> Submit Message
+                </button>
+              </div>
             </form>
           </motion.div>
         </div>

@@ -1,193 +1,206 @@
-﻿/* ============================================
-   OUR PATRONESS SECTION — Option 41 (Dark Brown & Gold)
+/* ============================================
+   OUR PATRONESS SECTION — MAIN THEME COLOR BG
    ============================================ */
 
 .patroness {
-  position: relative;
-  background: radial-gradient(circle at 85% 20%, rgba(221, 176, 122, 0.15) 0%, transparent 60%),
+  background: radial-gradient(circle at 85% 20%, rgba(221, 176, 122, 0.15) 0%, transparent 65%),
               linear-gradient(145deg, #5A4947 0%, #433533 100%);
   color: #FFFDF9;
-  overflow: hidden;
-  border-top: 1.5px solid rgba(221, 176, 122, 0.35);
-  border-bottom: 1.5px solid rgba(221, 176, 122, 0.35);
   padding: var(--section-padding) 0;
-}
-
-.patroness::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(221, 176, 122, 0.1) 1px, transparent 1px);
-  background-size: 32px 32px;
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-.patroness__grid {
   position: relative;
-  z-index: 1;
+  border-top: 1.5px solid rgba(221, 176, 122, 0.3);
+  border-bottom: 1.5px solid rgba(221, 176, 122, 0.3);
+}
+
+.patroness__card {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 4rem;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 3.5rem;
   align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 2.25rem;
+  border: 1.5px solid rgba(221, 176, 122, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.patroness__title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
-  color: #FFFDF9;
-  line-height: 1.15;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.patroness__gold-line {
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg, #DDB07A, rgba(221, 176, 122, 0.2));
-  margin: 1rem 0 1.5rem;
-}
-
-.patroness__quote {
-  background: linear-gradient(90deg, rgba(221, 176, 122, 0.18) 0%, rgba(221, 176, 122, 0.04) 100%);
-  border-left: 3px solid #DDB07A;
-  padding: 0.9rem 1.4rem;
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  color: #E8C59A;
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  letter-spacing: 0.06em;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-}
-
-.patroness__quote-icon {
-  color: #DDB07A;
-  flex-shrink: 0;
-}
-
-.patroness__text {
-  font-size: 0.98rem;
-  color: rgba(255, 253, 249, 0.92);
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
-
-/* ---- Feast Day Badge ---- */
-.patroness__feast-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  background: linear-gradient(135deg, rgba(67, 53, 51, 0.95) 0%, rgba(45, 34, 33, 0.98) 100%);
-  border: 1.5px solid #DDB07A;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-md);
-  margin: 0.8rem 0 2rem;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3),
-              0 0 16px rgba(221, 176, 122, 0.2),
-              inset 0 1px 0 rgba(221, 176, 122, 0.3);
-  position: relative;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.patroness__feast-badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4),
-              0 0 22px rgba(221, 176, 122, 0.35);
-}
-
-.patroness__feast-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: rgba(221, 176, 122, 0.15);
-  border: 1px solid rgba(221, 176, 122, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #DDB07A;
-  flex-shrink: 0;
-}
-
-.patroness__feast-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.patroness__feast-label {
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #E8C59A;
-}
-
-.patroness__feast-date {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #FFFFFF;
-}
-
-/* Right Column Image Frame */
+/* Left Image Hero Column */
 .patroness__image-col {
-  position: relative;
+  width: 100%;
 }
 
-.patroness__image-frame {
+.patroness__image-wrap {
   position: relative;
-  border-radius: var(--radius-lg);
+  width: 100%;
+  height: 390px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4),
-              0 0 30px rgba(221, 176, 122, 0.2);
-  border: 2px solid rgba(221, 176, 122, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  border: 1.5px solid rgba(221, 176, 122, 0.4);
 }
 
 .patroness__image {
   width: 100%;
-  height: 480px;
+  height: 100%;
   object-fit: cover;
-  object-position: center 25%;
-  display: block;
-  transition: transform var(--transition-slow);
+  object-position: center 20%;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.patroness__image-frame:hover .patroness__image {
-  transform: scale(1.04);
+.patroness__image-wrap:hover .patroness__image {
+  transform: scale(1.05);
 }
 
-.patroness__image-overlay {
+.patroness__image-badge {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(45, 34, 33, 0.75) 100%);
-  pointer-events: none;
-}
-
-.patroness__image-border {
-  position: absolute;
-  inset: 12px;
+  bottom: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(43, 33, 31, 0.88);
+  backdrop-filter: blur(8px);
+  color: #FFFDF9;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
   border: 1px solid rgba(221, 176, 122, 0.45);
-  border-radius: var(--radius-md);
-  pointer-events: none;
-  transition: inset var(--transition-med);
 }
 
-.patroness__image-frame:hover .patroness__image-border {
-  inset: 16px;
+.patroness__heart-icon {
+  color: #ef4444;
+  fill: #ef4444;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .patroness__grid {
+/* Right Content Column */
+.patroness__content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.patroness__header {
+  margin-bottom: 1.25rem;
+}
+
+.patroness__title {
+  font-family: var(--font-serif, serif);
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  color: #FFFDF9;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.patroness__invocation {
+  font-family: var(--font-serif, serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--gold-accent, #DDB07A);
+  border-left: 2.5px solid var(--gold-accent, #DDB07A);
+  padding-left: 0.85rem;
+  margin: 0.5rem 0 0;
+  font-weight: 600;
+}
+
+.patroness__body {
+  margin-bottom: 1.75rem;
+}
+
+.patroness__text {
+  font-size: 0.95rem;
+  color: rgba(255, 253, 249, 0.9);
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+
+.patroness__text--kannada {
+  font-family: var(--font-serif, serif);
+  font-size: 0.98rem;
+  color: #FFFDF9;
+  line-height: 1.8;
+}
+
+/* Footer Controls */
+.patroness__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(221, 176, 122, 0.25);
+}
+
+.patroness__feast-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.patroness__feast-icon {
+  color: var(--gold-accent, #DDB07A);
+}
+
+.patroness__feast-title {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-light, #E8C59A);
+}
+
+.patroness__feast-sub {
+  display: block;
+  font-family: var(--font-serif, serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #FFFDF9;
+}
+
+.patroness__link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gold-accent, #DDB07A);
+  color: #35151B;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 0.65rem 1.25rem;
+  border-radius: 9999px;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 15px rgba(221, 176, 122, 0.3);
+}
+
+.patroness__link-btn:hover {
+  background: #FFFDF9;
+  color: #35151B;
+  transform: translateX(3px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .patroness__card {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
+    padding: 1.5rem;
+    border-radius: 20px;
   }
-
-  .patroness__image {
-    height: 380px;
+  .patroness__image-wrap {
+    height: 320px;
+  }
+  .patroness__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  .patroness__link-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
+

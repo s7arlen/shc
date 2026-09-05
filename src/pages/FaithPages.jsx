@@ -32,12 +32,6 @@ export const SacramentsPage = () => (
 
     <section className="section section--cream">
       <div className="container">
-        <div className="section-heading">
-          <span className="section-heading__label">Sacramental Life</span>
-          <h2 className="section-heading__title">Parish Sacramental Information</h2>
-          <p className="section-heading__subtitle">Guidelines, requirements and procedures for celebrating the Seven Sacraments</p>
-        </div>
-
         <div className="grid-2" style={{ gap: '2rem' }}>
           {sacraments.map((sac) => (
             <div key={sac.id} style={{ background: 'var(--warm-white)', padding: '2rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-gold)', boxShadow: 'var(--shadow-soft)' }}>
@@ -78,7 +72,6 @@ export const CatechismPage = () => (
 
     <section className="section section--white">
       <div className="container" style={{ maxWidth: '850px' }}>
-        <h2 className="section-heading__title" style={{ marginBottom: '1.5rem' }}>Faith Education for Children</h2>
         <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
           Our Catechism programme nurtures Catholic faith in children from Grade 1 through Grade 10, instilling Christian values, scriptural knowledge, and sacramental preparation.
         </p>
@@ -110,7 +103,6 @@ export const PrayerPage = () => (
 
     <section className="section section--cream">
       <div className="container" style={{ maxWidth: '850px' }}>
-        <h2 className="section-heading__title" style={{ marginBottom: '1.5rem' }}>Daily & Parish Prayers</h2>
         <div style={{ background: 'var(--warm-white)', padding: '2rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-gold)', marginBottom: '1.5rem' }}>
           <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: 'var(--brown-primary)', marginBottom: '0.5rem' }}>Novena & Consecration to the Sacred Heart of Jesus</h3>
           <p style={{ fontStyle: 'italic', lineHeight: '1.8', color: 'var(--brown-primary)' }}>

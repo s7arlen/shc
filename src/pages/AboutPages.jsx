@@ -8,7 +8,6 @@ export const OurParishPage = () => (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <span className="page-hero__label">Diocese of Mangalore</span>
         <h1 className="page-hero__title">Our Parish</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>About</span> <span>/</span> <span>Our Parish</span>
@@ -18,8 +17,6 @@ export const OurParishPage = () => (
 
     <section className="section section--white">
       <div className="container" style={{ maxWidth: '900px' }}>
-        <h2 className="section-heading__title" style={{ marginBottom: '1.5rem' }}>Welcome to Sacred Heart of Jesus Parish, Thodambila</h2>
-
         {/* Church exterior photo */}
         <div style={{ position: 'relative', marginBottom: '2.5rem', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-strong)', border: '2px solid var(--gold-antique)' }}>
           <img
@@ -60,7 +57,6 @@ export const HistoryPage = () => (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <span className="page-hero__label">Heritage & Milestones</span>
         <h1 className="page-hero__title">Church History</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>About</span> <span>/</span> <span>History</span>
@@ -70,12 +66,6 @@ export const HistoryPage = () => (
 
     <section className="section section--cream">
       <div className="container">
-        <div className="section-heading">
-          <span className="section-heading__label">Timeline of Faith</span>
-          <h2 className="section-heading__title">Historical Milestones</h2>
-          <p className="section-heading__subtitle">Journey through the rich foundation and growth of Sacred Heart of Jesus Parish, Thodambila</p>
-        </div>
-
         {/* Church exterior photo banner */}
         <div style={{ maxWidth: '850px', margin: '0 auto 2.5rem', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-strong)', border: '2px solid var(--border-gold)' }}>
           <img
@@ -126,7 +116,6 @@ export const PatronessPage = () => (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <span className="page-hero__label">Holy Patron</span>
         <h1 className="page-hero__title">Sacred Heart of Jesus</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>About</span> <span>/</span> <span>Our Patron</span>
@@ -151,7 +140,7 @@ export const PatronessPage = () => (
             marginTop: '1.5rem',
             padding: '0',
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.9rem' }}>
+            <div style={{ display: 'flex', items: 'center', gap: '0.6rem', marginBottom: '0.9rem' }}>
               <span style={{ display: 'block', width: '40px', height: '1px', background: 'linear-gradient(to right, transparent, var(--gold-antique))' }} />
               <span style={{ color: 'var(--gold-antique)', fontSize: '0.75rem' }}>✦</span>
               <span style={{ display: 'block', width: '40px', height: '1px', background: 'linear-gradient(to left, transparent, var(--gold-antique))' }} />
@@ -209,7 +198,6 @@ export const DiocesePage = () => (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <span className="page-hero__label">Diocesan Identity</span>
         <h1 className="page-hero__title">Diocese of Mangalore</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>About</span> <span>/</span> <span>Diocese</span>
@@ -219,7 +207,6 @@ export const DiocesePage = () => (
 
     <section className="section section--white">
       <div className="container" style={{ maxWidth: '850px' }}>
-        <h2 className="section-heading__title" style={{ marginBottom: '1.5rem' }}>Diocese of Mangalore</h2>
         <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
           Sacred Heart of Jesus Church, Thodambila operates under the spiritual jurisdiction of the Roman Catholic Diocese of Mangalore (Bantwal Vicariate), officially erected as the 117th parish on August 15, 2016.
         </p>

@@ -1,220 +1,149 @@
-﻿/* ============================================
-   MASS & WORSHIP SECTION — Option 41 (Light Coral #FDEBE7)
+/* ============================================
+   MASS & WORSHIP SECTION — Weekly Schedule Card
    ============================================ */
 
 .mass-schedule {
-  background-color: var(--coral-light);
   padding: 5rem 0;
 }
 
-/* 4 Highlight Cards Grid */
-.mass-schedule__highlights {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+.mass-weekly-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(198, 161, 91, 0.28);
+  border-radius: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+  box-shadow: 0 12px 35px rgba(90, 73, 71, 0.06), 0 2px 10px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
 }
 
-.mass-card {
-  background: var(--bg-ivory);
-  border: 1px solid rgba(245, 195, 181, 0.65);
-  border-top: 3px solid #DDB07A;
-  border-radius: var(--radius-sm);
-  padding: 1.5rem;
-  box-shadow: 0 4px 18px rgba(90, 73, 71, 0.05);
-  transition: transform var(--transition-med), box-shadow var(--transition-med);
-}
-
-.mass-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(90, 73, 71, 0.09);
-  border-color: #DDB07A;
-}
-
-.mass-card__header {
+/* Card Header */
+.mass-weekly-card__header {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(245, 195, 181, 0.4);
+  padding: 1.25rem 2.25rem;
+  border-bottom: 1px solid rgba(198, 161, 91, 0.18);
+  background: #FFFFFF;
 }
 
-.mass-card__icon {
-  color: #DDB07A;
-  flex-shrink: 0;
+.mass-weekly-card__header-icon {
+  color: #7D2626;
 }
 
-.mass-card__header h3 {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #5A4947;
-}
-
-.mass-card__list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.mass-card__list li {
-  display: flex;
-  flex-direction: column;
-}
-
-.mass-card__list span {
+.mass-weekly-card__header-title {
   font-family: var(--font-sans);
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: #5A4947;
-}
-
-.mass-card__list small {
-  font-size: 0.76rem;
-  color: #857371;
-}
-
-/* Tabbed Container Box */
-.mass-schedule__tabs-container {
-  background: var(--bg-ivory);
-  border: 1px solid rgba(245, 195, 181, 0.65);
-  border-radius: var(--radius-md);
-  box-shadow: 0 4px 20px rgba(90, 73, 71, 0.06);
-  overflow: hidden;
-  margin-bottom: 2.5rem;
-}
-
-.mass-schedule__tabs {
-  display: flex;
-  background: rgba(245, 195, 181, 0.22);
-  border-bottom: 1px solid rgba(245, 195, 181, 0.4);
-}
-
-.mass-schedule__tab {
-  flex: 1;
-  padding: 1rem 1.25rem;
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #857371;
-  background: transparent;
-  border: none;
-  cursor: pointer;
+  color: #7D2626;
+}
+
+/* Card Body Rows */
+.mass-weekly-card__body {
   display: flex;
+  flex-direction: column;
+}
+
+.mass-weekly-card__row {
+  display: grid;
+  grid-template-columns: 200px 180px 1fr;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  transition: all var(--transition-fast);
-  border-top: 3px solid transparent;
+  padding: 1.25rem 2.25rem;
+  border-bottom: 1px solid #F3EDE5;
+  transition: background 0.2s ease;
 }
 
-.mass-schedule__tab:hover {
-  color: #5A4947;
-  background: rgba(255, 253, 249, 0.5);
-}
-
-.mass-schedule__tab--active {
-  background: var(--bg-ivory) !important;
-  color: #5A4947 !important;
-  border-top-color: #DDB07A !important;
-}
-
-.mass-schedule__tab-content {
-  padding: 2rem;
-}
-
-.mass-schedule__table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.mass-schedule__table th {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #857371;
-  text-align: left;
-  padding: 0.75rem 1rem;
-  border-bottom: 2px solid rgba(245, 195, 181, 0.5);
-}
-
-.mass-schedule__table td {
-  padding: 1rem;
-  border-bottom: 1px solid rgba(245, 195, 181, 0.3);
-  font-size: 0.92rem;
-  color: var(--text-main);
-}
-
-.mass-schedule__table tr:last-child td {
+.mass-weekly-card__row:last-child {
   border-bottom: none;
 }
 
-.mass-schedule__table tr:hover td {
-  background-color: rgba(253, 235, 231, 0.4);
+.mass-weekly-card__row:hover {
+  background: rgba(250, 246, 240, 0.45);
 }
 
-.mass-schedule__day-badge {
-  display: inline-block;
-  font-weight: 700;
-  color: #5A4947;
-}
-
-.mass-schedule__time {
-  font-weight: 700;
-  color: #DDB07A;
-}
-
-.mass-schedule__lang {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-full);
-  background: rgba(245, 195, 181, 0.35);
-  font-size: 0.72rem;
+.mass-weekly-card__day {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
   font-weight: 600;
+  color: #7D2626;
+}
+
+.mass-weekly-card__time {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #7D2626;
+}
+
+.mass-weekly-card__note {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  color: #665856;
+}
+
+/* Footer Section */
+.mass-weekly-card__footer {
+  background: #FAF6F0;
+  border-top: 1px solid #F0E6DA;
+  padding: 1.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mass-weekly-card__footer-line {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  margin: 0;
+  line-height: 1.55;
+}
+
+.mass-weekly-card__footer-label {
+  font-weight: 700;
+  color: #7D2626;
+}
+
+.mass-weekly-card__footer-val {
   color: #5A4947;
 }
 
-/* Bottom Notice */
-.mass-schedule__notice {
-  text-align: center;
-  font-size: 0.88rem;
-  color: #857371;
-  font-style: italic;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .mass-schedule__highlights {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .mass-schedule__highlights {
-    grid-template-columns: 1fr;
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .mass-weekly-card__header {
+    padding: 1rem 1.25rem;
   }
 
-  .mass-schedule__tabs {
-    flex-direction: column;
+  .mass-weekly-card__row {
+    grid-template-columns: 140px 120px 1fr;
+    padding: 1rem 1.25rem;
   }
 
-  .mass-schedule__tab {
-    padding: 0.85rem 1rem;
-    border-top: none;
-    border-left: 3px solid transparent;
+  .mass-weekly-card__day {
+    font-size: 1.02rem;
   }
 
-  .mass-schedule__tab--active {
-    border-top-color: transparent !important;
-    border-left-color: #DDB07A !important;
+  .mass-weekly-card__time {
+    font-size: 0.98rem;
   }
 
-  .mass-schedule__tab-content {
+  .mass-weekly-card__note {
+    font-size: 0.86rem;
+  }
+
+  .mass-weekly-card__footer {
     padding: 1.25rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .mass-weekly-card__row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding: 0.9rem 1.15rem;
+  }
+
+  .mass-weekly-card__note {
+    margin-top: 0.15rem;
   }
 }

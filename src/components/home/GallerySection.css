@@ -8,21 +8,20 @@
   position: relative;
 }
 
-.gallery-section__accordion-wrap {
-  margin-bottom: 3.5rem;
-  box-shadow: 0 16px 45px rgba(90, 73, 71, 0.08);
-  border-radius: 18px;
+.gallery-section__marquee-wrap {
+  margin-bottom: 2.5rem;
 }
 
 .gallery-section__cta {
   text-align: center;
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 768px) {
   .gallery-section {
     padding: 3.5rem 0;
   }
-  .gallery-section__accordion-wrap {
-    margin-bottom: 2.5rem;
+  .gallery-section__marquee-wrap {
+    margin-bottom: 1.5rem;
   }
 }

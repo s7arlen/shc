@@ -10,7 +10,6 @@ export const NewsPage = () => (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <span className="page-hero__label">Parish Communications</span>
         <h1 className="page-hero__title">Latest News & Updates</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>News & Events</span> <span>/</span> <span>Latest News</span>
@@ -25,7 +24,6 @@ export const EventsPage = () => (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <span className="page-hero__label">Parish Calendar</span>
         <h1 className="page-hero__title">Upcoming & Past Events</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>News & Events</span> <span>/</span> <span>Events</span>
@@ -40,7 +38,6 @@ export const GalleryPage = () => (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <span className="page-hero__label">Visual Archive</span>
         <h1 className="page-hero__title">Photo Gallery</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>Media</span> <span>/</span> <span>Gallery</span>
@@ -55,7 +52,6 @@ export const VideosPage = () => (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <span className="page-hero__label">Video Archive</span>
         <h1 className="page-hero__title">Parish Videos</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>Media</span> <span>/</span> <span>Videos</span>
@@ -70,7 +66,6 @@ export const NewsletterPage = () => (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <span className="page-hero__label">Parish Monthly Voice</span>
         <h1 className="page-hero__title">Parish Newsletter</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>Media</span> <span>/</span> <span>Newsletter</span>

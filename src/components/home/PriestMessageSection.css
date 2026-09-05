@@ -1,115 +1,178 @@
-.priest-message__card {
-  background: var(--bg-ivory);
-  border: 1px solid var(--border-gold);
-  border-radius: var(--radius-md);
-  padding: 3rem;
+/* ============================================
+   PASTORAL MESSAGE SECTION — LUXURY DUAL PANEL
+   ============================================ */
+
+.priest-message__container {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 3.5rem;
-  align-items: center;
-  box-shadow: var(--shadow-soft);
+  grid-template-columns: 320px 1fr;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1.5px solid rgba(198, 161, 91, 0.4);
+  box-shadow: 0 20px 50px rgba(23, 37, 54, 0.08), 0 4px 15px rgba(0, 0, 0, 0.03);
+  background: #ffffff;
 }
 
-.priest-message__photo-col {
+/* Left Column: Dark Navy Priest Portrait Panel */
+.priest-message__portrait-panel {
+  background: linear-gradient(155deg, #172536 0%, #0d1520 100%);
+  color: #ffffff;
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
 }
 
-.priest-message__circle-frame {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+.priest-message__cross-badge {
+  font-size: 1.25rem;
+  color: var(--primary-gold, #c6a15b);
+  opacity: 0.75;
   margin-bottom: 1.25rem;
 }
 
-.priest-message__photo {
+.priest-message__avatar-wrap {
+  position: relative;
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+}
+
+.priest-message__avatar-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 50%;
-  background-size: cover;
-  background-position: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
-.priest-message__ring {
+.priest-message__avatar-ring {
   position: absolute;
-  inset: -8px;
+  inset: -7px;
   border-radius: 50%;
-  border: 2px solid var(--gold-antique);
-  box-shadow: 0 0 16px rgba(221, 176, 122, 0.3);
+  border: 2px solid var(--primary-gold, #c6a15b);
+  box-shadow: 0 0 22px rgba(198, 161, 91, 0.45);
 }
 
-.priest-message__name-tag {
+.priest-message__priest-info {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.priest-message__desig {
-  font-size: 0.75rem;
-  color: var(--gold-antique);
-  font-weight: 600;
-  letter-spacing: 0.1em;
+.priest-message__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(198, 161, 91, 0.18);
+  border: 1px solid rgba(198, 161, 91, 0.4);
+  color: var(--primary-gold, #c6a15b);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  margin-bottom: 0.6rem;
 }
 
-.priest-message__name {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  color: #5A4947;
-  margin: 0.1rem 0;
+.priest-message__priest-name {
+  font-family: var(--font-serif, serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0.2rem 0;
+  line-height: 1.25;
 }
 
-.priest-message__title-label {
-  font-size: 0.78rem;
-  color: var(--text-muted);
+.priest-message__priest-title {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+/* Right Column: Quote Content Panel */
+.priest-message__quote-panel {
+  padding: 3.25rem 3.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #faf8f5 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.priest-message__quote-header {
+  position: relative;
+}
+
+.priest-message__large-quote-icon {
+  color: var(--primary-gold, #c6a15b);
+  opacity: 0.35;
+  margin-bottom: 0.5rem;
 }
 
 .priest-message__heading {
-  font-family: var(--font-serif);
+  font-family: var(--font-serif, serif);
   font-size: clamp(1.8rem, 3vw, 2.4rem);
-  color: #5A4947;
-  line-height: 1.2;
+  color: var(--burgundy-primary, #35151b);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.25;
 }
 
-.priest-message__divider {
-  width: 50px;
-  height: 2px;
-  background: var(--gold-antique);
-  margin: 0.75rem 0 1.25rem;
+.priest-message__heading::after {
+  content: '';
+  display: block;
+  width: 55px;
+  height: 3px;
+  background: var(--primary-gold, #c6a15b);
+  border-radius: 2px;
+  margin-top: 0.85rem;
 }
 
-.priest-message__quote-wrapper {
-  position: relative;
-  padding-left: 2rem;
-  margin-bottom: 1.75rem;
-}
-
-.priest-message__quote-mark {
-  position: absolute;
-  top: -5px;
-  left: 0;
-  color: var(--gold-antique);
-  opacity: 0.5;
+.priest-message__quote-body {
+  margin: 1.75rem 0;
 }
 
 .priest-message__text {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-family: var(--font-serif, serif);
+  font-size: 1.12rem;
   font-style: italic;
-  color: #5A4947;
-  line-height: 1.7;
+  color: #475569;
+  line-height: 1.8;
+  margin: 0;
 }
 
-.priest-message__cta {
+.priest-message__action {
   margin-top: 0.5rem;
 }
 
-@media (max-width: 860px) {
-  .priest-message__card {
+.priest-message__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: transform 0.25 ease, background 0.25s ease;
+}
+
+.priest-message__btn:hover {
+  transform: translateX(4px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .priest-message__container {
     grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem;
+    border-radius: 20px;
+  }
+  .priest-message__portrait-panel {
+    padding: 2.5rem 1.5rem;
+  }
+  .priest-message__quote-panel {
+    padding: 2.25rem 1.75rem;
+  }
+  .priest-message__text {
+    font-size: 1.02rem;
+    line-height: 1.7;
   }
 }
+

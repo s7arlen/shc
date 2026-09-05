@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Church, Calendar, Image as ImageIcon, MoreHorizontal } from 'lucide-react';
+import { Home, Church, MapPin, Image as ImageIcon, MoreHorizontal } from 'lucide-react';
 import MobileMoreSheet from './MobileMoreSheet';
 import './MobileBottomNav.css';
 
 const navItems = [
   { id: 'home', label: 'HOME', path: '/', icon: Home },
   { id: 'parish', label: 'PARISH', path: '/about/our-parish', icon: Church },
-  { id: 'events', label: 'EVENTS', path: '/events', icon: Calendar },
+  { id: 'wards', label: 'WARDS', path: '/parish/wards', icon: MapPin },
   { id: 'gallery', label: 'GALLERY', path: '/media/gallery', icon: ImageIcon },
 ];
 
@@ -19,8 +19,8 @@ const MobileBottomNav = () => {
   const isActive = (path) => {
     const current = location.pathname;
     if (path === '/') return current === '/';
-    if (path === '/about/our-parish') return current.startsWith('/about') || current.startsWith('/parish');
-    if (path === '/events') return current.startsWith('/events') || current.startsWith('/news');
+    if (path === '/about/our-parish') return (current.startsWith('/about') || current.startsWith('/parish')) && !current.startsWith('/parish/wards') && !current.startsWith('/wards');
+    if (path === '/parish/wards') return current.startsWith('/parish/wards') || current.startsWith('/wards');
     if (path === '/media/gallery') return current.startsWith('/media');
     return current.startsWith(path);
   };

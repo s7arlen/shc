@@ -1,24 +1,31 @@
 // Sacred Heart of Jesus Church, Thodambila — Mass Timings
 // Diocese of Mangalore / Bantwal Vicariate
-// Contact parish office (+91 94484 28561) for confirmation of current schedule
+
+export const weeklyMassSchedule = [
+  { day: 'Monday', time: '6:30 AM', note: '' },
+  { day: 'Tuesday', time: '6:30 AM', note: '' },
+  { day: 'Wednesday', time: '6:30 AM', note: '' },
+  { day: 'Thursday', time: '6:30 AM', note: '' },
+  { day: 'Friday', time: '6:30 AM', note: 'First Friday Mass and Adoration at 5:00 PM' },
+  { day: 'Saturday', time: '4:00 PM', note: 'Sunday Liturgy' },
+  { day: 'Sunday', time: '7:30 AM', note: 'Sunday catechism for children follows Mass' },
+];
+
 export const massTimes = {
   sunday: [
-    { time: '7:00 AM', language: 'Konkani', note: 'Main Sunday Mass' },
-    { time: '9:00 AM', language: 'Kannada', note: '' },
+    { time: '7:30 AM', language: 'Konkani', note: 'Sunday Mass (Catechism follows Mass)' },
+  ],
+  saturday: [
+    { time: '4:00 PM', language: 'Konkani', note: 'Sunday Liturgy' },
   ],
   weekday: [
-    { day: 'Monday – Saturday', time: '6:30 AM', language: 'Konkani', note: '' },
+    { day: 'Monday – Friday', time: '6:30 AM', language: 'Konkani', note: '' },
+    { day: 'First Friday', time: '5:00 PM', language: 'Konkani', note: 'First Friday Mass & Adoration' },
   ],
-  special: [
-    { occasion: 'First Friday (ಪ್ರಥಮ ಶುಕ್ರವಾರ)', time: '6:30 AM', note: 'Sacred Heart Adoration & Devotion follows Mass' },
-    { occasion: 'Sacred Heart Feast Day (ಪ್ರಮುಖ ಫಿರ್ಗಜ್ ಫೆಸ್ತ್)', time: 'Special schedule announced', note: 'Annual Parish Feast — June' },
-    { occasion: 'Monti Fest — Nativity of Mary (ಮೊಂತಿ ಫೆಸ್ತ್)', time: 'Special schedule announced', note: 'September 8' },
-    { occasion: 'Christmas & Easter', time: 'Special schedule announced', note: 'See parish notice board' },
-    { occasion: 'Holy Week', time: 'As per liturgical calendar', note: '' },
-  ],
-  confessions: [
-    { day: 'Sunday', time: '30 min before Mass', note: '' },
-    { day: 'On Request', time: 'Contact Parish Office', note: '+91 94484 28561' },
+  footerNotes: [
+    { label: 'First Friday:', value: '5:00 PM — Mass and Adoration' },
+    { label: 'Sunday Catechism:', value: 'After the 7:30 AM Mass — For children' },
   ]
 };
+
 
