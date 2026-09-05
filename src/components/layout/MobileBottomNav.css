@@ -8,12 +8,10 @@
   display: none !important;
 }
 
-/* Overlay & drawer: use regular (non-!important) hide so framer-motion
-   inline styles can override them during animation */
-.mobile-sheet__overlay,
-.mobile-sheet__drawer {
-  display: none;
-}
+/* NOTE: .mobile-sheet__overlay and .mobile-sheet__drawer have NO default
+   display:none here. framer-motion AnimatePresence mounts them only when
+   isOpen=true and physically removes them from the DOM when closed.
+   Any CSS display:none would permanently hide them regardless. */
 
 /* ──────────────────────────────────────────────
    BREAKPOINT: <=1080px (matches Navbar.css)
