@@ -1,9 +1,9 @@
-/* ============================================
-   MASS & WORSHIP SECTION — Secondary Cream (#F2EDE3)
+﻿/* ============================================
+   MASS & WORSHIP SECTION — Option 41 (Light Coral #FDEBE7)
    ============================================ */
 
 .mass-schedule {
-  background-color: var(--cream-secondary);
+  background-color: var(--coral-light);
   padding: 5rem 0;
 }
 
@@ -16,18 +16,19 @@
 }
 
 .mass-card {
-  background: var(--white);
-  border: 1px solid var(--border-gold);
-  border-top: 3px solid var(--burgundy-primary);
+  background: var(--bg-ivory);
+  border: 1px solid rgba(245, 195, 181, 0.65);
+  border-top: 3px solid #DDB07A;
   border-radius: var(--radius-sm);
   padding: 1.5rem;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 4px 18px rgba(90, 73, 71, 0.05);
   transition: transform var(--transition-med), box-shadow var(--transition-med);
 }
 
 .mass-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 10px 28px rgba(90, 73, 71, 0.09);
+  border-color: #DDB07A;
 }
 
 .mass-card__header {
@@ -36,11 +37,11 @@
   gap: 0.65rem;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border-cream);
+  border-bottom: 1px solid rgba(245, 195, 181, 0.4);
 }
 
 .mass-card__icon {
-  color: var(--gold-antique);
+  color: #DDB07A;
   flex-shrink: 0;
 }
 
@@ -48,7 +49,7 @@
   font-family: var(--font-serif);
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--burgundy-primary);
+  color: #5A4947;
 }
 
 .mass-card__list {
@@ -66,28 +67,28 @@
   font-family: var(--font-sans);
   font-size: 0.84rem;
   font-weight: 700;
-  color: var(--burgundy-dark);
+  color: #5A4947;
 }
 
 .mass-card__list small {
   font-size: 0.76rem;
-  color: var(--text-muted);
+  color: #857371;
 }
 
 /* Tabbed Container Box */
 .mass-schedule__tabs-container {
-  background: var(--white);
-  border: 1px solid var(--border-gold);
+  background: var(--bg-ivory);
+  border: 1px solid rgba(245, 195, 181, 0.65);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 4px 20px rgba(90, 73, 71, 0.06);
   overflow: hidden;
   margin-bottom: 2.5rem;
 }
 
 .mass-schedule__tabs {
   display: flex;
-  background: rgba(122, 31, 43, 0.04);
-  border-bottom: 1px solid var(--border-cream);
+  background: rgba(245, 195, 181, 0.22);
+  border-bottom: 1px solid rgba(245, 195, 181, 0.4);
 }
 
 .mass-schedule__tab {
@@ -98,95 +99,92 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  border-bottom: 2px solid transparent;
+  color: #857371;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   transition: all var(--transition-fast);
-  text-align: center;
+  border-top: 3px solid transparent;
 }
 
 .mass-schedule__tab:hover {
-  color: var(--burgundy-primary);
-  background: rgba(122, 31, 43, 0.06);
+  color: #5A4947;
+  background: rgba(255, 253, 249, 0.5);
 }
 
-.mass-schedule__tab.active {
-  color: var(--burgundy-primary);
-  background: var(--white);
-  border-bottom-color: var(--burgundy-primary);
+.mass-schedule__tab--active {
+  background: var(--bg-ivory) !important;
+  color: #5A4947 !important;
+  border-top-color: #DDB07A !important;
 }
 
-/* Tab Content */
 .mass-schedule__tab-content {
-  padding: 1.5rem 2rem;
+  padding: 2rem;
 }
 
-.mass-table-wrapper {
-  overflow-x: auto;
-}
-
-.mass-table {
+.mass-schedule__table {
   width: 100%;
   border-collapse: collapse;
-  text-align: left;
 }
 
-.mass-table th {
+.mass-schedule__table th {
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold-antique);
+  color: #857371;
+  text-align: left;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border-cream);
+  border-bottom: 2px solid rgba(245, 195, 181, 0.5);
 }
 
-.mass-table td {
-  padding: 0.85rem 1rem;
-  font-size: 0.9rem;
+.mass-schedule__table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(245, 195, 181, 0.3);
+  font-size: 0.92rem;
   color: var(--text-main);
-  border-bottom: 1px solid var(--border-cream);
 }
 
-.mass-table tr:last-child td {
+.mass-schedule__table tr:last-child td {
   border-bottom: none;
 }
 
-.mass-table__time {
+.mass-schedule__table tr:hover td {
+  background-color: rgba(253, 235, 231, 0.4);
+}
+
+.mass-schedule__day-badge {
+  display: inline-block;
   font-weight: 700;
-  color: var(--burgundy-primary) !important;
+  color: #5A4947;
 }
 
-.mass-table__lang {
+.mass-schedule__time {
+  font-weight: 700;
+  color: #DDB07A;
+}
+
+.mass-schedule__lang {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: rgba(245, 195, 181, 0.35);
+  font-size: 0.72rem;
   font-weight: 600;
+  color: #5A4947;
 }
 
-.mass-table__note {
-  color: var(--text-muted) !important;
-  font-style: italic;
-}
-
-.mass-special-grid h4 {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  color: var(--burgundy-primary);
-  margin-bottom: 0.75rem;
-}
-
-.mass-special-grid ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.mass-special-grid li {
-  font-size: 0.9rem;
-  color: var(--text-main);
-}
-
-/* Footer CTA */
-.mass-schedule__footer-cta {
+/* Bottom Notice */
+.mass-schedule__notice {
   text-align: center;
+  font-size: 0.88rem;
+  color: #857371;
+  font-style: italic;
 }
 
 /* Responsive */
@@ -196,7 +194,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .mass-schedule__highlights {
     grid-template-columns: 1fr;
   }
@@ -205,7 +203,18 @@
     flex-direction: column;
   }
 
+  .mass-schedule__tab {
+    padding: 0.85rem 1rem;
+    border-top: none;
+    border-left: 3px solid transparent;
+  }
+
+  .mass-schedule__tab--active {
+    border-top-color: transparent !important;
+    border-left-color: #DDB07A !important;
+  }
+
   .mass-schedule__tab-content {
-    padding: 1rem;
+    padding: 1.25rem;
   }
 }

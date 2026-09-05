@@ -1,6 +1,5 @@
-/* ============================================
-   QUICK ACTIONS SECTION
-   4 cards below Hero with Ivory/White bg & Gold Hover
+﻿/* ============================================
+   QUICK ACTIONS SECTION — Option 41 (Light Coral + Ivory + Gold)
    ============================================ */
 
 .quick-access {
@@ -19,10 +18,10 @@
   flex-direction: column;
   height: 100%;
   padding: 2rem 1.6rem 1.6rem;
-  background: var(--white);
-  border: 1px solid var(--border-cream);
+  background: var(--bg-ivory);
+  border: 1px solid rgba(245, 195, 181, 0.55);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 4px 20px rgba(90, 73, 71, 0.05);
   position: relative;
   overflow: hidden;
   transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
@@ -30,8 +29,8 @@
 
 .quick-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 35px rgba(53, 21, 27, 0.12);
-  border-color: rgba(198, 161, 91, 0.5);
+  box-shadow: 0 14px 35px rgba(90, 73, 71, 0.1);
+  border-color: #DDB07A;
 }
 
 /* Icon box */
@@ -39,8 +38,8 @@
   width: 56px;
   height: 56px;
   border-radius: var(--radius-sm);
-  background: rgba(122, 31, 43, 0.06);
-  border: 1px solid rgba(122, 31, 43, 0.12);
+  background: rgba(245, 195, 181, 0.25);
+  border: 1px solid rgba(221, 176, 122, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,7 +49,7 @@
 }
 
 .quick-card__icon {
-  color: var(--burgundy-primary);
+  color: #5A4947;
   transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
@@ -61,21 +60,21 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: var(--gold-antique);
+  background-color: #DDB07A;
 }
 
 .quick-card:hover .quick-card__icon-box {
-  background: var(--burgundy-primary);
-  border-color: var(--gold-antique);
+  background: #DDB07A;
+  border-color: #DDB07A;
 }
 
 .quick-card:hover .quick-card__icon {
-  color: var(--gold-light);
+  color: #5A4947;
   transform: scale(1.08);
 }
 
 .quick-card:hover .quick-card__gold-dot {
-  background-color: var(--bg-ivory);
+  background-color: #FFFDF9;
 }
 
 /* Content */
@@ -87,14 +86,14 @@
   font-family: var(--font-serif);
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--burgundy-primary);
+  color: #5A4947;
   margin-bottom: 0.4rem;
   line-height: 1.3;
 }
 
 .quick-card__subtitle {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #857371;
   line-height: 1.55;
   margin-bottom: 1.25rem;
 }
@@ -103,7 +102,7 @@
 .quick-card__footer {
   margin-top: auto;
   padding-top: 0.75rem;
-  border-top: 1px dashed var(--border-cream);
+  border-top: 1px dashed rgba(245, 195, 181, 0.45);
 }
 
 .quick-card__link-text {
@@ -115,22 +114,22 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--burgundy-primary);
+  color: #5A4947;
   transition: color var(--transition-fast), gap var(--transition-fast);
 }
 
 .quick-card__arrow {
-  color: var(--gold-antique);
+  color: #DDB07A;
   transition: transform var(--transition-fast);
 }
 
 .quick-card:hover .quick-card__link-text {
-  color: var(--burgundy-dark);
+  color: #DDB07A;
 }
 
 .quick-card:hover .quick-card__arrow {
   transform: translateX(4px);
-  color: var(--burgundy-primary);
+  color: #DDB07A;
 }
 
 /* Gold Bottom Bar on Hover */
@@ -140,7 +139,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--gold-antique), var(--gold-light));
+  background: linear-gradient(90deg, #DDB07A, #F5C3B5);
   transform: scaleX(0);
   transition: transform var(--transition-med);
   transform-origin: left;

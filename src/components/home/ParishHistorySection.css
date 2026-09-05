@@ -6,7 +6,7 @@
 }
 
 .parish-history__card {
-  background: var(--warm-white);
+  background: var(--bg-ivory);
   border: 1px solid var(--border-beige);
   border-radius: var(--radius-md);
   padding: 1.75rem 1.25rem;
@@ -25,7 +25,7 @@
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  background: rgba(201, 164, 92, 0.12);
+  background: rgba(221, 176, 122, 0.12);
   border: 1px solid var(--gold-antique);
   display: flex;
   align-items: center;
@@ -34,7 +34,7 @@
 }
 
 .parish-history__icon {
-  color: var(--brown-primary);
+  color: #5A4947;
   width: 24px;
   height: 24px;
 }
@@ -42,7 +42,7 @@
 .parish-history__card h3 {
   font-family: var(--font-serif);
   font-size: 1.2rem;
-  color: var(--brown-primary);
+  color: #5A4947;
   margin-bottom: 0.5rem;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .parish-history__cta-box {
-  background: linear-gradient(135deg, var(--brown-deep) 0%, var(--brown-primary) 100%);
+  background: linear-gradient(135deg, #433533 0%, #5A4947 100%);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
   padding: 2.25rem 2.5rem;
@@ -73,7 +73,7 @@
 
 .parish-history__cta-text p {
   font-size: 0.9rem;
-  color: var(--cream);
+  color: #FDEBE7;
   opacity: 0.85;
 }
 

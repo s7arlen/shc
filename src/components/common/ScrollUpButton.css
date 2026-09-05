@@ -1,5 +1,5 @@
-/* ============================================
-   SCROLL UP BUTTON — Burgundy & Antique Gold
+﻿/* ============================================
+   SCROLL UP BUTTON — Option 41 (Dark Brown & Gold)
    ============================================ */
 
 .scroll-up-btn {
@@ -10,16 +10,16 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--burgundy-primary);
-  border: 1.5px solid var(--gold-antique);
-  color: var(--bg-ivory);
+  background: #5A4947;
+  border: 1.5px solid #DDB07A;
+  color: #FFFDF9;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   outline: none;
-  box-shadow: 0 8px 25px rgba(53, 21, 27, 0.4),
-              0 0 16px rgba(198, 161, 91, 0.25);
+  box-shadow: 0 8px 25px rgba(90, 73, 71, 0.35),
+              0 0 16px rgba(221, 176, 122, 0.25);
   transition: background-color var(--transition-fast),
               border-color var(--transition-fast),
               box-shadow var(--transition-fast),
@@ -28,12 +28,12 @@
 }
 
 .scroll-up-btn:hover {
-  background: var(--burgundy-dark);
-  border-color: var(--gold-light);
+  background: #433533;
+  border-color: #DDB07A;
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(53, 21, 27, 0.55),
-              0 0 22px rgba(198, 161, 91, 0.5);
-  color: var(--gold-light);
+  box-shadow: 0 12px 30px rgba(90, 73, 71, 0.45),
+              0 0 22px rgba(221, 176, 122, 0.4);
+  color: #DDB07A;
 }
 
 .scroll-up-btn:active {
@@ -41,8 +41,8 @@
 }
 
 .scroll-up-btn:focus-visible {
-  box-shadow: 0 0 0 3px rgba(198, 161, 91, 0.6),
-              0 8px 25px rgba(53, 21, 27, 0.4);
+  box-shadow: 0 0 0 3px rgba(221, 176, 122, 0.6),
+              0 8px 25px rgba(90, 73, 71, 0.4);
 }
 
 .scroll-up-btn__icon {
@@ -58,19 +58,21 @@
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  border: 1px solid rgba(198, 161, 91, 0.3);
+  border: 1px solid rgba(221, 176, 122, 0.35);
   pointer-events: none;
   transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
 
 .scroll-up-btn:hover .scroll-up-btn__ring {
   transform: scale(1.12);
-  border-color: rgba(221, 187, 123, 0.6);
+  border-color: rgba(221, 176, 122, 0.6);
 }
 
 @media (max-width: 640px) {
   .scroll-up-btn {
-    bottom: 22px;
+    /* On mobile the MobileBottomNav.css overrides this with !important */
+    /* to position the button above the bottom navbar */
+    bottom: 30px;
     right: 20px;
     width: 44px;
     height: 44px;

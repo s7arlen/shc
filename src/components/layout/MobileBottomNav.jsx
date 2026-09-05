@@ -41,7 +41,9 @@ const MobileBottomNav = () => {
                 aria-label={item.label}
               >
                 {active && <span className="mobile-bottom-nav__active-bar" />}
-                <Icon size={20} className="mobile-bottom-nav__icon" />
+                <span className="mobile-bottom-nav__icon-wrap">
+                  <Icon size={19} className="mobile-bottom-nav__icon" />
+                </span>
                 <span className="mobile-bottom-nav__label">{item.label}</span>
               </Link>
             );
@@ -56,7 +58,9 @@ const MobileBottomNav = () => {
             aria-expanded={isMoreOpen}
           >
             {isMoreOpen && <span className="mobile-bottom-nav__active-bar" />}
-            <MoreHorizontal size={20} className="mobile-bottom-nav__icon" />
+            <span className="mobile-bottom-nav__icon-wrap">
+              <MoreHorizontal size={19} className="mobile-bottom-nav__icon" />
+            </span>
             <span className="mobile-bottom-nav__label">MORE</span>
           </button>
         </div>

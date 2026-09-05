@@ -1,9 +1,9 @@
-/* ============================================
-   UPCOMING EVENTS SECTION
+﻿/* ============================================
+   UPCOMING EVENTS SECTION — Option 41
    ============================================ */
 
 .upcoming-events {
-  background-color: var(--white);
+  background-color: var(--bg-ivory);
   padding: 5rem 0;
 }
 
@@ -16,20 +16,20 @@
 
 .event-card {
   background: var(--bg-ivory);
-  border: 1px solid var(--border-cream);
+  border: 1px solid rgba(245, 195, 181, 0.55);
   border-radius: var(--radius-md);
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
   height: 100%;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 4px 20px rgba(90, 73, 71, 0.05);
   transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
 }
 
 .event-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-soft);
-  border-color: rgba(198, 161, 91, 0.5);
+  box-shadow: 0 12px 30px rgba(90, 73, 71, 0.1);
+  border-color: #DDB07A;
 }
 
 /* Header with Date Badge */
@@ -47,18 +47,18 @@
   justify-content: center;
   width: 54px;
   height: 54px;
-  background: var(--burgundy-primary);
-  border: 1px solid var(--gold-antique);
+  background: #5A4947;
+  border: 1.5px solid #DDB07A;
   border-radius: var(--radius-sm);
-  color: var(--bg-ivory);
-  box-shadow: 0 4px 12px rgba(122, 31, 43, 0.2);
+  color: #FFFDF9;
+  box-shadow: 0 4px 12px rgba(90, 73, 71, 0.2);
 }
 
 .event-card__day {
   font-family: var(--font-serif);
   font-size: 1.45rem;
   font-weight: 700;
-  color: var(--gold-light);
+  color: #DDB07A;
   line-height: 1;
 }
 
@@ -68,7 +68,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--bg-ivory);
+  color: #FFFDF9;
 }
 
 .event-card__category {
@@ -77,8 +77,8 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--burgundy-primary);
-  background: rgba(122, 31, 43, 0.08);
+  color: #5A4947;
+  background: rgba(245, 195, 181, 0.35);
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-full);
 }
@@ -93,7 +93,7 @@
   font-family: var(--font-serif);
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--burgundy-primary);
+  color: #5A4947;
   line-height: 1.3;
   margin-bottom: 0.6rem;
 }
@@ -110,7 +110,7 @@
   flex-direction: column;
   gap: 0.45rem;
   padding-top: 0.75rem;
-  border-top: 1px dashed var(--border-cream);
+  border-top: 1px dashed rgba(245, 195, 181, 0.45);
 }
 
 .event-card__meta-item {
@@ -122,7 +122,7 @@
 }
 
 .event-card__icon {
-  color: var(--gold-antique);
+  color: #DDB07A;
 }
 
 /* Footer Link */
@@ -140,22 +140,22 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--burgundy-primary);
+  color: #5A4947;
   transition: color var(--transition-fast);
 }
 
 .event-card__arrow {
-  color: var(--gold-antique);
+  color: #DDB07A;
   transition: transform var(--transition-fast);
 }
 
 .event-card:hover .event-card__link {
-  color: var(--burgundy-dark);
+  color: #DDB07A;
 }
 
 .event-card:hover .event-card__arrow {
   transform: translateX(4px);
-  color: var(--burgundy-primary);
+  color: #DDB07A;
 }
 
 .upcoming-events__cta {

@@ -1,16 +1,16 @@
 /* ============================================
-   PHOTO GALLERY SECTION — Accordion Gallery
+   PHOTO GALLERY SECTION — Option 41: Light Coral + Ivory + Gold
    ============================================ */
 
 .gallery-section {
-  background-color: var(--white);
+  background-color: var(--bg-ivory);
   padding: 5.5rem 0;
   position: relative;
 }
 
 .gallery-section__accordion-wrap {
   margin-bottom: 3.5rem;
-  box-shadow: 0 16px 45px rgba(53, 21, 27, 0.08);
+  box-shadow: 0 16px 45px rgba(90, 73, 71, 0.08);
   border-radius: 18px;
 }
 

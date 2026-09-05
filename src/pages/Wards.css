@@ -239,7 +239,7 @@
 .ward-card__header {
   padding: 1.25rem 1.5rem 1rem;
   border-bottom: 1px dashed var(--border-beige);
-  background: linear-gradient(180deg, rgba(250, 246, 238, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
+  background: linear-gradient(180deg, rgba(253, 235, 231, 0.7) 0%, rgba(255, 253, 249, 0.4) 100%);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -536,7 +536,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #fdfaf3 0%, #faeede 100%);
+  background: linear-gradient(135deg, #FFFDF9 0%, #FDEBE7 100%);
   color: var(--brown-primary);
   font-family: var(--font-serif);
   font-size: 1.6rem;
@@ -568,7 +568,7 @@
 }
 
 .ward-minimal-role-badge--gurkar {
-  color: #b82c2a;
+  color: #5A4947;
 }
 
 .ward-minimal-phone-btn {
@@ -599,8 +599,8 @@
   justify-content: center;
   gap: 0.65rem;
   width: 100%;
-  background: linear-gradient(180deg, #d3413f 0%, #c13432 100%);
-  color: #ffffff !important;
+  background: linear-gradient(180deg, #5A4947 0%, #433533 100%);
+  color: #FFFDF9 !important;
   padding: 0.95rem 1.5rem;
   border-radius: 4px;
   border: none;
@@ -611,14 +611,14 @@
   text-decoration: none;
   cursor: pointer;
   text-align: center;
-  box-shadow: 0 3px 8px rgba(211, 65, 63, 0.3);
+  box-shadow: 0 3px 8px rgba(90, 73, 71, 0.3);
   transition: all var(--transition-fast);
   margin-top: 1.5rem;
 }
 
 .ward-family-photos-banner-btn:hover {
-  background: linear-gradient(180deg, #bc3331 0%, #9e201e 100%);
-  box-shadow: 0 5px 14px rgba(211, 65, 63, 0.4);
+  background: linear-gradient(180deg, #433533 0%, #3a2d2b 100%);
+  box-shadow: 0 5px 14px rgba(90, 73, 71, 0.4);
   transform: translateY(-1px);
 }
 
@@ -627,7 +627,7 @@
 }
 
 .ward-family-photos-banner-btn--open {
-  background: linear-gradient(180deg, #9e201e 0%, #851715 100%);
+  background: linear-gradient(180deg, #433533 0%, #3a2d2b 100%);
 }
 
 /* ── Minimal Family Directory (Collapsible / Clean) ── */
@@ -713,7 +713,7 @@
 .ward-minimal-family-photo-box {
   width: 100%;
   height: 95px;
-  background: linear-gradient(135deg, rgba(250, 246, 238, 0.9) 0%, rgba(244, 235, 218, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(255, 253, 249, 0.9) 0%, rgba(253, 235, 231, 0.9) 100%);
   border: 1px dashed var(--border-gold);
   border-radius: var(--radius-sm);
   display: flex;

@@ -1,7 +1,7 @@
 .accordion-gallery {
-  --ag-accent: #C6A15B;
-  --ag-overlay: #172536;
-  --ag-text: #FAF7F0;
+  --ag-accent: #DDB07A;
+  --ag-overlay: #5A4947;
+  --ag-text: #FFFDF9;
   --ag-gap: 12px;
   --ag-radius: 16px;
   --ag-media-size: 320px;
@@ -32,9 +32,9 @@
   outline: none;
   transform-style: preserve-3d;
   transform-origin: center center;
-  background: #1e0b10;
+  background: #433533;
   box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(198, 161, 91, 0.3);
+  border: 1px solid rgba(221, 176, 122, 0.3);
   will-change: flex-grow, transform;
   -webkit-tap-highlight-color: transparent;
   transition: border-color 0.3s ease;

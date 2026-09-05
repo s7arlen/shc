@@ -1,5 +1,5 @@
 .priest-message__card {
-  background: var(--cream);
+  background: var(--bg-ivory);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
   padding: 3rem;
@@ -38,7 +38,7 @@
   inset: -8px;
   border-radius: 50%;
   border: 2px solid var(--gold-antique);
-  box-shadow: 0 0 16px rgba(201, 164, 92, 0.3);
+  box-shadow: 0 0 16px rgba(221, 176, 122, 0.3);
 }
 
 .priest-message__name-tag {
@@ -57,7 +57,7 @@
 .priest-message__name {
   font-family: var(--font-serif);
   font-size: 1.25rem;
-  color: var(--brown-primary);
+  color: #5A4947;
   margin: 0.1rem 0;
 }
 
@@ -69,7 +69,7 @@
 .priest-message__heading {
   font-family: var(--font-serif);
   font-size: clamp(1.8rem, 3vw, 2.4rem);
-  color: var(--brown-primary);
+  color: #5A4947;
   line-height: 1.2;
 }
 
@@ -98,7 +98,7 @@
   font-family: var(--font-serif);
   font-size: 1.15rem;
   font-style: italic;
-  color: var(--brown-primary);
+  color: #5A4947;
   line-height: 1.7;
 }
 

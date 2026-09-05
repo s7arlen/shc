@@ -1,24 +1,25 @@
-/* ============================================
-   SCRIPTURE / SPIRITUAL QUOTE SECTION
-   Dark Burgundy (#35151B) Minimal Full-Width Banner
+﻿/* ============================================
+   SCRIPTURE / SPIRITUAL QUOTE SECTION — Option 41
    ============================================ */
 
 .scripture {
-  background-color: var(--burgundy-dark);
-  color: var(--bg-ivory);
+  background-color: #5A4947;
+  color: #FFFDF9;
   padding: 5.5rem 0;
   position: relative;
   overflow: hidden;
   text-align: center;
+  border-top: 1.5px solid rgba(221, 176, 122, 0.35);
+  border-bottom: 1.5px solid rgba(221, 176, 122, 0.35);
 }
 
 .scripture__pattern-overlay {
   position: absolute;
   inset: 0;
   background-image: 
-    radial-gradient(ellipse at 50% 0%, rgba(198, 161, 91, 0.12) 0%, transparent 70%),
-    radial-gradient(ellipse at 15% 50%, rgba(198, 161, 91, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 50%, rgba(198, 161, 91, 0.04) 0%, transparent 50%);
+    radial-gradient(ellipse at 50% 0%, rgba(221, 176, 122, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse at 15% 50%, rgba(245, 195, 181, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 50%, rgba(245, 195, 181, 0.06) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -37,8 +38,8 @@
 }
 
 .scripture__quote-icon {
-  color: var(--gold-antique);
-  opacity: 0.85;
+  color: #DDB07A;
+  opacity: 0.9;
 }
 
 .scripture__quote {
@@ -52,43 +53,39 @@
   font-size: clamp(1.8rem, 4vw, 2.75rem);
   font-weight: 500;
   font-style: italic;
-  color: var(--bg-ivory);
+  color: #FFFDF9;
   line-height: 1.35;
   margin-bottom: 1.75rem;
   letter-spacing: 0.01em;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.scripture__gold-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #DDB07A, transparent);
+  margin: 0 auto 1.5rem;
 }
 
 .scripture__reference {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  font-style: normal;
-}
-
-.scripture__ref-line {
-  display: inline-block;
-  width: 40px;
-  height: 1px;
-  background: var(--gold-antique);
-  opacity: 0.6;
-}
-
-.scripture__ref-name {
   font-family: var(--font-sans);
-  font-size: 0.76rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold-antique);
+  color: #DDB07A;
+  margin-bottom: 0.5rem;
 }
 
+.scripture__sublabel {
+  font-size: 0.8rem;
+  color: #FDEBE7;
+  opacity: 0.85;
+}
+
+/* Responsive */
 @media (max-width: 640px) {
   .scripture {
     padding: 4rem 0;
-  }
-
-  .scripture__ref-line {
-    width: 24px;
   }
 }

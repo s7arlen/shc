@@ -1,9 +1,9 @@
-/* ============================================
-   ABOUT OUR CHURCH (WELCOME SECTION)
+﻿/* ============================================
+   ABOUT OUR CHURCH (WELCOME SECTION) — Option 41
    ============================================ */
 
 .welcome {
-  background-color: var(--white);
+  background-color: var(--bg-ivory);
   padding: 5rem 0;
 }
 
@@ -23,7 +23,7 @@
 .welcome__title {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 2.8rem);
-  color: var(--burgundy-primary);
+  color: #5A4947;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -31,7 +31,7 @@
 .welcome__gold-divider {
   width: 60px;
   height: 2px;
-  background: linear-gradient(90deg, var(--gold-antique), var(--gold-light));
+  background: linear-gradient(90deg, #DDB07A, #F5C3B5);
   margin: 0.85rem 0 1.25rem;
 }
 
@@ -39,7 +39,7 @@
   font-family: var(--font-sans);
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--burgundy-dark);
+  color: #5A4947;
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
@@ -84,7 +84,7 @@
 .welcome__gold-border {
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(198, 161, 91, 0.65);
+  border: 1px solid rgba(221, 176, 122, 0.65);
   border-radius: var(--radius-sm);
   pointer-events: none;
   transition: inset var(--transition-med), border-color var(--transition-med);
@@ -92,54 +92,43 @@
 
 .welcome__image-frame:hover .welcome__gold-border {
   inset: 16px;
-  border-color: var(--gold-light);
+  border-color: #DDB07A;
 }
 
 /* Badge */
 .welcome__badge {
   position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  background: rgba(53, 21, 27, 0.92);
+  bottom: 24px;
+  left: 24px;
+  background: rgba(90, 73, 71, 0.92);
   backdrop-filter: blur(8px);
-  border: 1px solid var(--gold-antique);
+  border: 1px solid #DDB07A;
   border-radius: var(--radius-sm);
   padding: 0.75rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--bg-ivory);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  color: #FFFDF9;
+  box-shadow: 0 8px 24px rgba(90, 73, 71, 0.3);
 }
 
-.welcome__badge-icon {
-  color: var(--gold-antique);
-  flex-shrink: 0;
-}
-
-.welcome__badge-title {
+.welcome__badge-year {
   display: block;
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--gold-light);
+  color: #DDB07A;
+  line-height: 1;
 }
 
-.welcome__badge-sub {
-  display: block;
-  font-size: 0.68rem;
-  color: rgba(250, 247, 240, 0.8);
-  letter-spacing: 0.04em;
+.welcome__badge-text {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #FDEBE7;
 }
 
 /* Responsive */
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .welcome__grid {
     grid-template-columns: 1fr;
     gap: 3rem;
-  }
-
-  .welcome__image {
-    height: 340px;
   }
 }

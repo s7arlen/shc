@@ -1,24 +1,24 @@
 /* ============================================
-   TOP SITE HEADER — Royal Blue & Antique Gold
-   Palette: Royal Blue (#173F6B), Deep Blue (#172536), Gold (#C5A15B), Ivory (#FAF8F1)
+   TOP SITE HEADER — Option 41: Light Coral + Ivory + Gold
+   Palette: Dark Brown (#5A4947), Gold (#DDB07A), Coral (#F5C3B5), Ivory (#FFFDF9)
    ============================================ */
 
 .site-header {
-  background: linear-gradient(180deg, #173F6B 0%, #172536 100%);
+  background: linear-gradient(180deg, #5A4947 0%, #433533 100%);
   position: relative;
   overflow: hidden;
   padding: 1.6rem 0 0;
-  box-shadow: 0 4px 20px rgba(23, 37, 54, 0.35);
-  border-bottom: 1px solid rgba(197, 161, 91, 0.25);
+  box-shadow: 0 4px 20px rgba(90, 73, 71, 0.3);
+  border-bottom: 1px solid rgba(221, 176, 122, 0.35);
 }
 
 .site-header__texture {
   position: absolute;
   inset: 0;
   background-image: 
-    radial-gradient(ellipse at 50% 0%, rgba(197, 161, 91, 0.15) 0%, transparent 65%),
-    radial-gradient(ellipse at 15% 50%, rgba(197, 161, 91, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 50%, rgba(197, 161, 91, 0.05) 0%, transparent 50%);
+    radial-gradient(ellipse at 50% 0%, rgba(221, 176, 122, 0.18) 0%, transparent 65%),
+    radial-gradient(ellipse at 15% 50%, rgba(245, 195, 181, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 50%, rgba(245, 195, 181, 0.08) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -49,15 +49,15 @@
   height: clamp(64px, 5.8vw, 86px);
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--gold-antique);
-  box-shadow: 0 0 22px rgba(198, 161, 91, 0.35), 0 4px 14px rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--gold-accent);
+  box-shadow: 0 0 22px rgba(221, 176, 122, 0.35), 0 4px 14px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
   transition: transform var(--transition-med), box-shadow var(--transition-med);
 }
 
 .site-header__brand-link:hover .site-header__logo {
   transform: scale(1.04);
-  box-shadow: 0 0 28px rgba(198, 161, 91, 0.5), 0 6px 18px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 28px rgba(221, 176, 122, 0.5), 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
 .site-header__identity {
@@ -79,10 +79,10 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   white-space: nowrap;
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F0 40%, #F3E4C8 70%, #C6A15B 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 40%, #F5C3B5 75%, #DDB07A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
   display: block;
 }
 
@@ -93,7 +93,7 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold-light);
-  opacity: 0.9;
+  opacity: 0.95;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -107,7 +107,7 @@
 
 .site-header__dot {
   font-size: 0.45rem;
-  color: var(--gold-antique);
+  color: var(--gold-accent);
   opacity: 0.85;
 }
 
@@ -115,8 +115,8 @@
 .site-header__gold-line {
   position: relative;
   height: 2px;
-  background: linear-gradient(90deg, transparent 0%, var(--gold-antique) 25%, var(--gold-pale) 50%, var(--gold-antique) 75%, transparent 100%);
-  opacity: 0.85;
+  background: linear-gradient(90deg, transparent 0%, var(--gold-accent) 25%, #FDEBE7 50%, var(--gold-accent) 75%, transparent 100%);
+  opacity: 0.9;
 }
 
 .site-header__gold-line-inner {
@@ -130,7 +130,7 @@
   transform: translate(-50%, -50%);
   font-size: 0.55rem;
   color: var(--gold-light);
-  background-color: var(--burgundy-dark);
+  background-color: #433533;
   padding: 0 0.4rem;
   line-height: 1;
 }
@@ -165,4 +165,5 @@
     white-space: nowrap;
   }
 }
+
 

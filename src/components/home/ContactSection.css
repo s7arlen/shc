@@ -1,5 +1,9 @@
+/* ============================================
+   CONTACT SECTION — Option 41: Light Coral + Ivory + Gold
+   ============================================ */
+
 .contact-form-card {
-  background: var(--warm-white);
+  background: var(--bg-ivory);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
   padding: 3rem;
@@ -11,7 +15,7 @@
 .contact-form-card__title {
   font-family: var(--font-serif);
   font-size: 1.8rem;
-  color: var(--brown-primary);
+  color: #5A4947;
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -26,6 +30,7 @@
   margin-bottom: 1.5rem;
 }
 
+/* Keep green/red for form feedback — semantic colors */
 .contact-status--success {
   background: rgba(46, 125, 50, 0.1);
   color: #2e7d32;
@@ -61,7 +66,7 @@
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.05em;
-  color: var(--brown-primary);
+  color: #5A4947;
 }
 
 .contact-form__group input,
@@ -69,7 +74,7 @@
   padding: 0.75rem 1rem;
   border: 1px solid var(--border-beige);
   border-radius: var(--radius-sm);
-  background: var(--warm-white);
+  background: var(--bg-ivory);
   font-size: 0.9rem;
   color: var(--text-dark);
   transition: border-color var(--transition-fast);

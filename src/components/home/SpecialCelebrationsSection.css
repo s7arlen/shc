@@ -1,9 +1,13 @@
+﻿/* ============================================
+   SPECIAL CELEBRATIONS SECTION — Option 41
+   ============================================ */
+
 .celebrations__banner {
   position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--border-gold);
-  box-shadow: var(--shadow-strong);
+  border: 1.5px solid rgba(221, 176, 122, 0.45);
+  box-shadow: 0 12px 40px rgba(90, 73, 71, 0.15);
   min-height: 440px;
   display: flex;
   align-items: center;
@@ -22,9 +26,9 @@
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(36, 19, 13, 0.95) 0%,
-    rgba(36, 19, 13, 0.85) 60%,
-    rgba(36, 19, 13, 0.4) 100%
+    rgba(90, 73, 71, 0.95) 0%,
+    rgba(90, 73, 71, 0.86) 60%,
+    rgba(67, 53, 51, 0.5) 100%
   );
 }
 
@@ -38,9 +42,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(201, 164, 92, 0.2);
-  border: 1px solid var(--gold-antique);
-  color: var(--gold-light);
+  background: rgba(221, 176, 122, 0.2);
+  border: 1px solid #DDB07A;
+  color: #E8C59A;
   font-family: var(--font-sans);
   font-size: 0.68rem;
   font-weight: 700;
@@ -54,15 +58,15 @@
 .celebrations__title {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--gold-light);
+  color: #FFFDF9;
   line-height: 1.15;
   margin-bottom: 1rem;
 }
 
 .celebrations__text {
   font-size: 0.95rem;
-  color: var(--cream);
-  opacity: 0.9;
+  color: #FFFDF9;
+  opacity: 0.92;
   line-height: 1.75;
   margin-bottom: 1.75rem;
 }
@@ -79,12 +83,12 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;
-  color: var(--gold-pale);
+  color: #F8EFE4;
   font-weight: 500;
 }
 
 .celebrations__icon {
-  color: var(--gold-antique);
+  color: #DDB07A;
 }
 
 @media (max-width: 768px) {
@@ -92,6 +96,6 @@
     padding: 2.5rem 1.5rem;
   }
   .celebrations__overlay {
-    background: rgba(36, 19, 13, 0.9);
+    background: rgba(90, 73, 71, 0.92);
   }
 }

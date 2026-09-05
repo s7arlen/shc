@@ -1,107 +1,106 @@
-.parish-videos__featured {
-  background: var(--cream);
+/* =============================
+   VIDEO SECTION – Thodambila Church
+   Visual theme: Option 41 – Light Coral + Ivory + Gold
+   ============================= */
+
+/* Root variables are defined in global.css. This file uses those variables for colors. */
+
+.video-section {
+  background-color: var(--bg-ivory);
+  padding: 4rem 0;
+  position: relative;
+}
+
+.video-section__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: var(--text-main);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.video-section__description {
+  font-size: 0.94rem;
+  color: var(--text-body);
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+.video-section__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.video-card {
+  background: var(--bg-ivory);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
   box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.parish-videos__player-container {
-  position: relative;
-  min-height: 320px;
-  background: var(--brown-deep);
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-med);
 }
 
-.parish-videos__thumbnail {
+.video-card__thumb {
   width: 100%;
-  height: 100%;
+  height: 180px;
   background-size: cover;
   background-position: center;
-  position: relative;
+  border-bottom: 1px solid var(--border-gold);
 }
 
-.parish-videos__play-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(36, 19, 13, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.parish-videos__play-btn {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold-antique), var(--gold-light));
-  color: var(--brown-deep);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 30px rgba(201, 164, 92, 0.6);
-  transition: transform var(--transition-med), box-shadow var(--transition-med);
-  padding-left: 4px;
-}
-
-.parish-videos__play-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 40px rgba(201, 164, 92, 0.8);
-}
-
-.parish-videos__duration-badge {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(0, 0, 0, 0.75);
-  color: var(--gold-light);
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-sm);
-}
-
-.parish-videos__meta {
-  padding: 2.5rem;
+.video-card__info {
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 0.5rem;
 }
 
-.parish-videos__date {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-antique);
-  margin-bottom: 0.4rem;
-}
-
-.parish-videos__title {
+.video-card__title {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
-  color: var(--brown-primary);
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  color: var(--text-main);
+  margin: 0;
 }
 
-.parish-videos__desc {
-  font-size: 0.9rem;
-  color: var(--text-body);
-  line-height: 1.65;
-  margin-bottom: 1.5rem;
+.video-card__excerpt {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex: 1;
 }
 
-@media (max-width: 860px) {
-  .parish-videos__featured {
+.video-card__cta {
+  margin-top: 0.75rem;
+  text-align: right;
+}
+
+.video-card__cta a {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-fast);
+}
+
+.video-card__cta a:hover {
+  border-color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .video-section__grid {
     grid-template-columns: 1fr;
   }
-  .parish-videos__player-container {
-    height: 260px;
-  }
-  .parish-videos__meta {
-    padding: 1.75rem;
+  .video-card__thumb {
+    height: 200px;
   }
 }

@@ -1,44 +1,55 @@
 /* ================================================================
    GLOBAL CSS — Sacred Heart of Jesus Church, Thodambila
-   Palette: Ivory (#FAF7F0) | Burgundy (#7A1F2B)
-   Dark Burgundy (#35151B) | Antique Gold (#C6A15B)
-   Main Text (#2B2927) | Secondary Cream (#F2EDE3)
-   ============================================ */
+   OPTION 41: LIGHT CORAL + IVORY + GOLD
+   Palette:
+   Ivory (#FFFDF9) | Light Coral (#FDEBE7) | Coral (#F5C3B5)
+   Gold (#DDB07A) | Dark Brown (#5A4947)
+   ================================================================ */
 
 /* ---- Design Tokens ---- */
 :root {
-  /* Color Palette — OPTION 20: ROYAL BLUE + IVORY + GOLD */
-  --bg-ivory: #FAF8F1;
-  --royal-blue: #173F6B;
-  --blue-secondary: #315F8A;
-  --gold-accent: #C5A15B;
-  --deep-blue: #172536;
+  /* Primary Option 41 Palette */
+  --bg-ivory: #FFFDF9;            /* Main background (~60%) */
+  --coral-light: #FDEBE7;         /* Soft section background (~15%) */
+  --coral-accent: #F5C3B5;        /* Secondary accent & subtle borders (~10%) */
+  --gold-accent: #DDB07A;         /* Premium gold accent (~5%) */
+  --text-main: #5A4947;           /* Primary text / headings / dark contrast (~10%) */
 
-  --burgundy-primary: #173F6B;   /* Royal Blue brand */
-  --burgundy-dark: #172536;      /* Deep Blue dark areas */
-  --burgundy-light: #315F8A;     /* Blue secondary accent */
-  --gold-antique: #C5A15B;       /* Gold premium accent */
-  --gold-light: #D8B875;
-  --gold-pale: #F5E9D1;
-  --text-main: #172536;          /* Deep Blue body text */
-  --text-muted: #315F8A;
-  --text-light: #5A7B9D;
-  --cream-secondary: #F4F0E4;
-  --cream-soft: #FAF8F1;
+  /* Extended Tonal Variants */
+  --coral-soft: #FDEBE7;
+  --coral-muted: #F5C3B5;
+  --coral-deep: #E8A898;
+  --gold-primary: #DDB07A;
+  --gold-light: #E8C59A;
+  --gold-pale: #F8EFE4;
+  --dark-brown: #5A4947;
+  --dark-brown-deep: #433533;
+  --text-muted: #857371;
+  --text-light: #A3918F;
+  --cream-secondary: #FDEBE7;
+  --cream-soft: #FFFDF9;
   --white: #FFFFFF;
 
   /* Backward Compatibility Aliases */
-  --brown-primary: var(--royal-blue);
-  --brown-deep: var(--deep-blue);
-  --brown-muted: var(--blue-secondary);
-  --cream: var(--cream-secondary);
+  --burgundy-primary: #5A4947;   /* Dark Brown primary heading */
+  --burgundy-dark: #433533;      /* Dark Brown deep contrast */
+  --burgundy-light: #857371;     /* Muted text */
+  --gold-antique: #DDB07A;       /* Gold premium accent */
+  --royal-blue: #5A4947;         /* Alias mapped to Dark Brown */
+  --deep-blue: #433533;          /* Alias mapped to Dark Brown Deep */
+  --blue-secondary: #857371;
+  --brown-primary: var(--dark-brown);
+  --brown-deep: var(--dark-brown-deep);
+  --brown-muted: var(--text-muted);
+  --cream: var(--coral-light);
   --warm-white: var(--bg-ivory);
 
   /* Borders */
-  --border-gold: rgba(197, 161, 91, 0.35);
-  --border-burgundy: rgba(23, 63, 107, 0.2);
-  --border-cream: rgba(244, 240, 228, 0.8);
-  --border-subtle: rgba(23, 37, 54, 0.08);
+  --border-gold: rgba(221, 176, 122, 0.45);
+  --border-coral: rgba(245, 195, 181, 0.55);
+  --border-cream: rgba(245, 195, 181, 0.35);
+  --border-subtle: rgba(90, 73, 71, 0.1);
+  --border-burgundy: rgba(90, 73, 71, 0.18);
 
   /* Typography */
   --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
@@ -54,11 +65,12 @@
   --transition-med: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transition-fast: 0.2s ease;
 
-  /* Shadows */
-  --shadow-subtle: 0 4px 20px rgba(23, 37, 54, 0.05);
-  --shadow-soft: 0 8px 30px rgba(23, 37, 54, 0.08);
-  --shadow-med: 0 12px 40px rgba(23, 37, 54, 0.12);
-  --shadow-gold: 0 0 25px rgba(197, 161, 91, 0.25);
+  /* Shadows (Soft & Subtle) */
+  --shadow-subtle: 0 4px 20px rgba(90, 73, 71, 0.05);
+  --shadow-soft: 0 8px 30px rgba(90, 73, 71, 0.07);
+  --shadow-med: 0 12px 40px rgba(90, 73, 71, 0.1);
+  --shadow-gold: 0 0 25px rgba(221, 176, 122, 0.25);
+  --shadow-coral: 0 4px 20px rgba(245, 195, 181, 0.25);
 
   /* Border Radius */
   --radius-sm: 6px;
@@ -292,70 +304,72 @@ p {
   white-space: nowrap;
 }
 
-/* Primary Burgundy Button */
+/* Primary Gold CTA Button */
 .btn--primary {
-  background-color: var(--burgundy-primary);
-  color: var(--bg-ivory);
-  border: 1.5px solid var(--burgundy-primary);
-  box-shadow: 0 4px 16px rgba(122, 31, 43, 0.2);
+  background-color: var(--gold-accent);
+  color: var(--dark-brown);
+  border: 1.5px solid var(--gold-accent);
+  box-shadow: 0 4px 16px rgba(221, 176, 122, 0.25);
+  font-weight: 700;
 }
 
 .btn--primary:hover {
-  background-color: var(--burgundy-dark);
-  border-color: var(--gold-antique);
-  color: var(--gold-light);
+  background-color: var(--coral-accent);
+  border-color: var(--coral-accent);
+  color: var(--dark-brown);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(53, 21, 27, 0.25);
+  box-shadow: 0 8px 24px rgba(245, 195, 181, 0.35);
 }
 
 /* Secondary / Outline Button */
 .btn--outline {
   background: transparent;
-  color: var(--burgundy-primary);
-  border: 1.5px solid var(--gold-antique);
+  color: var(--dark-brown);
+  border: 1.5px solid var(--dark-brown);
 }
 
 .btn--outline:hover {
-  background-color: var(--burgundy-primary);
-  color: var(--gold-light);
-  border-color: var(--burgundy-primary);
+  background-color: var(--coral-light);
+  color: var(--dark-brown);
+  border-color: var(--dark-brown);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(122, 31, 43, 0.18);
+  box-shadow: 0 6px 20px rgba(90, 73, 71, 0.1);
 }
 
 /* Outline Light Button */
 .btn--outline-light {
   background: transparent;
   color: var(--bg-ivory);
-  border: 1.5px solid rgba(198, 161, 91, 0.7);
+  border: 1.5px solid rgba(221, 176, 122, 0.8);
 }
 
 .btn--outline-light:hover {
-  background-color: rgba(198, 161, 91, 0.18);
-  border-color: var(--gold-light);
-  color: var(--gold-light);
+  background-color: rgba(221, 176, 122, 0.2);
+  border-color: var(--gold-accent);
+  color: var(--gold-accent);
   transform: translateY(-2px);
 }
 
 /* Gold Accent Button */
 .btn--gold {
-  background: linear-gradient(135deg, var(--gold-antique), var(--gold-light));
-  color: var(--burgundy-dark);
+  background: linear-gradient(135deg, var(--gold-accent), var(--gold-light));
+  color: var(--dark-brown);
   border: none;
   font-weight: 700;
+  box-shadow: 0 4px 16px rgba(221, 176, 122, 0.25);
 }
 
 .btn--gold:hover {
-  background: linear-gradient(135deg, var(--gold-light), var(--gold-antique));
+  background: linear-gradient(135deg, var(--coral-accent), var(--gold-accent));
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(198, 161, 91, 0.35);
+  box-shadow: 0 8px 24px rgba(245, 195, 181, 0.35);
 }
 
 /* ---- Cards Base ---- */
 .card {
-  background: var(--white);
+  background: var(--bg-ivory);
   border-radius: var(--radius-md);
-  border: 1px solid var(--border-cream);
+  border: 1px solid var(--border-coral);
   box-shadow: var(--shadow-subtle);
   overflow: hidden;
   transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
@@ -377,11 +391,12 @@ p {
 .page-hero {
   min-height: 320px;
   padding: 3.5rem 0;
-  background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy-primary) 100%);
+  background: linear-gradient(135deg, #5A4947 0%, #433533 100%);
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
+  border-bottom: 2px solid var(--gold-accent);
 }
 
 .page-hero::before {
@@ -389,7 +404,7 @@ p {
   position: absolute;
   inset: 0;
   background: url('/images/hero-exterior.jpg') center/cover no-repeat;
-  opacity: 0.15;
+  opacity: 0.18;
 }
 
 .page-hero__content {
@@ -405,7 +420,7 @@ p {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold-antique);
+  color: var(--gold-accent);
   margin-bottom: 0.5rem;
 }
 
@@ -425,25 +440,27 @@ p {
   margin-top: 0.9rem;
   font-size: 0.8rem;
   color: var(--gold-light);
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* ---- Swiper Carousel Customization ---- */
 .swiper-button-next,
 .swiper-button-prev {
-  color: var(--gold-light) !important;
-  background: rgba(53, 21, 27, 0.65);
+  color: var(--dark-brown) !important;
+  background: rgba(255, 253, 249, 0.85);
   width: 48px !important;
   height: 48px !important;
   border-radius: 50%;
-  border: 1px solid rgba(198, 161, 91, 0.4);
+  border: 1px solid rgba(221, 176, 122, 0.5);
   transition: all var(--transition-med);
+  backdrop-filter: blur(8px);
 }
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  background: var(--burgundy-primary);
-  border-color: var(--gold-antique);
+  background: var(--gold-accent);
+  border-color: var(--gold-accent);
+  color: var(--dark-brown);
   transform: scale(1.05);
 }
 
@@ -454,13 +471,13 @@ p {
 }
 
 .swiper-pagination-bullet {
-  background: rgba(198, 161, 91, 0.4) !important;
+  background: rgba(221, 176, 122, 0.5) !important;
   width: 8px !important;
   height: 8px !important;
 }
 
 .swiper-pagination-bullet-active {
-  background: var(--gold-antique) !important;
+  background: var(--gold-accent) !important;
   width: 28px !important;
   border-radius: 4px !important;
 }
@@ -468,13 +485,13 @@ p {
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar { width: 7px; }
 ::-webkit-scrollbar-track { background: var(--bg-ivory); }
-::-webkit-scrollbar-thumb { background: var(--burgundy-primary); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--burgundy-dark); }
+::-webkit-scrollbar-thumb { background: var(--gold-accent); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--dark-brown); }
 
 /* ---- Selection ---- */
 ::selection {
-  background: rgba(198, 161, 91, 0.28);
-  color: var(--burgundy-dark);
+  background: rgba(245, 195, 181, 0.4);
+  color: var(--dark-brown);
 }
 
 /* ---- Responsive Utilities ---- */

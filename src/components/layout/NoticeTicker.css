@@ -1,12 +1,13 @@
 /* ============================================
    NOTICE TICKER — Right-to-Left scrolling bar
+   Option 41: Light Coral + Ivory + Gold
    ============================================ */
 
 .notice-ticker {
   display: flex;
   align-items: center;
   background-color: var(--bg-ivory);
-  border-bottom: 1px solid rgba(198, 161, 91, 0.35);
+  border-bottom: 1px solid rgba(221, 176, 122, 0.35);
   height: 36px;
   overflow: hidden;
   position: sticky;
@@ -22,15 +23,14 @@
   gap: 6px;
   padding: 0 1rem 0 1.25rem;
   height: 100%;
-  background: var(--burgundy-primary);
-  color: var(--bg-ivory);
+  background: #5A4947;
+  color: #FFFDF9;
   font-family: var(--font-sans);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   white-space: nowrap;
-  /* Diagonal right edge */
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
   padding-right: 1.6rem;
 }
@@ -49,19 +49,18 @@
   50%       { opacity: 0.4; transform: scale(0.7); }
 }
 
-/* Track wrapper — clips overflow */
+/* Track wrapper */
 .notice-ticker__track-wrapper {
   flex: 1;
   overflow: hidden;
   height: 100%;
   display: flex;
   align-items: center;
-  /* Subtle fade-out on left edge after the badge */
   mask-image: linear-gradient(to right, transparent 0%, black 3%, black 95%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 95%, transparent 100%);
 }
 
-/* Scrolling list — CSS animation drives the scroll */
+/* Scrolling list */
 .notice-ticker__track {
   display: flex;
   align-items: center;
@@ -95,8 +94,8 @@
   display: inline-block;
   padding: 1px 7px;
   border-radius: 20px;
-  background: rgba(198, 161, 91, 0.15);
-  border: 1px solid rgba(198, 161, 91, 0.4);
+  background: rgba(221, 176, 122, 0.15);
+  border: 1px solid rgba(221, 176, 122, 0.4);
   font-family: var(--font-sans);
   font-size: 0.6rem;
   font-weight: 700;
@@ -118,7 +117,7 @@
 }
 
 .notice-ticker__text:hover {
-  color: var(--burgundy-primary);
+  color: #5A4947;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -131,7 +130,6 @@
   margin: 0 0.75rem;
 }
 
-/* Responsive — keep visible but reduce height */
 @media (max-width: 640px) {
   .notice-ticker {
     height: 32px;

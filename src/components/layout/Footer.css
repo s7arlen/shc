@@ -1,12 +1,12 @@
-/* ============================================
-   MINIMAL FOOTER — Deep Blue (#172536)
+﻿/* ============================================
+   MINIMAL FOOTER — Option 41 (Dark Brown #5A4947 & Gold #DDB07A)
    ============================================ */
 
 .footer {
-  background-color: #172536;
-  color: #FAF8F1;
+  background-color: #5A4947;
+  color: #FFFDF9;
   padding: 3.5rem 0 2rem;
-  border-top: 1px solid rgba(197, 161, 91, 0.35);
+  border-top: 1.5px solid rgba(221, 176, 122, 0.45);
   position: relative;
   overflow: hidden;
 }
@@ -34,14 +34,15 @@
   object-fit: contain;
   margin-bottom: 0.75rem;
   border-radius: 50%;
-  filter: drop-shadow(0 0 6px rgba(198, 161, 91, 0.35));
+  filter: drop-shadow(0 0 8px rgba(221, 176, 122, 0.4));
+  border: 1.5px solid rgba(221, 176, 122, 0.6);
 }
 
 .footer__title {
   font-family: var(--font-serif);
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--bg-ivory);
+  color: #FFFDF9;
   letter-spacing: 0.02em;
   line-height: 1.2;
   margin-bottom: 0.3rem;
@@ -53,8 +54,8 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold-antique);
-  opacity: 0.9;
+  color: #DDB07A;
+  opacity: 0.95;
 }
 
 /* Horizontal Nav Links */
@@ -73,12 +74,12 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(250, 247, 240, 0.82);
+  color: rgba(255, 253, 249, 0.9);
   transition: color var(--transition-fast);
 }
 
 .footer__nav a:hover {
-  color: var(--gold-light);
+  color: #DDB07A;
 }
 
 /* Social Links */
@@ -96,16 +97,16 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(198, 161, 91, 0.1);
-  border: 1px solid rgba(198, 161, 91, 0.28);
-  color: var(--gold-light);
+  background: rgba(221, 176, 122, 0.12);
+  border: 1px solid rgba(221, 176, 122, 0.35);
+  color: #DDB07A;
   transition: all var(--transition-fast);
 }
 
 .footer__social-link:hover {
-  background: var(--burgundy-primary);
-  border-color: var(--gold-antique);
-  color: var(--bg-ivory);
+  background: #DDB07A;
+  border-color: #DDB07A;
+  color: #5A4947;
   transform: translateY(-2px);
 }
 
@@ -114,7 +115,7 @@
   width: 100%;
   max-width: 500px;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(198, 161, 91, 0.35) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(221, 176, 122, 0.45) 50%, transparent 100%);
   margin-bottom: 1.75rem;
 }
 
@@ -130,42 +131,42 @@
 
 .footer__copyright {
   font-size: 0.76rem;
-  color: rgba(250, 247, 240, 0.65);
+  color: rgba(255, 253, 249, 0.7);
 }
 
 .footer__credit {
   font-size: 0.76rem;
-  color: rgba(250, 247, 240, 0.75);
+  color: #FDEBE7;
 }
 
 .footer__credit-brand {
   font-weight: 700;
-  color: var(--gold-antique);
+  color: #DDB07A;
   letter-spacing: 0.04em;
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(198, 161, 91, 0.4);
+  text-decoration-color: rgba(221, 176, 122, 0.5);
   transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
 }
 
 .footer__credit-brand:hover {
-  color: var(--gold-light);
-  text-decoration-color: var(--gold-light);
+  color: #FFFDF9;
+  text-decoration-color: #FFFDF9;
 }
 
-/* Responsive */
-@media (max-width: 640px) {
+/* Mobile Adjustments */
+@media (max-width: 768px) {
   .footer {
-    padding: 2.75rem 0 1.5rem;
+    padding: 2.5rem 0 2rem;
   }
 
   .footer__nav {
-    gap: 1rem 1.25rem;
+    gap: 1.25rem 1rem;
   }
 
   .footer__bottom {
     flex-direction: column;
     text-align: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
   }
 }

@@ -10,7 +10,7 @@
 .lightbox__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(18, 9, 6, 0.92);
+  background: rgba(67, 53, 51, 0.92);
   backdrop-filter: blur(8px);
 }
 
@@ -43,7 +43,7 @@
 .lightbox__caption {
   margin-top: 0.75rem;
   text-align: center;
-  color: var(--cream);
+  color: #FFFDF9;
 }
 
 .lightbox__caption h3 {
@@ -64,7 +64,7 @@
   top: -45px;
   right: 0;
   color: var(--gold-light);
-  background: rgba(36, 19, 13, 0.6);
+  background: rgba(90, 73, 71, 0.6);
   border: 1px solid var(--border-gold);
   border-radius: 50%;
   width: 40px;
@@ -77,7 +77,7 @@
 
 .lightbox__close-btn:hover {
   background: var(--gold-antique);
-  color: var(--brown-deep);
+  color: #5A4947;
 }
 
 .lightbox__nav-btn {
@@ -85,7 +85,7 @@
   top: 50%;
   transform: translateY(-50%);
   color: var(--gold-light);
-  background: rgba(36, 19, 13, 0.7);
+  background: rgba(90, 73, 71, 0.7);
   border: 1px solid var(--border-gold);
   border-radius: 50%;
   width: 48px;
@@ -99,7 +99,7 @@
 
 .lightbox__nav-btn:hover {
   background: var(--gold-antique);
-  color: var(--brown-deep);
+  color: #5A4947;
 }
 
 .lightbox__nav-btn--prev { left: -60px; }
