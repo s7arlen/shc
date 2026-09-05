@@ -1,13 +1,18 @@
-﻿/* ============================================
+/* ============================================
    MOBILE BOTTOM NAVIGATION — Option 41 (Light Coral + Ivory + Gold)
    Appears at <=1080px (matches Navbar.css breakpoint)
    ============================================ */
 
 /* Hidden by default on desktop screen sizes */
-.mobile-bottom-nav,
+.mobile-bottom-nav {
+  display: none !important;
+}
+
+/* Overlay & drawer: use regular (non-!important) hide so framer-motion
+   inline styles can override them during animation */
 .mobile-sheet__overlay,
 .mobile-sheet__drawer {
-  display: none !important;
+  display: none;
 }
 
 /* ──────────────────────────────────────────────
@@ -175,7 +180,6 @@
      ============================================ */
 
   .mobile-sheet__overlay {
-    display: block !important;
     position: fixed !important;
     inset: 0 !important;
     z-index: 9500 !important;
@@ -185,7 +189,6 @@
   }
 
   .mobile-sheet__drawer {
-    display: flex !important;
     flex-direction: column !important;
     position: fixed !important;
     bottom: 0 !important;
