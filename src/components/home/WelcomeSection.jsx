@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Shield } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import './WelcomeSection.css';
 
 const WelcomeSection = () => {
@@ -57,13 +57,6 @@ const WelcomeSection = () => {
                 aria-label="Sacred Heart of Jesus Church Thodambila exterior"
               />
               <div className="welcome__gold-border" aria-hidden="true" />
-              <div className="welcome__badge">
-                <Shield size={16} className="welcome__badge-icon" />
-                <div>
-                  <span className="welcome__badge-title">Diocese of Mangalore</span>
-                  <span className="welcome__badge-sub">Established Community</span>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>

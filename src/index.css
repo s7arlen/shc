@@ -1,6 +1,9 @@
 /* Minimal base reset — all design tokens and layout are in global.css */
+html,
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 #root {

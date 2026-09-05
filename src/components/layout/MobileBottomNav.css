@@ -24,15 +24,15 @@
   .mobile-bottom-nav {
     display: block !important;
     position: fixed !important;
-    bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
+    bottom: 0 !important;
     width: 100% !important;
     max-width: none !important;
     height: auto !important;
     min-height: 62px !important;
 
-    z-index: 9000 !important;
+    z-index: 9999 !important;
 
     /* Option 41: Pure Ivory base with subtle backdrop filter */
     background: #FFFDF9 !important;
@@ -44,7 +44,8 @@
     border-top: 1.5px solid rgba(245, 195, 181, 0.75) !important;
     box-shadow: 0 -4px 20px rgba(90, 73, 71, 0.08) !important;
 
-    /* Safe area support for iPhone home indicator */
+    /* Safe area support for Android gesture navigation & iPhone home indicator */
+    -webkit-padding-bottom: env(safe-area-inset-bottom, 0px) !important;
     padding-bottom: env(safe-area-inset-bottom, 0px) !important;
     margin: 0 !important;
     box-sizing: border-box !important;
@@ -180,7 +181,7 @@
   .mobile-sheet__overlay {
     position: fixed !important;
     inset: 0 !important;
-    z-index: 9500 !important;
+    z-index: 10000 !important;
     background: rgba(90, 73, 71, 0.55) !important;
     backdrop-filter: blur(6px) !important;
     -webkit-backdrop-filter: blur(6px) !important;
@@ -194,7 +195,7 @@
     right: 0 !important;
     width: 100% !important;
     max-height: 84dvh !important;
-    z-index: 9999 !important;
+    z-index: 10001 !important;
 
     background: #FFFDF9 !important;
     border-top: 2px solid #DDB07A !important;
