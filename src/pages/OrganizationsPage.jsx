@@ -176,35 +176,13 @@ const OrganizationsList = () => {
             >
               <div className="org-card__image-wrap">
                 <OrgCardImage src={org.image} alt={org.name} category={org.category} />
-                {org.category && (
-                  <span className="org-card__badge">{org.category}</span>
-                )}
               </div>
 
               <div className="org-card__body">
                 {org.konkaniName && (
                   <span className="org-card__eyebrow">{org.konkaniName}</span>
                 )}
-                <h3 className="org-card__title">{org.name}</h3>
-                <p className="org-card__desc">{org.description}</p>
-
-                <div className="org-card__footer">
-                  {org.meetingDay ? (
-                    <span className="org-card__meta-pill" title={org.meetingDay}>
-                      <Clock size={13} />
-                      <span>{org.meetingDay.split(' at ')[0].replace('after Morning Mass', '').replace('after 7:30 AM Mass', '')}</span>
-                    </span>
-                  ) : (
-                    <span className="org-card__meta-pill">
-                      <Users size={13} />
-                      <span>Active Committee</span>
-                    </span>
-                  )}
-                  <span className="org-card__link">
-                    <span>View Details</span>
-                    <ArrowRight size={13} className="org-card__arrow" />
-                  </span>
-                </div>
+                <h3 className="org-card__title" style={{ marginBottom: 0 }}>{org.name}</h3>
               </div>
             </Link>
           ))}

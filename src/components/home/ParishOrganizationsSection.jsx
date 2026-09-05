@@ -45,11 +45,7 @@ const ParishOrganizationsSection = () => {
                     <Icon size={24} className="org-minimal-card__icon" />
                   </div>
                   <div className="org-minimal-card__content">
-                    <h3 className="org-minimal-card__title">{org.name}</h3>
-                    <p className="org-minimal-card__desc">{org.description}</p>
-                    <span className="org-minimal-card__link">
-                      Explore Ministry <ArrowRight size={14} className="org-minimal-card__arrow" />
-                    </span>
+                    <h3 className="org-minimal-card__title" style={{ margin: 0 }}>{org.name}</h3>
                   </div>
                   <div className="org-minimal-card__gold-accent" aria-hidden="true" />
                 </Link>

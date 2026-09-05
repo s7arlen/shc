@@ -1,28 +1,29 @@
 import React from 'react';
+
 import HeroSlider from '../components/home/HeroSlider';
 import WelcomeSection from '../components/home/WelcomeSection';
 import OurPatronessSection from '../components/home/OurPatronessSection';
 import PriestMessageSection from '../components/home/PriestMessageSection';
+import LatestNewsSection from '../components/home/LatestNewsSection';
 import SpecialCelebrationsSection from '../components/home/SpecialCelebrationsSection';
 import GallerySection from '../components/home/GallerySection';
 import MassTimesStrip from '../components/home/MassTimesStrip';
 import LocationSection from '../components/home/LocationSection';
-import LiveParishFeedSection from '../components/home/LiveParishFeedSection';
 
 import './HomePage.css';
 
 /* ================================================================
    HOME PAGE — Clean, Spacious & Focused Layout
-   Sections (in exact requested order):
+   Sections:
    1. Hero Slider
-   2. Welcome to Sacred Heart of Jesus Church, Thodambila (Church introduction)
-   3. Our Patron (Devotion & History highlight)
-   4. Message from Parish Priest (Pastoral greeting)
-   5. Upcoming Events + Latest News (Side-by-side two-column updates)
+   2. Welcome to Sacred Heart of Jesus Church, Thodambila
+   3. Our Patroness
+   4. Message from Parish Priest
+   5. Latest News & Announcements (Dedicated Grid Section)
    6. Special Celebrations (Feast banner)
-   7. Photo Gallery Highlight (6 photos)
-   8. Mass Times Strip (Sits above the map as "Plan Your Visit" info)
-   9. Our Location (Map & Parish Address)
+   7. Photo Gallery Highlight
+   8. Mass Times Strip
+   9. Our Location
 ================================================================ */
 const HomePage = () => {
   return (
@@ -30,28 +31,28 @@ const HomePage = () => {
       {/* 1. Hero Slider */}
       <HeroSlider />
 
-      {/* 2. Welcome to Sacred Heart of Jesus Church, Thodambila (Church introduction) */}
+      {/* 2. Welcome to Sacred Heart of Jesus Church, Thodambila */}
       <WelcomeSection />
 
-      {/* 3. Our Patroness (Devotion & History highlight) */}
+      {/* 3. Our Patroness */}
       <OurPatronessSection />
 
-      {/* 4. Message from Parish Priest (Pastoral greeting) */}
+      {/* 4. Message from Parish Priest */}
       <PriestMessageSection />
 
-      {/* 5. Live Parish Feed (Concept 9: Combined Social Wall Feed) */}
-      <LiveParishFeedSection />
+      {/* 5. Latest News & Announcements */}
+      <LatestNewsSection />
 
-      {/* 6. Special Celebrations (Feast banner) */}
+      {/* 6. Special Celebrations */}
       <SpecialCelebrationsSection />
 
-      {/* 7. Photo Gallery Highlight (6 photos) */}
+      {/* 7. Photo Gallery Highlight */}
       <GallerySection />
 
-      {/* 8. Mass Times Strip (Sits naturally as "Plan Your Visit" info right above the map) */}
+      {/* 8. Mass Times Strip */}
       <MassTimesStrip />
 
-      {/* 9. Our Location (Map & Parish Address) */}
+      {/* 9. Our Location */}
       <LocationSection />
     </main>
   );
