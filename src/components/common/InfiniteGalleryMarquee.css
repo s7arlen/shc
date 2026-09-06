@@ -43,14 +43,12 @@
   50% { opacity: 1; transform: scale(1.25); }
 }
 
-/* Outer Wrapper with Left/Right Fading Edge Masks */
+/* Outer Wrapper */
 .infinite-gallery__wrapper {
   display: flex;
   width: 100%;
   overflow: hidden;
   position: relative;
-  mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
 }
 
 .infinite-gallery__track {

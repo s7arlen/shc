@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    NEWS & ANNOUNCEMENTS SECTION — Option 41
    ============================================ */
 
@@ -140,15 +140,60 @@
   color: #DDB07A;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+/* Responsive & Mobile Touch Swipe Layout */
+@media (max-width: 1024px) and (min-width: 769px) {
   .latest-news__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .latest-news {
+    padding: 3.5rem 0;
+  }
+
   .latest-news__grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.25rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+  }
+
+  .latest-news__grid::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari/Edge */
+  }
+
+  .news-card {
+    flex: 0 0 84vw !important;
+    min-width: 280px !important;
+    max-width: 340px !important;
+    scroll-snap-align: center;
+  }
+
+  .latest-news__swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.75rem;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width: 769px) {
+  .latest-news__swipe-hint {
+    display: none;
   }
 }

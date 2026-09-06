@@ -18,15 +18,8 @@ const LatestNewsSection = () => {
         </div>
 
         <div className="latest-news__grid">
-          {news.slice(0, 3).map((item, index) => (
-            <motion.article
-              key={item.id}
-              className="news-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.1 }}
-            >
+          {news.slice(0, 3).map((item) => (
+            <article key={item.id} className="news-card">
               <div className="news-card__image-container">
                 <div
                   className="news-card__image"
@@ -55,8 +48,13 @@ const LatestNewsSection = () => {
                   </Link>
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
+        </div>
+
+        {/* Mobile Touch Swipe Indicator Hint */}
+        <div className="latest-news__swipe-hint" aria-hidden="true">
+          <span>← Swipe to explore announcements →</span>
         </div>
 
         <div className="latest-news__cta">
