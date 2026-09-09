@@ -105,6 +105,17 @@ const Navbar = () => {
 
   const isActive = (path) => {
     if (path === '/') return location.pathname === '/';
+    // Exact match for paths without dropdowns (e.g. Wards, Contact)
+    const item = navItems.find((n) => n.path === path);
+    if (!item?.dropdown) return location.pathname === path || location.pathname.startsWith(path + '/');
+    // For dropdown parents, match their prefix but exclude any sibling top-level paths
+    // e.g. /parish should NOT be active when on /parish/wards (which is a separate nav item)
+    const siblingPaths = navItems
+      .filter((n) => n.path !== path && !n.dropdown && n.path.startsWith(path))
+      .map((n) => n.path);
+    if (siblingPaths.some((s) => location.pathname === s || location.pathname.startsWith(s + '/'))) {
+      return false;
+    }
     return location.pathname.startsWith(path);
   };
 

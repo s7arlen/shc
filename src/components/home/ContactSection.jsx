@@ -38,13 +38,6 @@ const ContactSection = () => {
   return (
     <section className="contact-section section section--cream" aria-label="Contact Parish Office">
       <div className="container">
-        <div className="section-heading">
-          <h2 className="section-heading__title">Contact Parish Office</h2>
-          <p className="section-heading__subtitle">
-            We welcome your inquiries, intentions, and feedback
-          </p>
-        </div>
-
         <div className="contact-section__grid">
           <motion.div
             className="contact-form-card"

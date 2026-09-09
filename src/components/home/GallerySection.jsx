@@ -34,13 +34,6 @@ const GallerySection = () => {
   return (
     <section className="gallery-section section section--white" aria-label="Photo Gallery">
       <div className="container">
-        <div className="section-heading">
-          <h2 className="section-heading__title">Photo Gallery</h2>
-          <p className="section-heading__subtitle">
-            Capturing sacred moments of prayer, liturgical celebrations, and community fellowship
-          </p>
-        </div>
-
         {/* Auto Horizontal Infinite Loop Gallery (Mobile & Desktop) */}
         <div className="gallery-section__marquee-wrap">
           <InfiniteGalleryMarquee

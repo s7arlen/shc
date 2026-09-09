@@ -1,0 +1,338 @@
+/* ================================================================
+   PATRON & PARISH PRIEST COMBINED SECTION (50/50 LORETTO SPLIT LAYOUT)
+   ================================================================ */
+
+.patron-priest-split {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.patron-priest-split__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  min-height: 520px;
+}
+
+@media (min-width: 992px) {
+  .patron-priest-split__container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ------------------------------------
+   LEFT SIDE: DARK BURGUNDY (PATRON)
+   ------------------------------------ */
+.patron-priest-split__left {
+  background: #35151B;
+  color: #FFFDF9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4.5rem 4rem;
+  position: relative;
+}
+
+.patron-priest-split__inner--left {
+  max-width: 580px;
+  margin-left: auto;
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  .patron-priest-split__left {
+    padding: 3.5rem 2rem;
+  }
+  .patron-priest-split__inner--left {
+    margin-left: 0;
+  }
+}
+
+/* ------------------------------------
+   RIGHT SIDE: SOFT CREAM (PRIEST MESSAGE)
+   ------------------------------------ */
+.patron-priest-split__right {
+  background: #FAF6F0;
+  color: #35151B;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4.5rem 4rem;
+  position: relative;
+}
+
+.patron-priest-split__inner--right {
+  max-width: 580px;
+  margin-right: auto;
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  .patron-priest-split__right {
+    padding: 3.5rem 2rem;
+  }
+  .patron-priest-split__inner--right {
+    margin-right: 0;
+  }
+}
+
+/* Patron Block (Symmetrical Arch Header) */
+.patron-priest-split__patron-block {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.patron-priest-split__patron-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.patron-priest-split__arch-wrap--patron {
+  width: 110px;
+  height: 140px;
+  border-radius: 70px 70px 14px 14px;
+  border: 2.5px solid #C6A15B;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  background: #2B1216;
+}
+
+/* Subtitle & Headings */
+.patron-priest-split__subtitle {
+  display: block;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.patron-priest-split__subtitle--gold {
+  color: #C6A15B;
+}
+
+.patron-priest-split__subtitle--muted {
+  color: #9C7B3C;
+}
+
+.patron-priest-split__title {
+  font-family: var(--font-serif, serif);
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  line-height: 1.2;
+}
+
+.patron-priest-split__title--light {
+  color: #FFFFFF;
+}
+
+.patron-priest-split__title--dark {
+  color: #35151B;
+}
+
+.patron-priest-split__invocation {
+  font-family: var(--font-serif, serif);
+  font-size: 0.82rem;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  color: #C6A15B;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 600;
+}
+
+.patron-priest-split__title-underline {
+  width: 50px;
+  height: 2px;
+  background: #C6A15B;
+  margin-bottom: 2rem;
+}
+
+/* Left Body Text */
+.patron-priest-split__body-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+}
+
+.patron-priest-split__text {
+  font-size: 0.93rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.patron-priest-split__text--kannada {
+  font-family: var(--font-serif, serif);
+  font-size: 0.96rem;
+  color: #FFFDF9;
+  line-height: 1.75;
+}
+
+.patron-priest-split__divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin-bottom: 1.5rem;
+}
+
+/* Feast Row */
+.patron-priest-split__feast-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.patron-priest-split__feast-label {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #C6A15B;
+}
+
+.patron-priest-split__feast-value {
+  font-family: var(--font-serif, serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+/* Right Priest Block */
+.patron-priest-split__priest-block {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.patron-priest-split__arch-wrap {
+  width: 125px;
+  height: 155px;
+  border-radius: 80px 80px 14px 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 3.5px solid #FFFFFF;
+  box-shadow: 0 10px 25px rgba(53, 21, 27, 0.12);
+  background: #172536;
+}
+
+.patron-priest-split__arch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.patron-priest-split__priest-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.patron-priest-split__designation {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9C7B3C;
+  margin-bottom: 0.25rem;
+}
+
+.patron-priest-split__priest-name {
+  font-family: var(--font-serif, serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #35151B;
+  margin: 0 0 0.2rem;
+  line-height: 1.25;
+}
+
+.patron-priest-split__priest-role {
+  font-size: 0.88rem;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Quote Wrap */
+.patron-priest-split__quote-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+
+.patron-priest-split__quote-mark {
+  color: #C6A15B;
+  flex-shrink: 0;
+  opacity: 0.7;
+  margin-top: 0.2rem;
+}
+
+.patron-priest-split__quote-text {
+  font-family: var(--font-serif, serif);
+  font-size: 0.98rem;
+  font-style: italic;
+  color: #475569;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Buttons */
+.patron-priest-split__cta {
+  margin-top: auto;
+}
+
+.patron-priest-split__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.75rem 1.4rem;
+  border-radius: 6px;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  white-space: nowrap;
+}
+
+.patron-priest-split__btn--gold {
+  background: #C6A15B;
+  color: #35151B;
+  box-shadow: 0 4px 12px rgba(198, 161, 91, 0.25);
+}
+
+.patron-priest-split__btn--gold:hover {
+  background: #D8B26B;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(198, 161, 91, 0.35);
+}
+
+.patron-priest-split__btn--outline {
+  background: transparent;
+  border: 1.5px solid #CBD5E1;
+  color: #35151B;
+}
+
+.patron-priest-split__btn--outline:hover {
+  border-color: #35151B;
+  background: rgba(53, 21, 27, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 600px) {
+  .patron-priest-split__patron-block,
+  .patron-priest-split__priest-block {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

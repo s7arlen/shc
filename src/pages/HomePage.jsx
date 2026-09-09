@@ -2,10 +2,8 @@ import React from 'react';
 
 import HeroSlider from '../components/home/HeroSlider';
 import WelcomeSection from '../components/home/WelcomeSection';
-import OurPatronessSection from '../components/home/OurPatronessSection';
-import PriestMessageSection from '../components/home/PriestMessageSection';
+import PatronPriestCombinedSection from '../components/home/PatronPriestCombinedSection';
 import LatestNewsSection from '../components/home/LatestNewsSection';
-import SpecialCelebrationsSection from '../components/home/SpecialCelebrationsSection';
 import GallerySection from '../components/home/GallerySection';
 import MassTimesStrip from '../components/home/MassTimesStrip';
 import LocationSection from '../components/home/LocationSection';
@@ -34,17 +32,11 @@ const HomePage = () => {
       {/* 2. Welcome to Sacred Heart of Jesus Church, Thodambila */}
       <WelcomeSection />
 
-      {/* 3. Our Patroness */}
-      <OurPatronessSection />
-
-      {/* 4. Message from Parish Priest */}
-      <PriestMessageSection />
+      {/* 3. Our Patron & Pastoral Message (Combined Desktop Section) */}
+      <PatronPriestCombinedSection />
 
       {/* 5. Latest News & Announcements */}
       <LatestNewsSection />
-
-      {/* 6. Special Celebrations */}
-      <SpecialCelebrationsSection />
 
       {/* 7. Photo Gallery Highlight */}
       <GallerySection />
