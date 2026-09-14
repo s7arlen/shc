@@ -45,6 +45,32 @@ const PARISH_WARDS = [
   { id: 'infant-jesus', name: 'Infant Jesus Ward', shortName: 'Infant Jesus Ward', konkani: 'ಬಾಳೊಕ್ ಜೆಜು ವಾಡೊ', patron: 'Infant Jesus' }
 ];
 
+const base = import.meta.env.BASE_URL;
+const defaultSiteSettings = {
+  churchName: 'Sacred Heart of Jesus Church',
+  location: 'Thodambila, Bantwal',
+  officePhone: '',
+  tabs: { Home: true, About: true, Parish: true, Wards: true, Organizations: true, 'News & Events': true, Media: true, Contact: true },
+  slides: [
+    {
+      id: 1,
+      label: 'Hero Slide 1',
+      image: `${base}images/hero-exterior.jpg`,
+      eyebrow: 'WELCOME TO THODAMBILA CHURCH',
+      title: 'Welcome to Sacred Heart of Jesus Church',
+      subtitle: 'Sacred Heart of Jesus Church, Thodambila — living out the Gospel in communion and service.'
+    },
+    {
+      id: 2,
+      label: 'Hero Slide 2',
+      image: `${base}images/hero-interior.jpg`,
+      eyebrow: 'A SACRED SANCTUARY',
+      title: 'Encounter Grace & Divine Mercy',
+      subtitle: 'Gather with us for the Holy Sacrifice of the Mass and spiritual renewal in Thodambila.'
+    }
+  ]
+};
+
 function WardSelect({ label = 'Parish Ward', value, change, required = false }) {
   const normVal = (value || '').toLowerCase().trim();
   const isMatch = PARISH_WARDS.some(
