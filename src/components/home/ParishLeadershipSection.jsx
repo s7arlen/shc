@@ -4,7 +4,13 @@ import { leadership } from '../../data/leadership';
 import './ParishLeadershipSection.css';
 
 const ParishLeadershipSection = () => {
-  const team = leadership.parishCouncil;
+  const team = React.useMemo(() => {
+    try {
+      return JSON.parse(localStorage.getItem('thodambila-admin-sections') || '{}')?.council || leadership.parishCouncil;
+    } catch {
+      return leadership.parishCouncil;
+    }
+  }, []);
 
   return (
     <section className="leadership section section--cream" aria-label="Parish Leadership">

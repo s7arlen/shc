@@ -65,7 +65,16 @@ export const OurParishPage = () => {
   );
 };
 
-export const HistoryPage = () => (
+export const HistoryPage = () => {
+  const timeline = React.useMemo(() => {
+    try {
+      return JSON.parse(localStorage.getItem('thodambila-admin-sections') || '{}')?.history || historyTimeline;
+    } catch {
+      return historyTimeline;
+    }
+  }, []);
+
+  return (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
@@ -88,7 +97,7 @@ export const HistoryPage = () => (
         </div>
 
         <div style={{ maxWidth: '850px', margin: '0 auto', position: 'relative' }}>
-          {historyTimeline.map((item, index) => (
+          {timeline.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 20 }}
@@ -122,7 +131,8 @@ export const HistoryPage = () => (
       </div>
     </section>
   </main>
-);
+  );
+};
 
 export const PatronessPage = () => {
   const content = getStudioContent('patroness');

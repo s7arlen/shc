@@ -6,7 +6,13 @@ import { leadership } from '../../data/leadership';
 import './PatronPriestCombinedSection.css';
 
 const PatronPriestCombinedSection = () => {
-  const { parishPriest } = leadership;
+  const parishPriest = React.useMemo(() => {
+    try {
+      return JSON.parse(localStorage.getItem('thodambila-admin-priest') || 'null') || leadership.parishPriest;
+    } catch {
+      return leadership.parishPriest;
+    }
+  }, []);
 
   return (
     <section className="patron-priest-split" aria-label="Our Patron and Pastoral Message">

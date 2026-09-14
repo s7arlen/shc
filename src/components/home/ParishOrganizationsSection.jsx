@@ -19,6 +19,14 @@ const ministryIcons = {
 };
 
 const ParishOrganizationsSection = () => {
+  const orgsList = React.useMemo(() => {
+    try {
+      return JSON.parse(localStorage.getItem('thodambila-admin-organizations') || 'null') || ministries;
+    } catch {
+      return ministries;
+    }
+  }, []);
+
   return (
     <section className="organizations section section--cream" aria-label="Community Ministries and Organizations">
       <div className="container">
@@ -30,7 +38,7 @@ const ParishOrganizationsSection = () => {
         </div>
 
         <div className="organizations__grid">
-          {ministries.map((org, index) => {
+          {orgsList.map((org, index) => {
             const Icon = ministryIcons[org.slug] || Users;
             return (
               <motion.div

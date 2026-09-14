@@ -6,7 +6,13 @@ import { leadership } from '../../data/leadership';
 import './PriestMessageSection.css';
 
 const PriestMessageSection = () => {
-  const { parishPriest } = leadership;
+  const parishPriest = React.useMemo(() => {
+    try {
+      return JSON.parse(localStorage.getItem('thodambila-admin-priest') || 'null') || leadership.parishPriest;
+    } catch {
+      return leadership.parishPriest;
+    }
+  }, []);
 
   return (
     <section className="priest-message section section--white" aria-label="Message from Parish Priest">

@@ -57,7 +57,7 @@ const GallerySection = () => {
         {/* Lightbox Modal */}
         <Lightbox
           isOpen={lightboxIndex !== null}
-          image={lightboxIndex !== null ? galleryImages[lightboxIndex] : null}
+          image={lightboxIndex !== null ? galleryItems[lightboxIndex] : null}
           onClose={handleCloseLightbox}
           onPrev={handlePrev}
           onNext={handleNext}

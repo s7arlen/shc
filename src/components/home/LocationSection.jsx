@@ -4,6 +4,24 @@ import { MapPin, Phone, Mail, Navigation, ExternalLink } from 'lucide-react';
 import './LocationSection.css';
 
 const LocationSection = () => {
+  const site = React.useMemo(() => {
+    try {
+      return JSON.parse(localStorage.getItem('thodambila-admin-settings') || '{}') || {};
+    } catch {
+      return {};
+    }
+  }, []);
+
+  const officeInfo = React.useMemo(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem('thodambila-admin-sections') || '{}')?.office;
+      if (Array.isArray(stored) && stored.length > 0) return stored[0];
+    } catch {
+      // fallback
+    }
+    return null;
+  }, []);
+
   return (
     <section className="location-section section section--white" aria-label="Our Location">
       <div className="container">
@@ -11,7 +29,7 @@ const LocationSection = () => {
           <span className="section-heading__label">Find Us</span>
           <h2 className="section-heading__title">Our Location</h2>
           <p className="section-heading__subtitle">
-            Visit Sacred Heart of Jesus Church in Thodambila, Bantwal
+            Visit {site.churchName || 'Sacred Heart of Jesus Church'} in {site.location || 'Thodambila, Bantwal'}
           </p>
         </div>
 
@@ -46,29 +64,29 @@ const LocationSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="location-info-card">
-              <h3 className="location-info-card__title">Sacred Heart of Jesus Church</h3>
-              <p className="location-info-card__subtitle">Thodambila • Diocese of Mangalore</p>
+              <h3 className="location-info-card__title">{site.churchName || 'Sacred Heart of Jesus Church'}</h3>
+              <p className="location-info-card__subtitle">{site.location || 'Thodambila'} • Diocese of Mangalore</p>
               
               <ul className="location-info-card__list">
                 <li>
                   <MapPin className="location-info-card__icon" />
                   <div>
                     <strong>Address</strong>
-                    <p>Thodambila, Pachinadka, Kallige Post<br />Bantwal Taluk, D.K. — 574219, Karnataka, India</p>
+                    <p>{officeInfo?.content || 'Thodambila, Pachinadka, Kallige Post, Bantwal Taluk, D.K. — 574219, Karnataka, India'}</p>
                   </div>
                 </li>
                 <li>
                   <Phone className="location-info-card__icon" />
                   <div>
                     <strong>Parish Office Phone</strong>
-                    <p>+91 94484 28561</p>
+                    <p>{site.officePhone || officeInfo?.phone || '+91 94484 28561'}</p>
                   </div>
                 </li>
                 <li>
                   <Mail className="location-info-card__icon" />
                   <div>
                     <strong>Email Address</strong>
-                    <p>thodambilashjc@gmail.com</p>
+                    <p>{officeInfo?.email || 'thodambilashjc@gmail.com'}</p>
                   </div>
                 </li>
               </ul>

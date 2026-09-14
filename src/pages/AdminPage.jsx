@@ -162,6 +162,8 @@ export default function AdminPage() {
   const remove = (id) => { const result = news.filter((n) => n.id !== id); setNews(result); localStorage.setItem('thodambila-admin-news', JSON.stringify(result)); toast('News item removed.'); };
   const savePriest = (result) => { setPriest(result); localStorage.setItem('thodambila-admin-priest', JSON.stringify(result)); toast('Parish priest details saved and synchronized.'); };
   const [resetKey, setResetKey] = useState(0);
+  const [galleryItems, setGalleryItems] = useState(() => lsGet('thodambila-admin-gallery', null) || galleryImages);
+  const saveGallery = (result) => { setGalleryItems(result); localStorage.setItem('thodambila-admin-gallery', JSON.stringify(result)); toast('Photo gallery updated successfully.'); };
   const saveOrganizations = (result) => { setOrgs(result); localStorage.setItem('thodambila-admin-organizations', JSON.stringify(result)); toast('Organization details saved successfully.'); };
   const saveSettings = (result) => { setSettings(result); localStorage.setItem('thodambila-admin-settings', JSON.stringify(result)); toast('Site settings saved successfully.'); };
   const saveSection = (key, value) => { const result = { ...editable, [key]: value }; setEditable(result); localStorage.setItem('thodambila-admin-sections', JSON.stringify(result)); toast(`${pages[key]?.[0] || key} saved successfully.`); };
@@ -171,7 +173,9 @@ export default function AdminPage() {
     return <AdminLoginPage password={password} onLogin={handleLogin} />;
   }
 
-  return <div className="loreto-admin"><aside className={`loreto-sidebar ${sidebar ? 'open' : ''}`}><div className="loreto-brand"><img src={`${base}favicon.png`} alt="" /><div><strong>Sacred Heart of<br />Jesus Church</strong><span>ADMIN DASHBOARD</span></div><button onClick={() => setSidebar(false)}><X size={20} /></button></div><div className="loreto-side-scroll"><Sidebar page={page} navigate={navigate} selectedOrg={selectedOrg} orgs={orgs} /></div></aside>{sidebar && <button className="loreto-scrim" onClick={() => setSidebar(false)} aria-label="Close admin menu" />}<main className="loreto-main"><header className="loreto-header"><button className="loreto-menu" onClick={() => setSidebar(true)}><Menu size={23} /></button><h1>{pages[page]?.[0] || page}</h1><div className="loreto-header-actions"><button className="loreto-publish-btn" onClick={() => toast('All saved changes are now published.')}><CloudUpload size={17} /><span>Publish Content</span></button><button className="loreto-header-icon-btn" onClick={() => setModal({ type: 'password' })} title="Change Security Password"><KeyRound size={17} /></button><button className="loreto-header-icon-btn" onClick={() => { localStorage.removeItem('thodambila-admin-news'); localStorage.removeItem('thodambila-admin-priest'); localStorage.removeItem('thodambila-admin-sections'); localStorage.removeItem('thodambila-admin-organizations'); localStorage.removeItem('thodambila-admin-settings'); localStorage.removeItem('thodambila-admin-mass'); setNews(seedNews); setPriest(leadership.parishPriest); setOrgs(ministries); setSettings(defaultSiteSettings); setEditable({}); setResetKey((k) => k + 1); toast('Local admin changes reset.'); }} title="Reset Defaults"><RotateCcw size={17} /></button><button className="loreto-header-icon-btn" onClick={handleLogout} title="Log Out of Admin"><LogOut size={17} /></button><span className="loreto-active"><ShieldCheck size={16} /><span>Admin Active</span></span></div></header><section className="loreto-workspace">{page === 'settings' && <SiteSettings key={resetKey} settings={settings} save={saveSettings} />}{page === 'news' && <News news={filtered} category={category} setCategory={setCategory} search={search} setSearch={setSearch} add={() => setModal({ type: 'news' })} edit={(item) => setModal({ type: 'news', item })} remove={remove} />}{page === 'priest' && <Priest key={resetKey} priest={priest} save={savePriest} />}{page === 'messages' && <PriestMessages key={resetKey} items={editable.messages || defaults.messages} save={(items) => saveSection('messages', items)} />}{page === 'council' && <CouncilManager key={resetKey} items={editable.council || defaults.council} save={(items) => saveSection('council', items)} />}{page === 'office' && <OfficeManager key={resetKey} items={editable.office || defaults.office} save={(items) => saveSection('office', items)} />}{page === 'mass' && <Mass key={resetKey} save={(items) => saveSection('mass', items)} />}{page === 'events' && <EventsManager key={resetKey} items={editable.events || defaults.events} save={(items) => saveSection('events', items)} />}{page === 'newsletter' && <NewsletterManager key={resetKey} items={editable.newsletter || defaults.newsletter} save={(items) => saveSection('newsletter', items)} />}{page === 'obituary' && <ObituaryManager key={resetKey} items={editable.obituary || defaults.obituary} save={(items) => saveSection('obituary', items)} />}{page === 'organizations' && <Organizations key={resetKey} items={orgs} save={saveOrganizations} selectedOrg={selectedOrg} setSelectedOrg={setSelectedOrg} />}{page === 'gallery' && <GalleryManager />}{page === 'wards' && <WardsManager key={resetKey} items={editable.wards || defaults.wards} save={(items) => saveSection('wards', items)} />}{page === 'history' && <HistoryManager key={resetKey} items={editable.history || defaults.history} save={(items) => saveSection('history', items)} />}</section></main>{modal?.type === 'news' && <NewsModal item={modal.item} save={saveNews} close={() => setModal(null)} />}{modal?.type === 'password' && <ChangePasswordModal currentPassword={password} onSave={handleUpdatePassword} close={() => setModal(null)} />}{message && <div className="loreto-toast">{message}</div>}</div>;
+
+  return <div className="loreto-admin"><aside className={`loreto-sidebar ${sidebar ? 'open' : ''}`}><div className="loreto-brand"><img src={`${base}favicon.png`} alt="" /><div><strong>Sacred Heart of<br />Jesus Church</strong><span>ADMIN DASHBOARD</span></div><button onClick={() => setSidebar(false)}><X size={20} /></button></div><div className="loreto-side-scroll"><Sidebar page={page} navigate={navigate} selectedOrg={selectedOrg} orgs={orgs} /></div></aside>{sidebar && <button className="loreto-scrim" onClick={() => setSidebar(false)} aria-label="Close admin menu" />}<main className="loreto-main"><header className="loreto-header"><button className="loreto-menu" onClick={() => setSidebar(true)}><Menu size={23} /></button><h1>{pages[page]?.[0] || page}</h1><div className="loreto-header-actions"><button className="loreto-publish-btn" onClick={() => toast('All saved changes are now published.')}><CloudUpload size={17} /><span>Publish Content</span></button><button className="loreto-header-icon-btn" onClick={() => setModal({ type: 'password' })} title="Change Security Password"><KeyRound size={17} /></button><button className="loreto-header-icon-btn" onClick={() => { localStorage.removeItem('thodambila-admin-news'); localStorage.removeItem('thodambila-admin-priest'); localStorage.removeItem('thodambila-admin-sections'); localStorage.removeItem('thodambila-admin-organizations'); localStorage.removeItem('thodambila-admin-settings'); localStorage.removeItem('thodambila-admin-mass'); localStorage.removeItem('thodambila-admin-gallery'); setNews(seedNews); setPriest(leadership.parishPriest); setOrgs(ministries); setSettings(defaultSiteSettings); setEditable({}); setGalleryItems(galleryImages); setResetKey((k) => k + 1); toast('Local admin changes reset.'); }} title="Reset Defaults"><RotateCcw size={17} /></button><button className="loreto-header-icon-btn" onClick={handleLogout} title="Log Out of Admin"><LogOut size={17} /></button><span className="loreto-active"><ShieldCheck size={16} /><span>Admin Active</span></span></div></header><section className="loreto-workspace">{page === 'settings' && <SiteSettings key={resetKey} settings={settings} save={saveSettings} />}{page === 'news' && <News news={filtered} category={category} setCategory={setCategory} search={search} setSearch={setSearch} add={() => setModal({ type: 'news' })} edit={(item) => setModal({ type: 'news', item })} remove={remove} />}{page === 'priest' && <Priest key={resetKey} priest={priest} save={savePriest} />}{page === 'messages' && <PriestMessages key={resetKey} items={editable.messages || defaults.messages} save={(items) => saveSection('messages', items)} />}{page === 'council' && <CouncilManager key={resetKey} items={editable.council || defaults.council} save={(items) => saveSection('council', items)} />}{page === 'office' && <OfficeManager key={resetKey} items={editable.office || defaults.office} save={(items) => saveSection('office', items)} />}{page === 'mass' && <Mass key={resetKey} save={(items) => saveSection('mass', items)} />}{page === 'events' && <EventsManager key={resetKey} items={editable.events || defaults.events} save={(items) => saveSection('events', items)} />}{page === 'newsletter' && <NewsletterManager key={resetKey} items={editable.newsletter || defaults.newsletter} save={(items) => saveSection('newsletter', items)} />}{page === 'obituary' && <ObituaryManager key={resetKey} items={editable.obituary || defaults.obituary} save={(items) => saveSection('obituary', items)} />}{page === 'organizations' && <Organizations key={resetKey} items={orgs} save={saveOrganizations} selectedOrg={selectedOrg} setSelectedOrg={setSelectedOrg} />}{page === 'gallery' && <GalleryManager key={resetKey} items={galleryItems} save={saveGallery} />}{page === 'wards' && <WardsManager key={resetKey} items={editable.wards || defaults.wards} save={(items) => saveSection('wards', items)} />}{page === 'history' && <HistoryManager key={resetKey} items={editable.history || defaults.history} save={(items) => saveSection('history', items)} />}</section></main>{modal?.type === 'news' && <NewsModal item={modal.item} save={saveNews} close={() => setModal(null)} />}{modal?.type === 'password' && <ChangePasswordModal currentPassword={password} onSave={handleUpdatePassword} close={() => setModal(null)} />}{message && <div className="loreto-toast">{message}</div>}</div>;
+
 }
 
 
@@ -1857,22 +1861,155 @@ function InlineWardForm({ form, setForm, onSave, onCancel, isNew }) {
 }
 
 /* ─── Gallery Manager ─── */
-function GalleryManager() {
+const GALLERY_CATEGORIES = ['Church', 'Feast', 'Liturgy', 'Parish Events', 'Community', 'Youth', 'Other'];
+
+function GalleryManager({ items, save }) {
+  const [photos, setPhotos] = useState(items || []);
+  const [modal, setModal] = useState(null);
+  const [form, setForm] = useState({ id: null, src: '', alt: '', title: '', category: 'Church' });
+  const [preview, setPreview] = useState('');
+  const [filterCat, setFilterCat] = useState('All');
+
+  const openAdd = () => { setForm({ id: null, src: '', alt: '', title: '', category: 'Church' }); setPreview(''); setModal({ mode: 'add' }); };
+  const openEdit = (photo) => { setForm({ id: photo.id, src: photo.src || photo.image || '', alt: photo.alt || '', title: photo.title || '', category: photo.category || 'Church' }); setPreview(photo.src || photo.image || ''); setModal({ mode: 'edit' }); };
+  const closeModal = () => { setModal(null); setForm({ id: null, src: '', alt: '', title: '', category: 'Church' }); setPreview(''); };
+
+  const handleFileUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (!file || !file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = () => { setForm((f) => ({ ...f, src: reader.result })); setPreview(reader.result); };
+    reader.readAsDataURL(file);
+  };
+
+  const handleUrlChange = (url) => { setForm((f) => ({ ...f, src: url })); setPreview(url); };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    if (!form.src) return;
+    const entry = { id: form.id || Date.now(), src: form.src, alt: form.alt || form.title, title: form.title, category: form.category };
+    const next = modal.mode === 'edit'
+      ? photos.map((p) => p.id === entry.id ? entry : p)
+      : [...photos, entry];
+    setPhotos(next);
+    save(next);
+    closeModal();
+  };
+
+  const handleDelete = (id) => {
+    if (!window.confirm('Remove this photo from the gallery?')) return;
+    const next = photos.filter((p) => p.id !== id);
+    setPhotos(next);
+    save(next);
+  };
+
+  const displayed = filterCat === 'All' ? photos : photos.filter((p) => p.category === filterCat);
+  const allCats = ['All', ...GALLERY_CATEGORIES];
+
   return (
     <div className="loreto-card">
-      <div className="loreto-section-head"><div><h2>Photo Gallery Management</h2><p>Gallery images are currently managed via data files. Use the image URL fields to update gallery photos.</p></div></div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1rem', marginTop: '16px' }}>
-        {galleryImages.slice(0, 12).map((img, i) => {
-          const src = typeof img === 'string' ? img : (img.src || img.image || img.url || '');
-          const title = typeof img === 'object' ? (img.title || img.caption || '') : '';
-          return (
-            <div key={i} style={{ borderRadius: '8px', overflow: 'hidden', aspectRatio: '4/3', border: '1px solid var(--line)' }}>
-              <img src={src} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </div>
-          );
-        })}
+      <div className="loreto-section-head">
+        <div>
+          <h2>Photo Gallery</h2>
+          <p>Add, edit, or remove photos shown in the public gallery. Changes are live immediately.</p>
+        </div>
+        <button className="loreto-primary" onClick={openAdd}><Plus size={18} />Add Photo</button>
       </div>
-      {galleryImages.length > 12 && <p style={{ textAlign: 'center', marginTop: '12px', color: 'var(--text-muted)', fontSize: '0.85rem' }}>+{galleryImages.length - 12} more images in gallery</p>}
+
+      <div className="loreto-filter-row" style={{ marginTop: '28px', marginBottom: '16px' }}>
+        <div className="loreto-chips">
+          {allCats.map((c) => (
+            <button key={c} className={filterCat === c ? 'active' : ''} onClick={() => setFilterCat(c)}>{c}</button>
+          ))}
+        </div>
+      </div>
+
+      {displayed.length === 0 ? (
+        <div className="loreto-empty">No photos {filterCat !== 'All' ? `in "${filterCat}" category` : 'yet'}. Click "Add Photo" to upload.</div>
+      ) : (
+        <div className="loreto-gallery-grid">
+          {displayed.map((photo) => {
+            const src = photo.src || photo.image || '';
+            return (
+              <article key={photo.id}>
+                <img src={src} alt={photo.alt || photo.title} />
+                <span>{photo.title || photo.alt || ''}</span>
+                {photo.category && (
+                  <span style={{ position: 'absolute', top: '9px', left: '9px', background: 'rgba(90,73,71,0.88)', color: '#f8efe4', fontSize: '10px', fontWeight: 800, padding: '3px 8px', borderRadius: '20px' }}>
+                    {photo.category}
+                  </span>
+                )}
+                <div style={{ position: 'absolute', top: '9px', right: '9px', display: 'flex', gap: '5px' }}>
+                  <button onClick={() => openEdit(photo)} style={{ background: 'rgba(90,73,71,0.84)', border: 'none', borderRadius: '5px', padding: '6px', display: 'flex', color: '#fff', cursor: 'pointer' }} title="Edit photo">
+                    <Edit3 size={13} />
+                  </button>
+                  <button onClick={() => handleDelete(photo.id)} className="loreto-gallery-delete" title="Delete photo">
+                    <Trash2 size={13} />
+                  </button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      )}
+
+      <p style={{ marginTop: '16px', fontSize: '13px', color: '#9a8880' }}>{photos.length} photo{photos.length !== 1 ? 's' : ''} in gallery</p>
+
+      {modal && (
+        <div className="loreto-modal-layer" onClick={closeModal}>
+          <div className="loreto-modal loreto-modal--long" onClick={(e) => e.stopPropagation()}>
+            <header>
+              <div>
+                <p>PHOTO GALLERY</p>
+                <h2>{modal.mode === 'add' ? 'Add New Photo' : 'Edit Photo'}</h2>
+              </div>
+              <button onClick={closeModal} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9a8880' }}><X size={22} /></button>
+            </header>
+            <form onSubmit={handleSave}>
+              <label className="loreto-upload-button" style={{ marginBottom: '14px', cursor: 'pointer' }}>
+                <CloudUpload size={16} /> Upload Image File
+                <input type="file" accept="image/*" style={{ display: 'none' }} onChange={handleFileUpload} />
+              </label>
+
+              <label className="loreto-field">
+                Or Paste Image URL
+                <input
+                  type="url"
+                  placeholder="https://example.com/photo.jpg"
+                  value={form.src.startsWith('data:') ? '' : form.src}
+                  onChange={(e) => handleUrlChange(e.target.value)}
+                />
+              </label>
+
+              {preview && (
+                <div style={{ marginBottom: '16px', borderRadius: '8px', overflow: 'hidden', maxHeight: '200px', border: '1px solid var(--line)' }}>
+                  <img src={preview} alt="Preview" style={{ width: '100%', maxHeight: '200px', objectFit: 'cover', display: 'block' }} />
+                </div>
+              )}
+
+              <label className="loreto-field">
+                Photo Title *
+                <input required value={form.title} onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))} placeholder="e.g. Parish Feast 2024" />
+              </label>
+              <label className="loreto-field">
+                Alt Text (accessibility)
+                <input value={form.alt} onChange={(e) => setForm((f) => ({ ...f, alt: e.target.value }))} placeholder="Brief description of the photo" />
+              </label>
+              <label className="loreto-field">
+                Category
+                <select value={form.category} onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))} style={{ background: '#fffcf6', textTransform: 'none' }}>
+                  {GALLERY_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
+                </select>
+              </label>
+
+              <footer>
+                <button type="button" onClick={closeModal} style={{ padding: '11px 16px', fontWeight: 700, color: '#625954', background: 'none', border: 'none', cursor: 'pointer' }}>Cancel</button>
+                <button className="loreto-primary" type="submit" disabled={!form.src}><Save size={15} />{modal.mode === 'add' ? 'Add to Gallery' : 'Save Changes'}</button>
+              </footer>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
