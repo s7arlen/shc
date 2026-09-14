@@ -37,8 +37,42 @@ function isOrgMatch(org, target) {
 
 const pages = { settings: ['Site Settings', 'Manage public church details, navigation, and homepage hero slides.'], priest: ['Parish Priest', 'Update the parish priest profile and leadership information.'], messages: ['Priest Messages', 'Publish the priest’s welcome and pastoral messages.'], council: ['Parish Council', 'Manage the parish pastoral council and office bearers.'], office: ['Parish Office', 'Manage parish office contacts, hours, and address.'], mass: ['Mass Timings', 'Keep Mass schedules and special liturgies current.'], events: ['Upcoming Events', 'Publish and edit parish events and feast programmes.'], news: ['Parish News & Notices', 'Publish and edit news articles, feast notices, pastoral messages, and parish bulletins.'], newsletter: ['Parish Newsletter', 'Manage parish newsletters and edition links.'], gallery: ['Photo Gallery', 'Organize photos that appear in the parish media gallery.'], obituary: ['Obituaries', 'Publish memorial notices and funeral details.'], organizations: ['Parish Organizations', 'Manage parish associations, their leaders, ministry details, and activity information.'], wards: ['Parish Wards', 'Manage ward details, families, and representatives.'], history: ['Church History', 'Maintain historical facts and the parish timeline.'] };
 const categories = ['All', 'Feast', 'Liturgy', 'Youth', 'Catechism', 'Organization', 'Parish', 'Newsletter'];
-const base = import.meta.env.BASE_URL;
-const defaultSiteSettings = { churchName: 'Sacred Heart of Jesus Church', location: 'Thodambila, Bantwal', officePhone: '', tabs: { Home: true, About: true, Parish: true, Wards: true, Organizations: true, 'News & Events': true, Media: true, Contact: true }, slides: [{ id: 1, label: 'Hero Slide 1', image: `${base}images/hero-exterior.jpg`, eyebrow: 'WELCOME TO THODAMBILA CHURCH', title: 'Welcome to Sacred Heart of Jesus Church', subtitle: 'Sacred Heart of Jesus Church, Thodambila — living out the Gospel in communion and service.' }, { id: 2, label: 'Hero Slide 2', image: `${base}images/hero-interior.jpg`, eyebrow: 'A SACRED SANCTUARY', title: 'Encounter Grace & Divine Mercy', subtitle: 'Gather with us for the Holy Sacrifice of the Mass and spiritual renewal in Thodambila.' }] };
+const PARISH_WARDS = [
+  { id: 'sacred-heart', name: 'Sacred Heart of Jesus Ward', shortName: 'Sacred Heart Ward', konkani: 'ಜೆಜುಚ್ಯಾ ಪವಿತ್ರ್ ಕಾಳ್ಜಾ ವಾಡೊ', patron: 'Sacred Heart of Jesus' },
+  { id: 'nithyadar', name: 'Nithyadar Ward', shortName: 'Nithyadar Ward', konkani: 'ನಿತ್ಯಾದರ್ ವಾಡೊ', patron: 'Our Lady of Perpetual Help' },
+  { id: 'christ-king', name: 'Christ the King Ward', shortName: 'Christ the King Ward', konkani: 'ಜೆಜು ರಾಯ್ ವಾಡೊ', patron: 'Christ the King' },
+  { id: 'vailankanni', name: 'Vailankanni Ward', shortName: 'Vailankanni Ward', konkani: 'ವೆಲಂಕಣಿ ವಾಡೊ', patron: 'Our Lady of Good Health, Vailankanni' },
+  { id: 'infant-jesus', name: 'Infant Jesus Ward', shortName: 'Infant Jesus Ward', konkani: 'ಬಾಳೊಕ್ ಜೆಜು ವಾಡೊ', patron: 'Infant Jesus' }
+];
+
+function WardSelect({ label = 'Parish Ward', value, change, required = false }) {
+  const normVal = (value || '').toLowerCase().trim();
+  const isMatch = PARISH_WARDS.some(
+    (w) => w.name.toLowerCase() === normVal || w.shortName.toLowerCase() === normVal || w.konkani.toLowerCase() === normVal
+  );
+  const isCustom = value && !isMatch;
+
+  return (
+    <label className="loreto-field">
+      {label}
+      <select
+        className="loreto-modal-select"
+        value={value || ''}
+        onChange={(e) => change(e.target.value)}
+        required={required}
+        style={{ textTransform: 'none', background: '#fffcf6' }}
+      >
+        <option value="">-- Select Parish Ward --</option>
+        {isCustom && <option value={value}>{value}</option>}
+        {PARISH_WARDS.map((w) => (
+          <option key={w.id} value={w.name}>
+            {w.name} ({w.konkani})
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
 
 export default function AdminPage() {
   const [auth, setAuth] = useState(() => {
@@ -500,7 +534,7 @@ function OfficeBearerModal({ bearer, onSave, onClose }) {
           </div>
 
           <div className="loreto-form-row">
-            <Field label="Parish Ward (Optional)" value={data.ward} change={(v) => set('ward', v)} placeholder="e.g. Parish Ward" />
+            <WardSelect label="Parish Ward (Optional)" value={data.ward} change={(v) => set('ward', v)} />
             <Field label="Contact Phone (Optional)" value={data.phone} change={(v) => set('phone', v)} placeholder="e.g. +91 94480 00020" />
           </div>
 
@@ -1218,7 +1252,7 @@ function InlineCouncilForm({ form, setForm, onSave, onCancel, isNew }) {
         <Field label="Member Full Name (English) *" value={engName} change={setEngName} required placeholder="e.g. Rev. Fr. Paul Dsouza" />
         <Field label="Konkani Subtitle / Title (Optional)" value={konkaniTitle} change={setKonkaniTitle} placeholder="e.g. ವಿಗಾರ್ / ಅಧ್ಯಕ್ಷ್" />
         <Field label="Council Role / Position Title *" value={form.position || ''} change={(v) => set('position', v)} required placeholder="e.g. President / Parish Priest" />
-        <Field label="Ward / Representative Area" value={form.ward || ''} change={(v) => set('ward', v)} placeholder="e.g. Parish Ward" />
+        <WardSelect label="Ward / Representative Area (Optional)" value={form.ward || ''} change={(v) => set('ward', v)} />
         <Field label="Contact Phone Number" value={form.phone || ''} change={(v) => set('phone', v)} placeholder="e.g. +91 94480 00000" />
         <div className="full-width" style={{ background: '#fcf6ec', border: '1px solid var(--line)', padding: '16px', borderRadius: '10px', marginTop: '4px' }}>
           <p style={{ fontSize: '12px', fontWeight: 'bold', color: 'var(--wine)', marginBottom: '8px', textTransform: 'uppercase' }}>Member Photo (Upload File or Paste Image URL)</p>
@@ -1711,7 +1745,7 @@ function InlineObituaryForm({ form, setForm, onSave, onCancel, isNew }) {
         <Field label="Full Name of Deceased *" value={form.name || ''} change={(v) => set('name', v)} />
         <Field label="Age at Death" value={form.age || ''} change={(v) => set('age', v)} />
         <div><span className="loreto-field-label">DATE OF DEATH *</span><input className="loreto-modal-input" type="date" required value={form.dateOfDeath || ''} onChange={(e) => set('dateOfDeath', e.target.value)} /></div>
-        <Field label="Ward / Family Area" value={form.ward || ''} change={(v) => set('ward', v)} />
+        <WardSelect label="Ward / Family Area (Optional)" value={form.ward || ''} change={(v) => set('ward', v)} />
         <div className="full-width">
           <span className="loreto-field-label">PORTRAIT PHOTO</span>
           <div className="loreto-image-picker-row">
@@ -1760,11 +1794,26 @@ function WardsManager({ items, save }) {
 
 function InlineWardForm({ form, setForm, onSave, onCancel, isNew }) {
   const set = (key, val) => setForm((prev) => ({ ...prev, [key]: val }));
+
+  const handleSelectWard = (selectedName) => {
+    const matched = PARISH_WARDS.find((w) => w.name === selectedName);
+    if (matched) {
+      setForm((prev) => ({
+        ...prev,
+        name: matched.name,
+        konkaniName: matched.konkani,
+        patronSaint: matched.patron || prev.patronSaint
+      }));
+    } else {
+      set('name', selectedName);
+    }
+  };
+
   return (
     <form className="loreto-inline-editor" onSubmit={(e) => { e.preventDefault(); onSave(form); }}>
       <h3><Edit3 size={20} />{isNew ? 'Add Ward' : `Edit ${form.name || 'Ward'}`}</h3>
       <div className="loreto-inline-editor-grid">
-        <Field label="Ward Name (English) *" value={form.name || ''} change={(v) => set('name', v)} />
+        <WardSelect label="Select Parish Ward *" value={form.name || ''} change={handleSelectWard} required />
         <Field label="Ward Name (Konkani)" value={form.konkaniName || ''} change={(v) => set('konkaniName', v)} />
         <Field label="Patron Saint" value={form.patronSaint || ''} change={(v) => set('patronSaint', v)} />
         <Field label="Area / Village" value={form.area || ''} change={(v) => set('area', v)} />
