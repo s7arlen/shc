@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { FileText, Download, Eye } from 'lucide-react';
-import { newsletters } from '../../data/newsletter';
+import { newsletters as seedNewsletters } from '../../data/newsletter';
 import './NewsletterSection.css';
 
 const NewsletterSection = () => {
-  const featured = newsletters.find(n => n.featured) || newsletters[0];
+  const newsletters = useMemo(() => {
+    try {
+      const stored = localStorage.getItem('thodambila-admin-sections');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed?.newsletter && Array.isArray(parsed.newsletter) && parsed.newsletter.length > 0) {
+          return parsed.newsletter;
+        }
+      }
+    } catch (e) {
+      // fallback
+    }
+    return seedNewsletters;
+  }, []);
+
+  const featured = newsletters.find(n => n.featured) || newsletters[0] || {};
   const [selectedYear, setSelectedYear] = useState(2026);
   const filteredArchive = newsletters.filter(n => n.year === selectedYear);
 

@@ -485,7 +485,7 @@ export const ministries = [
     howToJoin: 'Auditions and welcome sessions are held periodically. Speak to the Choir Master after Sunday Mass if you play an instrument or love to sing.'
   },
   {
-    id: 6,
+    id: 7,
     name: 'Altar Servers',
     shortName: 'Altar Servers',
     konkaniName: 'ಆಲ್ತಾರ್ ಭುರ್ಗೆ (Altar Servers)',

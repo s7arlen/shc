@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, Clock, ArrowRight, Calendar } from 'lucide-react';
-import { events } from '../../data/events';
+import { events as seedEvents } from '../../data/events';
 import './UpcomingEventsSection.css';
 
 const UpcomingEventsSection = () => {
+  const displayEvents = useMemo(() => {
+    try {
+      const stored = localStorage.getItem('thodambila-admin-sections');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed?.events && Array.isArray(parsed.events) && parsed.events.length > 0) {
+          return parsed.events;
+        }
+      }
+    } catch (e) {
+      // fallback
+    }
+    return seedEvents;
+  }, []);
+
   return (
     <section className="upcoming-events section section--white" aria-label="Upcoming Events">
       <div className="container">
@@ -18,7 +33,7 @@ const UpcomingEventsSection = () => {
         </div>
 
         <div className="upcoming-events__grid">
-          {events.slice(0, 3).map((item, index) => (
+          {displayEvents.slice(0, 3).map((item, index) => (
             <motion.div
               key={item.id}
               className="event-card"

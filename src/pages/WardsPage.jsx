@@ -226,8 +226,14 @@ const WardDetail = ({ ward }) => {
                 <div key={family.id || idx} className="ward-minimal-family-card">
                   {/* Photo Frame Placeholder */}
                   <div className="ward-minimal-family-photo-box">
-                    <div className="ward-minimal-family-icon">👨‍👩‍👧‍👦</div>
-                    <span className="ward-minimal-family-photo-label">ಕುಟ್ಮಾಚಿ ತಸ್ವಿರ್</span>
+                    {family.photo ? (
+                      <img src={family.photo} alt={`${family.head} family`} className="ward-minimal-family-photo" />
+                    ) : (
+                      <>
+                        <div className="ward-minimal-family-icon">👨‍👩‍👧‍👦</div>
+                        <span className="ward-minimal-family-photo-label">ಕುಟ್ಮಾಚಿ ತಸ್ವಿರ್</span>
+                      </>
+                    )}
                   </div>
 
                   <div className="ward-minimal-family-info">
@@ -325,9 +331,13 @@ const WardDetail = ({ ward }) => {
 
 // Subcomponent: Minimal Wards List (All Wards Hub - Clean Thodambila Layout)
 const WardsList = () => {
+  const allWards = useMemo(() => {
+    try { return JSON.parse(localStorage.getItem('thodambila-admin-sections') || '{}')?.wards || wards; }
+    catch { return wards; }
+  }, []);
   const totalHouseholds = useMemo(
-    () => wards.reduce((sum, w) => sum + (w.householdsCount || 0), 0),
-    []
+    () => allWards.reduce((sum, w) => sum + (w.householdsCount || w.families?.length || 0), 0),
+    [allWards]
   );
 
   return (
@@ -343,7 +353,7 @@ const WardsList = () => {
 
       {/* 2. Minimal Ward Cards Grid */}
       <div className="ward-hub-grid">
-        {wards.map((ward) => (
+        {allWards.map((ward) => (
           <Link
             key={ward.id}
             to={`/parish/wards/${ward.slug}`}
@@ -397,7 +407,11 @@ const WardsList = () => {
 // Main Wards Page Controller
 const WardsPage = () => {
   const { slug } = useParams();
-  const selectedWard = slug ? wards.find((w) => w.slug === slug) : null;
+  const allWards = useMemo(() => {
+    try { return JSON.parse(localStorage.getItem('thodambila-admin-sections') || '{}')?.wards || wards; }
+    catch { return wards; }
+  }, []);
+  const selectedWard = slug ? allWards.find((w) => w.slug === slug || String(w.id) === String(slug)) : null;
 
   return (
     <main className="inner-page">

@@ -744,6 +744,7 @@
   justify-content: center;
   gap: 0.25rem;
 }
+.ward-minimal-family-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .ward-minimal-family-icon {
   font-size: 1.5rem;

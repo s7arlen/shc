@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { news } from '../../data/news';
+import { news as seedNews } from '../../data/news';
 import './NoticeTicker.css';
 
 const NoticeTicker = () => {
+  const newsList = useMemo(() => {
+    try {
+      const stored = localStorage.getItem('thodambila-admin-news');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {
+      // fallback
+    }
+    return seedNews;
+  }, []);
+
   // Duplicate items so the scroll loops seamlessly
-  const items = [...news, ...news];
+  const items = [...newsList, ...newsList];
 
   return (
     <div className="notice-ticker" role="region" aria-label="Latest parish news">
@@ -22,9 +35,9 @@ const NoticeTicker = () => {
             <li key={`${item.id}-${idx}`} className="notice-ticker__item">
               <span className="notice-ticker__category">{item.category}</span>
               <Link
-                to={`/news#${item.slug}`}
+                to={`/news/${item.id}`}
                 className="notice-ticker__text"
-                tabIndex={idx < news.length ? 0 : -1}
+                tabIndex={idx < newsList.length ? 0 : -1}
               >
                 {item.title}
               </Link>

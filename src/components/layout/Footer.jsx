@@ -45,6 +45,7 @@ const Footer = () => {
             <Link to="/faith/mass-timings">Mass Timings</Link>
             <Link to="/events">Events</Link>
             <Link to="/news">News</Link>
+            <Link to="/obituary">Obituaries</Link>
             <Link to="/media/gallery">Gallery</Link>
             <Link to="/contact">Contact</Link>
           </nav>

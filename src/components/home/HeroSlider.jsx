@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import './HeroSlider.css';
 
-const slides = [
+const defaultSlides = [
   {
     id: 1,
     image: `${import.meta.env.BASE_URL}images/hero-exterior.jpg`,
@@ -53,6 +53,23 @@ const slides = [
 ];
 
 const HeroSlider = () => {
+  const [slides] = useState(() => {
+    try {
+      const settings = JSON.parse(localStorage.getItem('thodambila-admin-settings') || 'null');
+      const studio = JSON.parse(localStorage.getItem('thodambila-page-content') || 'null');
+      if (studio?.home) return [{
+        id: 'studio-home', image: studio.home.image, eyebrow: studio.home.bodyTitle || studio.home.title,
+        title: studio.home.heroTitle, subtitle: studio.home.heroText,
+        tagline: 'FAITH  •  COMMUNITY  •  FELLOWSHIP', primaryCta: { text: 'Explore Church', to: '/about/our-parish' }, secondaryCta: { text: 'Mass Schedule', to: '/faith/mass-timings' },
+      }];
+      return settings?.slides?.length ? settings.slides.map((slide) => ({
+        ...slide,
+        tagline: slide.tagline || 'FAITH  •  COMMUNITY  •  FELLOWSHIP',
+        primaryCta: slide.primaryCta || { text: 'Explore Church', to: '/about/our-parish' },
+        secondaryCta: slide.secondaryCta || { text: 'Mass Schedule', to: '/faith/mass-timings' },
+      })) : defaultSlides;
+    } catch { return defaultSlides; }
+  });
   return (
     <section className="hero" aria-label="Hero image carousel">
       <Swiper

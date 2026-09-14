@@ -5,6 +5,10 @@ import { weeklyMassSchedule, massTimes } from '../../data/massTimes';
 import './MassScheduleSection.css';
 
 const MassScheduleSection = () => {
+  const schedule = React.useMemo(() => {
+    try { return JSON.parse(localStorage.getItem('thodambila-admin-mass') || 'null') || weeklyMassSchedule; }
+    catch { return weeklyMassSchedule; }
+  }, []);
   return (
     <section className="mass-schedule section section--cream" aria-label="Mass and Worship Schedule">
       <div className="container">
@@ -30,7 +34,7 @@ const MassScheduleSection = () => {
 
           {/* Card Body Rows */}
           <div className="mass-weekly-card__body">
-            {weeklyMassSchedule.map((item, index) => (
+            {schedule.map((item, index) => (
               <div key={index} className="mass-weekly-card__row">
                 <div className="mass-weekly-card__day">{item.day}</div>
                 <div className="mass-weekly-card__time">{item.time}</div>

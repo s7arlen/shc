@@ -20,6 +20,7 @@ const moreNavItems = [
   { label: 'Mass Timings', path: '/faith/mass-timings', icon: Clock, desc: 'Daily & Sunday Holy Mass schedule' },
   { label: 'Ministries & Youth', path: '/organizations', icon: Users, desc: 'ICYM, Choir, Altar Servers & associations' },
   { label: 'Parish Leadership', path: '/parish/parish-priest', icon: UserCheck, desc: 'Parish priest & pastoral council' },
+  { label: 'Obituaries', path: '/obituary', icon: Heart, desc: 'Memorial notices & funeral details' },
   { label: 'Sacraments', path: '/faith/sacraments', icon: Heart, desc: 'Baptism, Holy Communion, Matrimony' },
   { label: 'News & Events', path: '/news', icon: Newspaper, desc: 'Announcements & upcoming celebrations' },
   { label: 'Contact & Office', path: '/contact', icon: PhoneCall, desc: 'Office hours, phone & location map' },

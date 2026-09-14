@@ -25,6 +25,7 @@ const navItems = [
       { label: 'Parish Council', path: '/parish/parish-council' },
       { label: 'Mass Timings', path: '/faith/mass-timings' },
       { label: 'Parish Office', path: '/parish/office' },
+      { label: 'Obituaries', path: '/obituary' },
     ],
   },
   { label: 'Wards', path: '/parish/wards' },
@@ -71,6 +72,13 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const location = useLocation();
   const navRef = useRef(null);
+  const [siteTabs] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('thodambila-admin-settings') || 'null')?.tabs || {}; } catch { return {}; }
+  });
+  const visibleNavItems = navItems.filter((item) => {
+    const tabName = item.label === 'News & Events' ? 'News & Events' : item.label;
+    return siteTabs[tabName] !== false;
+  });
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 30);
@@ -170,7 +178,7 @@ const Navbar = () => {
       <div className="navbar__menu-row">
         <div className="container navbar__menu-container">
           <ul className="navbar__list" role="menubar">
-            {navItems.map((item) => (
+            {visibleNavItems.map((item) => (
               <li
                 key={item.label}
                 className={`navbar__item ${item.dropdown ? 'navbar__item--has-dropdown' : ''} ${isActive(item.path) ? 'navbar__item--active' : ''}`}
@@ -236,7 +244,7 @@ const Navbar = () => {
         </div>
         <div className="navbar__mobile-inner">
           <ul className="navbar__mobile-list">
-            {navItems.map((item) => (
+            {visibleNavItems.map((item) => (
               <li key={item.label} className="navbar__mobile-item">
                 <div className="navbar__mobile-row">
                   <Link to={item.path} className="navbar__mobile-link">

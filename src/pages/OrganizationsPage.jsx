@@ -88,15 +88,37 @@ const OrganizationsList = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
+  const allMinistries = useMemo(() => {
+    try {
+      return JSON.parse(localStorage.getItem('thodambila-admin-organizations') || 'null') || ministries;
+    } catch {
+      return ministries;
+    }
+  }, []);
+
+  const pageHeader = useMemo(() => {
+    try {
+      return JSON.parse(localStorage.getItem('thodambila-orgs-page-header') || 'null') || {
+        title: 'Parish Organizations & Associations',
+        subtitle: 'Living out the Gospel through faith, service, and youth leadership in Thodambila.'
+      };
+    } catch {
+      return {
+        title: 'Parish Organizations & Associations',
+        subtitle: 'Living out the Gospel through faith, service, and youth leadership in Thodambila.'
+      };
+    }
+  }, []);
+
   // Extract unique categories
   const categories = useMemo(() => {
-    const cats = ['All', ...new Set(ministries.map((m) => m.category).filter(Boolean))];
+    const cats = ['All', ...new Set(allMinistries.map((m) => m.category).filter(Boolean))];
     return cats;
-  }, []);
+  }, [allMinistries]);
 
   // Filtered organizations
   const filteredMinistries = useMemo(() => {
-    return ministries.filter((item) => {
+    return allMinistries.filter((item) => {
       const matchesCategory =
         selectedCategory === 'All' || item.category === selectedCategory;
       const q = searchQuery.toLowerCase().trim();
@@ -105,14 +127,14 @@ const OrganizationsList = () => {
         item.name.toLowerCase().includes(q) ||
         item.shortName?.toLowerCase().includes(q) ||
         item.konkaniName?.toLowerCase().includes(q) ||
-        item.description.toLowerCase().includes(q) ||
+        (item.description || '').toLowerCase().includes(q) ||
         item.tagline?.toLowerCase().includes(q) ||
         item.category?.toLowerCase().includes(q) ||
         item.activities?.some((act) => act.toLowerCase().includes(q));
 
       return matchesCategory && matchesSearch;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [allMinistries, searchQuery, selectedCategory]);
 
   return (
     <div>
@@ -140,7 +162,7 @@ const OrganizationsList = () => {
             )}
           </div>
           <span className="org-count">
-            Showing {filteredMinistries.length} of {ministries.length} associations
+            Showing {filteredMinistries.length} of {allMinistries.length} associations
           </span>
         </div>
 
@@ -209,240 +231,74 @@ const OrganizationsList = () => {
   );
 };
 
-// Subcomponent: Detailed Single Association View (Thodambila Aligned)
+// Subcomponent: Minimal Office Bearers View for Single Association
 const OrganizationDetail = ({ org }) => {
   const currentIndex = ministries.findIndex((m) => m.slug === org.slug);
   const prevOrg = currentIndex > 0 ? ministries[currentIndex - 1] : null;
   const nextOrg = currentIndex < ministries.length - 1 ? ministries[currentIndex + 1] : null;
 
   return (
-    <div className="org-detail-container">
-      <div className="org-detail-layout">
-        {/* Main Content Area */}
-        <div className="org-detail-main">
-          {/* Main Association Banner */}
-          <div className="org-detail-banner">
-            <OrgCardImage src={org.image} alt={org.name} category={org.category} />
-          </div>
+    <div className="org-detail-container org-detail-container--minimal">
+      {/* Office Bearers Section (ಹುದ್ದೆದಾರ್) */}
+      <div className="org-detail-section org-detail-section--minimal">
+        <div className="org-detail-minimal-header" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+          <h2 className="org-detail-section__title" style={{ justifyContent: 'center', fontSize: '1.8rem', color: 'var(--text-accent)' }}>
+            <Award size={26} />
+            <span>ಹುದ್ದೇದಾರ್ • Office Bearers & Committee</span>
+          </h2>
+          <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
+            Executive leaders and committee members serving {org.name}
+          </p>
+        </div>
 
-          {/* Motto Banner */}
-          {org.motto && (
-            <div className="org-motto-banner">
-              <span className="org-motto-banner__label">ಧ್ಯೇಯ್ • Motto</span>
-              <p className="org-motto-banner__text">"{org.motto}"</p>
-            </div>
-          )}
+        {org.officeBearers && org.officeBearers.length > 0 ? (
+          <div className="org-bearers-grid">
+            {org.officeBearers.map((bearer, idx) => (
+              <div key={idx} className="org-bearer-card">
+                <div className="org-bearer-avatar">
+                  <BearerAvatar photo={bearer.photo} name={bearer.name} role={bearer.role} />
+                </div>
 
-          {/* 1. Office Bearers Section (ಹುದ್ದೆದಾರ್) */}
-          <div className="org-detail-section">
-            <h2 className="org-detail-section__title">
-              <Award size={22} />
-              <span>ಹುದ್ದೆದಾರ್ • Office Bearers & Committee</span>
-            </h2>
-            <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
-              Executive leaders serving our {org.shortName || org.name} unit.
-            </p>
+                <span
+                  className={`org-bearer-role ${
+                    bearer.role?.includes('Director') ? 'org-bearer-role--director' : ''
+                  }`}
+                >
+                  {bearer.role}
+                </span>
 
-            {org.officeBearers && org.officeBearers.length > 0 ? (
-              <div className="org-bearers-grid">
-                {org.officeBearers.map((bearer, idx) => (
-                  <div key={idx} className="org-bearer-card">
-                    <div className="org-bearer-avatar">
-                      <BearerAvatar photo={bearer.photo} name={bearer.name} role={bearer.role} />
-                    </div>
+                {bearer.konkaniRole && (
+                  <span className="org-bearer-konkani-role">{bearer.konkaniRole}</span>
+                )}
 
-                    <span
-                      className={`org-bearer-role ${
-                        bearer.role?.includes('Director') ? 'org-bearer-role--director' : ''
-                      }`}
-                    >
-                      {bearer.role}
-                    </span>
+                <h4 className="org-bearer-name">{bearer.name}</h4>
 
-                    {bearer.konkaniRole && (
-                      <span className="org-bearer-konkani-role">{bearer.konkaniRole}</span>
-                    )}
+                {bearer.ward && <span className="org-bearer-ward">{bearer.ward}</span>}
 
-                    <h4 className="org-bearer-name">{bearer.name}</h4>
-
-                    {bearer.ward && <span className="org-bearer-ward">{bearer.ward}</span>}
-
-                    {bearer.phone && (
-                      <a
-                        href={`tel:${bearer.phone.replace(/\s+/g, '')}`}
-                        className="org-bearer-phone"
-                        title={`Call ${bearer.name}`}
-                      >
-                        <Phone size={12} />
-                        <span>{bearer.phone}</span>
-                      </a>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                Office bearers list will be updated soon.
-              </p>
-            )}
-          </div>
-
-          {/* 2. About Section (ಪರಿಚಯ್) */}
-          <div className="org-detail-section">
-            <h3 className="org-detail-section__title">
-              <BookOpen size={20} />
-              <span>ಪರಿಚಯ್ • About {org.shortName || org.name}</span>
-            </h3>
-            <p className="org-detail-lead">
-              {org.fullDescription || org.description}
-            </p>
-          </div>
-
-          {/* 3. Objectives Section (ಉದ್ದೇಶಾಂ) */}
-          {org.objectives && org.objectives.length > 0 && (
-            <div className="org-detail-section">
-              <h3 className="org-detail-section__title">
-                <HeartHandshake size={20} />
-                <span>ಉದ್ದೇಶಾಂ • Aims & Objectives</span>
-              </h3>
-              <ul className="org-feature-list">
-                {org.objectives.map((obj, idx) => (
-                  <li key={idx} className="org-feature-item">
-                    <span className="org-feature-bullet">✓</span>
-                    <span>{obj}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* 4. Activities Section (ಮುಖೆಲ್ ಕಾರ್ಯಕ್ರಮಾಂ) */}
-          {org.activities && org.activities.length > 0 && (
-            <div className="org-detail-section">
-              <h3 className="org-detail-section__title">
-                <CheckCircle2 size={20} />
-                <span>ಕಾರ್ಯಕ್ರಮಾಂ • Key Activities & Initiatives</span>
-              </h3>
-              <ul className="org-feature-list">
-                {org.activities.map((act, idx) => (
-                  <li key={idx} className="org-feature-item">
-                    <span className="org-feature-bullet">{idx + 1}</span>
-                    <span>{act}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* 5. How to Join Section (ಸದಸ್ಯತ್ವ್) */}
-          {org.howToJoin && (
-            <div className="org-join-card">
-              <h3 className="org-join-card__title">ಸದಸ್ಯತ್ವ್ • Membership & Joining Information</h3>
-              <p className="org-join-card__desc">{org.howToJoin}</p>
-              <div className="org-join-actions">
-                <Link to="/contact" className="btn btn--primary">
-                  Contact Parish Office
-                </Link>
-                {org.officeBearers?.[0]?.phone && (
+                {bearer.phone && (
                   <a
-                    href={`tel:${org.officeBearers[0].phone.replace(/\s+/g, '')}`}
-                    className="btn btn--outline"
+                    href={`tel:${bearer.phone.replace(/\s+/g, '')}`}
+                    className="org-bearer-phone"
+                    title={`Call ${bearer.name}`}
                   >
-                    Contact Coordinator
+                    <Phone size={12} />
+                    <span>{bearer.phone}</span>
                   </a>
                 )}
               </div>
-            </div>
-          )}
-        </div>
-
-        {/* Sidebar Information Card */}
-        <aside className="org-detail-sidebar">
-          {/* Quick Facts Card */}
-          <div className="org-facts-card">
-            <div className="org-facts-card__header">
-              <Calendar size={18} />
-              <h3>ಜಮಾತ್ • Meeting & Details</h3>
-            </div>
-            <div className="org-facts-card__body">
-              {org.meetingDay && (
-                <div className="org-fact-item">
-                  <Clock size={18} className="org-fact-icon" />
-                  <div className="org-fact-content">
-                    <h4>Meeting Schedule / ಜಮಾತ್</h4>
-                    <p>{org.meetingDay}</p>
-                  </div>
-                </div>
-              )}
-
-              {org.venue && (
-                <div className="org-fact-item">
-                  <MapPin size={18} className="org-fact-icon" />
-                  <div className="org-fact-content">
-                    <h4>Gathering Place / ಜಾಗೊ</h4>
-                    <p>{org.venue}</p>
-                  </div>
-                </div>
-              )}
-
-              {org.targetGroup && (
-                <div className="org-fact-item">
-                  <Users size={18} className="org-fact-icon" />
-                  <div className="org-fact-content">
-                    <h4>Eligibility / ಅರ್ಹತಾ</h4>
-                    <p>{org.targetGroup}</p>
-                  </div>
-                </div>
-              )}
-
-              {org.spiritualDirector && (
-                <div className="org-fact-item">
-                  <Sparkles size={18} className="org-fact-icon" />
-                  <div className="org-fact-content">
-                    <h4>Spiritual Director / ನಿರ್ದೇಶಕ್</h4>
-                    <p>{org.spiritualDirector}</p>
-                  </div>
-                </div>
-              )}
-
-              {org.officeBearers?.[1]?.name && (
-                <div className="org-fact-item">
-                  <UserCheck size={18} className="org-fact-icon" />
-                  <div className="org-fact-content">
-                    <h4>{org.officeBearers[1].role} / {org.officeBearers[1].konkaniRole}</h4>
-                    <p>{org.officeBearers[1].name}</p>
-                  </div>
-                </div>
-              )}
-            </div>
+            ))}
           </div>
-
-          {/* Quick Navigation to Other Organizations (All 11) */}
-          <div className="org-sidebar-nav">
-            <h4 className="org-sidebar-nav__title">ಸರ್ವ್ ಸಂಘಟನಾಂ • All Associations</h4>
-            <ul className="org-sidebar-nav__list">
-              {ministries.map((m) => (
-                <li key={m.id}>
-                  <Link
-                    to={`/organizations/${m.slug}`}
-                    className={`org-sidebar-nav__link ${
-                      m.slug === org.slug ? 'org-sidebar-nav__link--active' : ''
-                    }`}
-                  >
-                    <span>
-                      {m.konkaniName ? `${m.konkaniName} (${m.shortName || m.name})` : m.shortName || m.name}
-                    </span>
-                    <ArrowRight size={13} />
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        ) : (
+          <div style={{ textAlign: 'center', padding: '3rem 1rem', background: '#FFFDF9', borderRadius: '12px', border: '1px solid var(--border-gold)' }}>
+            <p style={{ fontSize: '1rem', color: 'var(--text-muted)', margin: 0 }}>
+              Office bearers list for {org.name} will be updated soon.
+            </p>
           </div>
-        </aside>
+        )}
       </div>
 
-      {/* Detail Bottom Navigation */}
-      <div className="org-detail-bottom-nav">
+      {/* Minimal Navigation Bar */}
+      <div className="org-detail-bottom-nav" style={{ marginTop: '3.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(221, 176, 122, 0.4)' }}>
         <Link to="/organizations" className="btn btn--outline">
           <ArrowLeft size={16} />
           <span>Back to All Organizations / ಸಂಘಟನಾಂ</span>
@@ -478,10 +334,19 @@ const OrganizationDetail = ({ org }) => {
 // Main Organizations Page Controller
 const OrganizationsPage = () => {
   const { slug } = useParams();
+  const allMinistries = useMemo(() => {
+    try {
+      return JSON.parse(localStorage.getItem('thodambila-admin-organizations') || 'null') || ministries;
+    } catch {
+      return ministries;
+    }
+  }, []);
+
   const selectedOrg = slug
-    ? ministries.find(
+    ? allMinistries.find(
         (m) =>
           m.slug === slug ||
+          String(m.id) === String(slug) ||
           (m.slug === 'sthree-sanghatan' && slug === 'stree-sanghatan') ||
           (m.slug === 'choir-group' && slug === 'parish-choir') ||
           (m.slug === 'extraordinary-ministers' && slug === 'eucharistic-ministers')

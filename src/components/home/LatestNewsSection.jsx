@@ -2,10 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, ArrowRight, Bell } from 'lucide-react';
-import { news } from '../../data/news';
+import { news as seedNews } from '../../data/news';
 import './LatestNewsSection.css';
 
 const LatestNewsSection = () => {
+  const newsList = React.useMemo(() => {
+    try { return JSON.parse(localStorage.getItem('thodambila-admin-news') || 'null') || seedNews; }
+    catch { return seedNews; }
+  }, []);
   return (
     <section className="latest-news section section--cream" aria-label="Latest News & Announcements">
       <div className="container">
@@ -18,7 +22,7 @@ const LatestNewsSection = () => {
         </div>
 
         <div className="latest-news__grid">
-          {news.slice(0, 3).map((item) => (
+          {newsList.slice(0, 3).map((item) => (
             <article key={item.id} className="news-card">
               <div className="news-card__image-container">
                 <div
@@ -37,12 +41,12 @@ const LatestNewsSection = () => {
                 </div>
 
                 <h3 className="news-card__title">
-                  <Link to={`/news#${item.slug}`}>{item.title}</Link>
+                  <Link to={`/news/${item.id}`}>{item.title}</Link>
                 </h3>
                 <p className="news-card__excerpt">{item.excerpt}</p>
 
                 <div className="news-card__footer">
-                  <Link to={`/news#${item.slug}`} className="news-card__read-more">
+                  <Link to={`/news/${item.id}`} className="news-card__read-more">
                     <span>Read Announcement</span>
                     <ArrowRight size={14} className="news-card__arrow" />
                   </Link>

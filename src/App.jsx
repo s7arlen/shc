@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -9,11 +9,13 @@ import ScrollUpButton from './components/common/ScrollUpButton';
 
 import HomePage from './pages/HomePage';
 import { OurParishPage, HistoryPage, PatronessPage, DiocesePage } from './pages/AboutPages';
-import { ParishPriestPage, PastoralTeamPage, ParishCouncilPage, WardsPage, ParishOfficePage } from './pages/ParishPages';
+import { ParishPriestPage, PastoralTeamPage, ParishCouncilPage, WardsPage, ParishOfficePage, ObituariesPage } from './pages/ParishPages';
 import { MassTimingsPage, SacramentsPage, CatechismPage, PrayerPage } from './pages/FaithPages';
 import OrganizationsPage from './pages/OrganizationsPage';
-import { NewsPage, EventsPage, GalleryPage, VideosPage, NewsletterPage } from './pages/MediaPages';
+import { NewsPage, EventsPage, GalleryPage, VideosPage, NewsletterPage, SingleNewsPage } from './pages/MediaPages';
 import { ContactPage, NotFoundPage } from './pages/ContactPage';
+import AdminPage from './pages/AdminPage';
+import ContentStudio from './pages/ContentStudio';
 
 import './styles/global.css';
 import './pages/Organizations.css';
@@ -21,6 +23,17 @@ import './pages/Organizations.css';
 function App() {
   return (
     <Router basename={import.meta.env.BASE_URL}>
+      <AppContent />
+    </Router>
+  );
+}
+
+function AppContent() {
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/admin');
+  if (isAdmin) return <Routes><Route path="/admin" element={<AdminPage />} /><Route path="/admin-content" element={<ContentStudio />} /></Routes>;
+  return (
+    <>
       <ScrollToTop />
       <div className="app-layout">
         <Header />
@@ -59,7 +72,12 @@ function App() {
 
           {/* News & Events */}
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/news/:id" element={<SingleNewsPage />} />
           <Route path="/events" element={<EventsPage />} />
+
+          {/* Obituaries */}
+          <Route path="/obituary" element={<ObituariesPage />} />
+          <Route path="/parish/obituaries" element={<ObituariesPage />} />
 
           {/* Media */}
           <Route path="/media" element={<GalleryPage />} />
@@ -77,7 +95,7 @@ function App() {
       </div>
       <MobileBottomNav />
       <ScrollUpButton />
-    </Router>
+    </>
   );
 }
 

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   const logoUrl = `${import.meta.env.BASE_URL}favicon.png`;
+  const [site] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('thodambila-admin-settings') || 'null') || {}; } catch { return {}; }
+  });
 
   return (
     <header className="site-header" role="banner">
@@ -18,11 +21,11 @@ const Header = () => {
             />
             <div className="site-header__identity">
               <h1 className="site-header__name">
-                <span className="site-header__title-text">Sacred Heart of Jesus Church</span>
+              <span className="site-header__title-text">{site.churchName || 'Sacred Heart of Jesus Church'}</span>
               </h1>
 
               <div className="site-header__location">
-                <span className="site-header__location-item">Thodambila, Bantwal</span>
+                <span className="site-header__location-item">{site.location || 'Thodambila, Bantwal'}</span>
               </div>
             </div>
           </Link>

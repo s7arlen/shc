@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Camera, ArrowRight } from 'lucide-react';
-import { galleryImages } from '../../data/gallery';
+import { galleryImages as seedGallery } from '../../data/gallery';
 import InfiniteGalleryMarquee from '../common/InfiniteGalleryMarquee';
 import Lightbox from '../common/Lightbox';
 import './GallerySection.css';
@@ -9,11 +9,16 @@ import './GallerySection.css';
 const GallerySection = () => {
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
-  const galleryItems = galleryImages.map((img) => ({
+  const imagesList = React.useMemo(() => {
+    try { return JSON.parse(localStorage.getItem('thodambila-admin-gallery') || 'null') || seedGallery; }
+    catch { return seedGallery; }
+  }, []);
+
+  const galleryItems = imagesList.map((img) => ({
     id: img.id,
-    image: img.src,
+    image: img.src || img.image,
     title: img.title,
-    alt: img.alt,
+    alt: img.alt || img.title,
     category: img.category,
   }));
 
@@ -24,11 +29,11 @@ const GallerySection = () => {
   const handleCloseLightbox = () => setLightboxIndex(null);
   const handlePrev = () =>
     setLightboxIndex((prev) =>
-      prev > 0 ? prev - 1 : galleryImages.length - 1
+      prev > 0 ? prev - 1 : galleryItems.length - 1
     );
   const handleNext = () =>
     setLightboxIndex((prev) =>
-      prev < galleryImages.length - 1 ? prev + 1 : 0
+      prev < galleryItems.length - 1 ? prev + 1 : 0
     );
 
   return (

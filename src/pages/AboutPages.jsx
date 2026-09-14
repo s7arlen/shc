@@ -4,11 +4,22 @@ import { motion } from 'framer-motion';
 import { Landmark, Shield } from 'lucide-react';
 import { historyTimeline, parishFacts } from '../data/history';
 
-export const OurParishPage = () => (
+const getStudioContent = (key) => {
+  try {
+    return JSON.parse(localStorage.getItem('thodambila-page-content') || '{}')?.[key] || {};
+  } catch {
+    return {};
+  }
+};
+
+export const OurParishPage = () => {
+  const content = getStudioContent('parish');
+
+  return (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <h1 className="page-hero__title">Our Parish</h1>
+        <h1 className="page-hero__title">{content.heroTitle || 'Our Parish'}</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>About</span> <span>/</span> <span>Our Parish</span>
         </div>
@@ -20,19 +31,19 @@ export const OurParishPage = () => (
         {/* Church exterior photo */}
         <div style={{ position: 'relative', marginBottom: '2.5rem', borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-strong)', border: '2px solid var(--gold-antique)' }}>
           <img
-            src={`${import.meta.env.BASE_URL}images/church-exterior.jpg`}
+            src={content.image || `${import.meta.env.BASE_URL}images/church-exterior.jpg`}
             alt="Sacred Heart of Jesus Church, Thodambila, Bantwal"
             style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block' }}
           />
           <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top, rgba(53,21,27,0.75) 0%, transparent 100%)', padding: '1.25rem 1.5rem' }}>
             <p style={{ color: 'var(--gold-light)', fontFamily: 'var(--font-serif)', fontSize: '1.1rem', margin: 0, letterSpacing: '0.03em' }}>
-              Sacred Heart of Jesus Church — Thodambila, Bantwal
+              {content.bodyTitle || 'Sacred Heart of Jesus Church — Thodambila, Bantwal'}
             </p>
           </div>
         </div>
 
         <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1.25rem' }}>
-          Sacred Heart of Jesus Church, situated in Thodambila, Bantwal, is a sacred home of faith, hope and Christian service under the Roman Catholic Diocese of Mangalore. Our parish community is dedicated to worshipping God, growing in communion, and spreading Christ's love across the region.
+          {content.heroText || 'Sacred Heart of Jesus Church, situated in Thodambila, Bantwal, is a sacred home of faith, hope and Christian service under the Roman Catholic Diocese of Mangalore. Our parish community is dedicated to worshipping God, growing in communion, and spreading Christ\'s love across the region.'}
         </p>
 
         <div className="grid-2" style={{ margin: '2.5rem 0' }}>
@@ -44,14 +55,15 @@ export const OurParishPage = () => (
           ))}
         </div>
 
-        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--brown-primary)', marginBottom: '1rem' }}>Our Parish Mission</h3>
+        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--brown-primary)', marginBottom: '1rem' }}>{content.bodyTitle || 'Our Parish Mission'}</h3>
         <p style={{ lineHeight: '1.8' }}>
-          To build a vibrant, prayerful Catholic community rooted in the Word of God and the Eucharist, actively engaged in pastoral care, catechism, youth formation, and charitable outreach under the patronage of the Sacred Heart of Jesus.
+          {content.body || 'To build a vibrant, prayerful Catholic community rooted in the Word of God and the Eucharist, actively engaged in pastoral care, catechism, youth formation, and charitable outreach under the patronage of the Sacred Heart of Jesus.'}
         </p>
       </div>
     </section>
   </main>
-);
+  );
+};
 
 export const HistoryPage = () => (
   <main className="inner-page">
@@ -112,11 +124,14 @@ export const HistoryPage = () => (
   </main>
 );
 
-export const PatronessPage = () => (
+export const PatronessPage = () => {
+  const content = getStudioContent('patroness');
+
+  return (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <h1 className="page-hero__title">Sacred Heart of Jesus</h1>
+        <h1 className="page-hero__title">{content.heroTitle || 'Sacred Heart of Jesus'}</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>About</span> <span>/</span> <span>Our Patron</span>
         </div>
@@ -127,11 +142,11 @@ export const PatronessPage = () => (
       <div className="container" style={{ maxWidth: '900px' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <img
-            src={`${import.meta.env.BASE_URL}images/patroness-mary.jpg`}
+            src={content.image || `${import.meta.env.BASE_URL}images/patroness-mary.jpg`}
             alt="Sacred Heart of Jesus"
             style={{ width: '260px', height: '360px', objectFit: 'cover', borderRadius: 'var(--radius-md)', margin: '0 auto 1.5rem', border: '2px solid var(--gold-antique)', boxShadow: 'var(--shadow-strong)' }}
           />
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.4rem', color: 'var(--gold-antique)' }}>"Sacred Heart of Jesus, Have Mercy On Us"</h2>
+          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.4rem', color: 'var(--gold-antique)' }}>{content.bodyTitle || '"Sacred Heart of Jesus, Have Mercy On Us"'}</h2>
           {/* Feast Day Badge */}
           <div style={{
             display: 'inline-flex',
@@ -175,12 +190,12 @@ export const PatronessPage = () => (
           </div>
         </div>
 
-        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--brown-primary)', marginBottom: '1rem' }}>The Devotion to the Sacred Heart of Jesus</h3>
+        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--brown-primary)', marginBottom: '1rem' }}>{content.bodyTitle || 'The Devotion to the Sacred Heart of Jesus'}</h3>
         <p style={{ lineHeight: '1.8', marginBottom: '1.25rem' }}>
-          ಕ್ರಿಸ್ತಾಂವಾಂ ಮಧೆಂ ಪ್ರತ್ಯೇಕ್ ಜಾವ್ನ್ ಕಥೊಲಿಕಾಂ ಮಧೆಂ ಜೆಜುಚ್ಯಾ ಪವಿತ್ರ್ ಕಾಳ್ಜಾಚೆಂ ಭಕ್ತಿಪಣ್ ಮಾನಾಪಾತ್ರ್ ಆನಿಂ ಚಡ್ ಲೊಕಾನಿಂ ವರ್ತ್ಯಾ ದೆವಸ್ಪಣಾನ್ ಆದರ‍್ಚೆಂ ಭಕ್ತಿಪಣ್ ಮ್ಹಣ್ಯೆತ್. ಜೆಜುಚೆಂ ಪವಿತ್ರ್ ಕಾಳಿಜ್ ಪಿಂತ್ರಾಯ್ತಾನಾಂ ಕಾಳ್ಜಾ ಭಂವಾರಿ ಉಜೊ, ಭಾಲ್ಯಾನ್ ಘಾಯೆಲ್ಲೆಂ ಆನಿಂ ಕಾಂಟ್ಯಾಚ್ಯಾ ಮುಕುಟಾನ್ ವಿಣ್ಲೆಲೆಂ ದಾಕಯ್ತಾತ್.
+          {content.heroText || 'Christians honour the devotion to the Sacred Heart of Jesus, a sign of His faithful and merciful love for every family.'}
         </p>
         <p style={{ lineHeight: '1.8', marginBottom: '1.25rem' }}>
-          Our parish in Thodambila invokes the Sacred Heart of Jesus, seeking His unconditional love, peace, divine mercy, and protection for all 135+ families in our parish community.
+          {content.body || 'Our parish in Thodambila invokes the Sacred Heart of Jesus, seeking His unconditional love, peace, divine mercy, and protection for all families in our parish community.'}
         </p>
 
         <div style={{ background: 'var(--cream)', border: '1px solid var(--border-gold)', padding: '2rem', borderRadius: 'var(--radius-md)', marginTop: '2rem' }}>
@@ -192,13 +207,17 @@ export const PatronessPage = () => (
       </div>
     </section>
   </main>
-);
+  );
+};
 
-export const DiocesePage = () => (
+export const DiocesePage = () => {
+  const content = getStudioContent('diocese');
+
+  return (
   <main className="inner-page">
     <section className="page-hero">
       <div className="page-hero__content container">
-        <h1 className="page-hero__title">Diocese of Mangalore</h1>
+        <h1 className="page-hero__title">{content.heroTitle || 'Diocese of Mangalore'}</h1>
         <div className="page-hero__breadcrumb">
           <Link to="/">Home</Link> <span>/</span> <span>About</span> <span>/</span> <span>Diocese</span>
         </div>
@@ -208,14 +227,14 @@ export const DiocesePage = () => (
     <section className="section section--white">
       <div className="container" style={{ maxWidth: '850px' }}>
         <p style={{ fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
-          Sacred Heart of Jesus Church, Thodambila operates under the spiritual jurisdiction of the Roman Catholic Diocese of Mangalore (Bantwal Vicariate), officially erected as the 117th parish on August 15, 2016.
+          {content.heroText || 'Sacred Heart of Jesus Church, Thodambila operates under the spiritual jurisdiction of the Roman Catholic Diocese of Mangalore (Bantwal Vicariate), officially erected as the 117th parish on August 15, 2016.'}
         </p>
 
         <div className="grid-2" style={{ gap: '1.5rem' }}>
           <div style={{ background: 'var(--cream)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-beige)' }}>
             <Shield size={24} style={{ color: 'var(--gold-antique)', marginBottom: '0.5rem' }} />
-            <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.2rem', color: 'var(--brown-primary)' }}>Ecclesiastical Region</h4>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-body)', marginTop: '0.4rem' }}>Belonging to Bantwal Vicariate of the Diocese of Mangalore, with rich Catholic heritage.</p>
+            <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.2rem', color: 'var(--brown-primary)' }}>{content.bodyTitle || 'Ecclesiastical Region'}</h4>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-body)', marginTop: '0.4rem' }}>{content.body || 'Belonging to Bantwal Vicariate of the Diocese of Mangalore, with rich Catholic heritage.'}</p>
           </div>
           <div style={{ background: 'var(--cream)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-beige)' }}>
             <Landmark size={24} style={{ color: 'var(--gold-antique)', marginBottom: '0.5rem' }} />
@@ -226,4 +245,5 @@ export const DiocesePage = () => (
       </div>
     </section>
   </main>
-);
+  );
+};

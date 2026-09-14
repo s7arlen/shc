@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import { leadership } from '../data/leadership';
 
 export const ParishPriestPage = () => {
-  const { parishPriest } = leadership;
+  const parishPriest = React.useMemo(() => {
+    try { return JSON.parse(localStorage.getItem('thodambila-admin-priest') || 'null') || leadership.parishPriest; }
+    catch { return leadership.parishPriest; }
+  }, []);
   return (
     <main className="inner-page">
       <section className="page-hero">
@@ -71,33 +74,39 @@ export const PastoralTeamPage = () => (
   </main>
 );
 
-export const ParishCouncilPage = () => (
-  <main className="inner-page">
-    <section className="page-hero">
-      <div className="page-hero__content container">
-        <span className="page-hero__label">Parish Governance</span>
-        <h1 className="page-hero__title">Parish Council</h1>
-        <div className="page-hero__breadcrumb">
-          <Link to="/">Home</Link> <span>/</span> <span>Parish</span> <span>/</span> <span>Parish Council</span>
+export const ParishCouncilPage = () => {
+  const council = React.useMemo(() => {
+    try { return JSON.parse(localStorage.getItem('thodambila-admin-sections') || '{}')?.council || leadership.parishCouncil; }
+    catch { return leadership.parishCouncil; }
+  }, []);
+  return (
+    <main className="inner-page">
+      <section className="page-hero">
+        <div className="page-hero__content container">
+          <span className="page-hero__label">Parish Governance</span>
+          <h1 className="page-hero__title">Parish Council</h1>
+          <div className="page-hero__breadcrumb">
+            <Link to="/">Home</Link> <span>/</span> <span>Parish</span> <span>/</span> <span>Parish Council</span>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section className="section section--white">
-      <div className="container">
-        <div className="grid-3">
-          {leadership.parishCouncil.map((member) => (
-            <div key={member.id} style={{ background: 'var(--cream)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-beige)', textAlign: 'center' }}>
-              <img src={member.image} alt={member.name} style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--gold-antique)', margin: '0 auto 0.75rem' }} />
-              <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: 'var(--brown-primary)' }}>{member.name}</h4>
-              <p style={{ fontSize: '0.78rem', color: 'var(--gold-antique)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{member.position}</p>
-            </div>
-          ))}
+      <section className="section section--white">
+        <div className="container">
+          <div className="grid-3">
+            {council.map((member, i) => (
+              <div key={member.id || i} style={{ background: 'var(--cream)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-beige)', textAlign: 'center' }}>
+                <img src={member.image} alt={member.name} style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--gold-antique)', margin: '0 auto 0.75rem' }} />
+                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: 'var(--brown-primary)' }}>{member.name}</h4>
+                <p style={{ fontSize: '0.78rem', color: 'var(--gold-antique)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{member.position}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
-);
+      </section>
+    </main>
+  );
+};
 
 import WardsPage from './WardsPage';
 export { WardsPage };
@@ -145,3 +154,83 @@ export const ParishOfficePage = () => (
     </section>
   </main>
 );
+
+import { seedObituaries } from '../data/obituaries';
+
+export const ObituariesPage = () => {
+  const obituaries = React.useMemo(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem('thodambila-admin-sections') || '{}')?.obituary;
+      return (stored && stored.length > 0) ? stored : seedObituaries;
+    } catch {
+      return seedObituaries;
+    }
+  }, []);
+
+  return (
+    <main className="inner-page">
+      <section className="page-hero">
+        <div className="page-hero__content container">
+          <span className="page-hero__label">In Loving Memory</span>
+          <h1 className="page-hero__title">Parish Obituaries & Memorials</h1>
+          <div className="page-hero__breadcrumb">
+            <Link to="/">Home</Link> <span>/</span> <Link to="/parish">Parish</Link> <span>/</span> <span>Obituaries</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--white">
+        <div className="container" style={{ maxWidth: '950px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <p style={{ fontStyle: 'italic', color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '650px', margin: '0 auto' }}>
+              “I am the resurrection and the life. The one who believes in me will live, even though they die.” — John 11:25
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))', gap: '2rem' }}>
+            {obituaries.map((person) => (
+              <article key={person.id} style={{ background: '#fffdf9', border: '1px solid var(--border-gold)', borderRadius: '12px', padding: '1.75rem', boxShadow: 'var(--shadow-soft)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center' }}>
+                  <img
+                    src={person.photo || person.image || `${import.meta.env.BASE_URL}images/priest-portrait.png`}
+                    alt={person.name}
+                    style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--gold-antique)', flexShrink: 0 }}
+                  />
+                  <div>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--gold-antique)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{person.ward || 'Thodambila Parish'}</span>
+                    <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: 'var(--brown-primary)', margin: '0.2rem 0' }}>{person.name}</h3>
+                    {person.age && <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0 }}>Age: <strong>{person.age} years</strong></p>}
+                    {(person.dateOfDeath || person.displayDate) && (
+                      <p style={{ fontSize: '0.85rem', color: 'var(--wine)', fontWeight: 600, marginTop: '2px' }}>
+                        Passed Away: {person.displayDate || person.dateOfDeath}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {(person.funeralDetails || person.funeral) && (
+                  <div style={{ background: 'var(--cream)', padding: '0.9rem 1.1rem', borderRadius: '8px', borderLeft: '3px solid var(--wine)', fontSize: '0.88rem', lineHeight: '1.6' }}>
+                    <strong>Funeral & Services:</strong> {person.funeralDetails || person.funeral}
+                  </div>
+                )}
+
+                {person.tribute && (
+                  <p style={{ fontSize: '0.9rem', fontStyle: 'italic', color: 'var(--text-body)', lineHeight: '1.6', margin: 0 }}>
+                    "{person.tribute}"
+                  </p>
+                )}
+              </article>
+            ))}
+          </div>
+
+          {!obituaries.length && (
+            <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>
+              No obituary notices at this time.
+            </div>
+          )}
+        </div>
+      </section>
+    </main>
+  );
+};
+
