@@ -83,7 +83,7 @@ export const ParishCouncilPage = () => {
     <main className="inner-page">
       <section className="page-hero">
         <div className="page-hero__content container">
-          <span className="page-hero__label">Parish Governance</span>
+          <span className="page-hero__label">ಫಿರ್ಗಜ್ ಗೊವ್ಳಿಕ್ ಪರಿಷದ್ • Governance</span>
           <h1 className="page-hero__title">Parish Council</h1>
           <div className="page-hero__breadcrumb">
             <Link to="/">Home</Link> <span>/</span> <span>Parish</span> <span>/</span> <span>Parish Council</span>
@@ -91,16 +91,101 @@ export const ParishCouncilPage = () => {
         </div>
       </section>
 
-      <section className="section section--white">
-        <div className="container">
-          <div className="grid-3">
-            {council.map((member, i) => (
-              <div key={member.id || i} style={{ background: 'var(--cream)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-beige)', textAlign: 'center' }}>
-                <img src={member.image} alt={member.name} style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--gold-antique)', margin: '0 auto 0.75rem' }} />
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: 'var(--brown-primary)' }}>{member.name}</h4>
-                <p style={{ fontSize: '0.78rem', color: 'var(--gold-antique)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{member.position}</p>
-              </div>
-            ))}
+      <section className="section section--white" style={{ background: '#fffdf9', padding: '3.5rem 0 4.5rem' }}>
+        <div className="container" style={{ maxWidth: '1240px' }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+              gap: '28px'
+            }}
+          >
+            {council.map((member, i) => {
+              const nameMatch = (member.name || '').match(/^(.*?)(?:\s*\((.*?)\))?$/);
+              const engName = nameMatch ? nameMatch[1].trim() : member.name;
+              const konkaniName = nameMatch && nameMatch[2] ? nameMatch[2].trim() : null;
+
+              return (
+                <div
+                  key={member.id || i}
+                  style={{
+                    background: '#fffdf9',
+                    border: '2px solid #d0a047',
+                    borderRadius: '16px',
+                    padding: '2rem 1.5rem 1.75rem',
+                    textAlign: 'center',
+                    boxShadow: '0 8px 24px rgba(123, 28, 42, 0.05)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justify: 'space-between',
+                    alignItems: 'center'
+                  }}
+                  className="council-honor-card"
+                >
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: '6px',
+                      background: 'linear-gradient(90deg, #d0a047 0%, #7b1c2a 50%, #d0a047 100%)'
+                    }}
+                  />
+
+                  <div>
+                    <div style={{ position: 'relative', margin: '0.5rem auto 1.25rem', width: '118px', height: '118px' }}>
+                      <img
+                        src={member.image}
+                        alt={engName}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: '50%',
+                          objectFit: 'cover',
+                          border: '3px solid #d0a047',
+                          boxShadow: '0 6px 18px rgba(0,0,0,0.12)',
+                          outline: '2px solid rgba(123, 28, 42, 0.25)',
+                          outlineOffset: '2px'
+                        }}
+                      />
+                    </div>
+
+                    <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: '#7b1c2a', margin: '0 0 0.35rem', fontWeight: 700, lineHeight: 1.25 }}>
+                      {engName}
+                    </h3>
+
+                    {konkaniName && (
+                      <p style={{ fontSize: '0.92rem', color: '#966d36', margin: '0 0 0.85rem', fontWeight: 600 }}>
+                        ({konkaniName})
+                      </p>
+                    )}
+                  </div>
+
+                  <div
+                    style={{
+                      marginTop: '1.25rem',
+                      background: '#fcf6ec',
+                      border: '1px solid #d0a047',
+                      color: '#7b1c2a',
+                      borderRadius: '25px',
+                      padding: '8px 16px',
+                      fontSize: '0.8rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.04em',
+                      textTransform: 'uppercase',
+                      width: '100%',
+                      boxShadow: 'inset 0 1px 2px rgba(208, 160, 71, 0.15)'
+                    }}
+                  >
+                    {member.position}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

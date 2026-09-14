@@ -1047,10 +1047,10 @@ function CouncilManager({ items, save }) {
 
   return (
     <div className="loreto-card loreto-council">
-      <div className="loreto-section-head">
+      <div className="loreto-section-head" style={{ marginBottom: '24px' }}>
         <div>
-          <h2>Parish Council Office Bearers & Members</h2>
-          <p>Manage executive committee office bearers, ward representatives, and council members inline.</p>
+          <h2>Parish Council Office Bearers & Members (ಫಿರ್ಗಜ್ ಗೊವ್ಳಿಕ್ ಪರಿಷದ್)</h2>
+          <p>Manage executive committee office bearers, ward representatives, and council members inline. Cards mirror public Honor Roll design.</p>
         </div>
         <button className="loreto-primary" onClick={startNew}>
           <Plus size={18} />Add Council Member
@@ -1061,50 +1061,173 @@ function CouncilManager({ items, save }) {
         <InlineCouncilForm form={editingData} setForm={setEditingData} onSave={handleSave} onCancel={() => setEditingId(null)} isNew={true} />
       )}
 
-      <div className="loreto-council-grid">
-        {members.map((member) => (
-          <React.Fragment key={member.id}>
-            {editingId === member.id ? (
-              <InlineCouncilForm form={editingData} setForm={setEditingData} onSave={handleSave} onCancel={() => setEditingId(null)} isNew={false} />
-            ) : (
-              <article>
-                <img src={member.image || `${base}images/hero-exterior.jpg`} alt="" />
-                <div>
-                  <h3>{member.name}</h3>
-                  <p>{member.position}</p>
-                  {member.ward && <small style={{ color: '#8c6b29', display: 'block', marginTop: '4px' }}>Ward: {member.ward}</small>}
-                </div>
-                <div className="loreto-council-actions">
-                  <button onClick={() => startEdit(member)}><Edit3 size={15} />Edit</button>
-                  <button className="delete" onClick={() => remove(member.id)}><Trash2 size={15} />Remove</button>
-                </div>
-              </article>
-            )}
-          </React.Fragment>
-        ))}
+      <div
+        className="loreto-council-grid"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))',
+          gap: '24px',
+          marginTop: '20px'
+        }}
+      >
+        {members.map((member, i) => {
+          const nameMatch = (member.name || '').match(/^(.*?)(?:\s*\((.*?)\))?$/);
+          const engName = nameMatch ? nameMatch[1].trim() : member.name;
+          const konkaniName = nameMatch && nameMatch[2] ? nameMatch[2].trim() : null;
+
+          return (
+            <React.Fragment key={member.id || i}>
+              {editingId === member.id ? (
+                <InlineCouncilForm form={editingData} setForm={setEditingData} onSave={handleSave} onCancel={() => setEditingId(null)} isNew={false} />
+              ) : (
+                <article
+                  style={{
+                    background: '#fffdf9',
+                    border: '2px solid #d0a047',
+                    borderRadius: '16px',
+                    padding: '24px 20px 20px',
+                    textAlign: 'center',
+                    boxShadow: '0 6px 20px rgba(123, 28, 42, 0.05)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justify: 'space-between',
+                    alignItems: 'center'
+                  }}
+                >
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: '5px',
+                      background: 'linear-gradient(90deg, #d0a047 0%, #7b1c2a 50%, #d0a047 100%)'
+                    }}
+                  />
+
+                  <div style={{ width: '100%' }}>
+                    <div style={{ position: 'relative', margin: '4px auto 14px', width: '104px', height: '104px' }}>
+                      <img
+                        src={member.image || `${base}images/priest-portrait.png`}
+                        alt={engName}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: '50%',
+                          objectFit: 'cover',
+                          border: '3px solid #d0a047',
+                          boxShadow: '0 4px 14px rgba(0,0,0,0.12)',
+                          outline: '2px solid rgba(123, 28, 42, 0.25)',
+                          outlineOffset: '2px'
+                        }}
+                      />
+                    </div>
+
+                    <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '20px', color: '#7b1c2a', margin: '0 0 4px', fontWeight: 700, lineHeight: 1.25 }}>
+                      {engName}
+                    </h3>
+
+                    {konkaniName && (
+                      <p style={{ fontSize: '13px', color: '#966d36', margin: '0 0 10px', fontWeight: 600 }}>
+                        ({konkaniName})
+                      </p>
+                    )}
+
+                    <div
+                      style={{
+                        marginTop: '10px',
+                        background: '#fcf6ec',
+                        border: '1px solid #d0a047',
+                        color: '#7b1c2a',
+                        borderRadius: '20px',
+                        padding: '6px 14px',
+                        fontSize: '12px',
+                        fontWeight: 700,
+                        letterSpacing: '0.03em',
+                        textTransform: 'uppercase',
+                        width: '100%',
+                        boxSizing: 'border-box',
+                        boxShadow: 'inset 0 1px 2px rgba(208, 160, 71, 0.15)'
+                      }}
+                    >
+                      {member.position || 'Council Member'}
+                    </div>
+
+                    {member.ward && (
+                      <p style={{ fontSize: '12px', color: '#685954', margin: '8px 0 0', fontWeight: '600' }}>
+                        <strong>Ward:</strong> {member.ward}
+                      </p>
+                    )}
+                    {member.phone && (
+                      <p style={{ fontSize: '12px', color: '#685954', margin: '2px 0 0' }}>
+                        📞 {member.phone}
+                      </p>
+                    )}
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '10px', marginTop: '18px', width: '100%', alignItems: 'center' }}>
+                    <button
+                      type="button"
+                      className="loreto-bearer-edit-btn"
+                      onClick={() => startEdit(member)}
+                    >
+                      <Edit3 size={16} /> Edit
+                    </button>
+                    <button
+                      type="button"
+                      className="loreto-bearer-delete-btn"
+                      onClick={() => remove(member.id)}
+                      title="Remove Member"
+                    >
+                      <Trash2 size={17} />
+                    </button>
+                  </div>
+                </article>
+              )}
+            </React.Fragment>
+          );
+        })}
       </div>
-      {!members.length && editingId !== 'new' && <div className="loreto-empty">No council members listed yet.</div>}
+      {!members.length && editingId !== 'new' && <div className="loreto-empty">No council members listed yet. Click "Add Council Member" to add one.</div>}
     </div>
   );
 }
 
 function InlineCouncilForm({ form, setForm, onSave, onCancel, isNew }) {
+  const nameMatch = (form.name || '').match(/^(.*?)(?:\s*\((.*?)\))?$/);
+  const [engName, setEngName] = useState(nameMatch ? nameMatch[1].trim() : (form.name || ''));
+  const [konkaniTitle, setKonkaniTitle] = useState(nameMatch && nameMatch[2] ? nameMatch[2].trim() : '');
+
   const set = (key, val) => setForm((prev) => ({ ...prev, [key]: val }));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const finalName = engName.trim() + (konkaniTitle.trim() ? ` (${konkaniTitle.trim()})` : '');
+    onSave({
+      ...form,
+      name: finalName
+    });
+  };
+
   return (
-    <form className="loreto-inline-editor" style={{ gridColumn: '1 / -1' }} onSubmit={(e) => { e.preventDefault(); onSave(form); }}>
-      <h3><Edit3 size={20} />{isNew ? 'Add Council Member' : `Edit ${form.name || 'Member'}`}</h3>
+    <form className="loreto-inline-editor" style={{ gridColumn: '1 / -1' }} onSubmit={handleSubmit}>
+      <h3><Edit3 size={20} />{isNew ? 'Add Council Member' : `Edit ${engName || 'Member'}`}</h3>
       <div className="loreto-inline-editor-grid">
-        <Field label="Member Full Name *" value={form.name || ''} change={(v) => set('name', v)} />
-        <Field label="Council Role / Position *" value={form.position || ''} change={(v) => set('position', v)} />
-        <Field label="Ward / Representative Area" value={form.ward || ''} change={(v) => set('ward', v)} />
-        <Field label="Contact Number" value={form.phone || ''} change={(v) => set('phone', v)} />
-        <div className="full-width">
-          <ImageInput label="Member Photo" value={form.image || ''} change={(v) => set('image', v)} />
+        <Field label="Member Full Name (English) *" value={engName} change={setEngName} required placeholder="e.g. Rev. Fr. Paul Dsouza" />
+        <Field label="Konkani Subtitle / Title (Optional)" value={konkaniTitle} change={setKonkaniTitle} placeholder="e.g. ವಿಗಾರ್ / ಅಧ್ಯಕ್ಷ್" />
+        <Field label="Council Role / Position Title *" value={form.position || ''} change={(v) => set('position', v)} required placeholder="e.g. President / Parish Priest" />
+        <Field label="Ward / Representative Area" value={form.ward || ''} change={(v) => set('ward', v)} placeholder="e.g. Parish Ward" />
+        <Field label="Contact Phone Number" value={form.phone || ''} change={(v) => set('phone', v)} placeholder="e.g. +91 94480 00000" />
+        <div className="full-width" style={{ background: '#fcf6ec', border: '1px solid var(--line)', padding: '16px', borderRadius: '10px', marginTop: '4px' }}>
+          <p style={{ fontSize: '12px', fontWeight: 'bold', color: 'var(--wine)', marginBottom: '8px', textTransform: 'uppercase' }}>Member Photo (Upload File or Paste Image URL)</p>
+          <ImageInput label="Photo" value={form.image || ''} change={(v) => set('image', v)} />
         </div>
       </div>
       <div className="loreto-inline-editor-actions">
         <button type="button" onClick={onCancel} style={{ border: '1px solid var(--line)', background: '#fff', borderRadius: '7px', padding: '10px 18px', fontWeight: '700', cursor: 'pointer' }}>Cancel</button>
-        <button className="loreto-primary" type="submit">Save Council Member</button>
+        <button className="loreto-primary" type="submit"><Save size={16} /> Save Council Member</button>
       </div>
     </form>
   );
